@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Excel Result Search | SPM Smart School</title>
+    <!-- SheetJS Library for reading Excel files -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
+
+        .top-banner { background-color: #d97706; color: #ffffff; padding: 8px 15px; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+        .top-banner a { color: #ffffff; text-decoration: underline; white-space: nowrap; }
+
+        header { background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; position: relative; }
+       
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .school-logo { height: 48px; width: auto; object-fit: contain; flex-shrink: 0; }
+        .brand-text h1 { font-size: 1.15rem; color: #0f172a; font-weight: 800; line-height: 1.2; }
+        .brand-text p { font-size: 0.65rem; color: #b45309; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .hamburger { display: none; font-size: 24px; cursor: pointer; color: #0f172a; background: none; border: none; padding: 5px; }
+        .nav-menu { display: flex; gap: 18px; list-style: none; }
+        .nav-menu a { text-decoration: none; color: #334155; font-weight: 600; font-size: 0.9rem; transition: color 0.3s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #d97706; }
+
+        .page-header { background: #0f172a; color: #ffffff; padding: 40px 20px; text-align: center; }
+        .page-header h2 { font-size: 2rem; font-weight: 800; }
+        .page-header p { color: #d97706; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-top: 5px; }
+
+        .content-container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
+        .card-box { background: #ffffff; padding: 30px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 30px; }
+        .card-box h3 { color: #0f172a; font-size: 1.3rem; margin-bottom: 15px; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 5px; color: #334155; }
+        .form-group select, .form-group input { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1rem; outline: none; }
+        .form-group select:focus, .form-group input:focus { border-color: #d97706; }
+
+        .search-btn { width: 100%; background: #d97706; color: #ffffff; padding: 12px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+        .search-btn:hover { background: #b45309; }
+
+        .result-card { display: none; background: #ffffff; padding: 25px; border-radius: 12px; border: 1px solid #e2e8f0; border-left: 5px solid #d97706; margin-top: 20px; }
+        .result-card h4 { color: #0f172a; font-size: 1.25rem; margin-bottom: 5px; }
+        .result-card p.subtitle { color: #64748b; font-size: 0.85rem; margin-bottom: 15px; font-weight: 600; }
+
+        .marks-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .marks-table th, .marks-table td { border: 1px solid #e2e8f0; padding: 10px 14px; text-align: left; font-size: 0.9rem; }
+        .marks-table th { background: #f8fafc; color: #0f172a; font-weight: 700; }
+        .marks-table td { color: #334155; }
+        .highlight-row { background: #fffbe6; font-weight: 700; }
+
+        .download-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: #fffbe6; border-radius: 8px; border: 1px solid #fef3c7; margin-bottom: 12px; }
+        .download-item span { font-weight: 700; color: #0f172a; font-size: 0.9rem; }
+        .download-btn { background: #d97706; color: #ffffff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 700; transition: background 0.3s; white-space: nowrap; }
+        .download-btn:hover { background: #b45309; }
+
+        footer { background: #0f172a; color: #94a3b8; padding: 30px 15px; text-align: center; margin-top: 50px; font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .top-banner { flex-direction: column; text-align: center; gap: 4px; }
+            .hamburger { display: block; }
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #ffffff; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 15px 20px; gap: 12px; border-top: 1px solid #e2e8f0; }
+            .nav-menu.show { display: flex; }
+            .download-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .download-btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-banner">
+        <div>📢 Admissions Open for Academic Session 2026–27 (Nursery to Class X)</div>
+        <div><a href="admission.html">Apply Online &rarr;</a></div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="brand">
+                <img src="images/logo.png" alt="SPM Smart School Logo" class="school-logo">
+                <div class="brand-text">
+                    <h1>SPM Smart School</h1>
+                    <p>Merapani :: Bijaypur</p>
+                </div>
+            </div>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="notices.html">Notices</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="staff.html">Staff</a></li>
+                <li><a href="admission.html">Admission</a></li>
+                <li><a href="results.html" class="active">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h2>Examination Results Portal</h2>
+        <p>Half-Yearly Examination 2026–27</p>
+    </div>
+
+    <div class="content-container">
+       
+        <!-- SECTION 1: DYNAMIC EXCEL ROLL NO SEARCH -->
+        <div class="card-box">
+            <h3>🔍 Live Search from Excel Sheet by Roll Number</h3>
+            <div class="form-group">
+                <label for="classSelect">Select Class Excel File:</label>
+                <select id="classSelect">
+                    <option value="results/Class_I_HY_result.xlsx">Class I</option>
+                    <option value="results/Class_II_HY_result.xlsx" selected>Class II</option>
+                    <option value="results/Class_III_HY_result.xlsx">Class III</option>
+                    <option value="results/Class_IV_HY_result.xlsx">Class IV</option>
+                    <option value="results/Class_V_HY_result.xlsx">Class V</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rollInput">Enter Roll Number:</label>
+                <input type="number" id="rollInput" placeholder="e.g. 1, 2, 4, 15" min="1">
+            </div>
+            <button class="search-btn" onclick="searchExcelResult()">Search Marksheet</button>
+
+            <!-- RESULT DISPLAY CARD -->
+            <div id="resultCard" class="result-card">
+                <h4 id="studentHeader">Student Marksheet</h4>
+                <p id="studentSubtitle" class="subtitle">SPM SMART SCHOOL | HALF YEARLY EXAMINATION</p>
+                <div id="resultTableContainer"></div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: DOWNLOAD EXCEL SHEETS -->
+        <div class="card-box">
+            <h3>📥 Download Full Class Result Sheets (Excel)</h3>
+           
+            <div class="download-item">
+                <span>📊 Class I Result Sheet</span>
+                <a href="results/Class_I_HY_result.xlsx" class="download-btn" download>Download Excel</a>
+            </div>
+            <div class="download-item">
+                <span>📊 Class II Result Sheet</span>
+                <a href="results/Class_II_HY_result.xlsx" class="download-btn" download>Download Excel</a>
+            </div>
+            <div class="download-item">
+                <span>📊 Class III Result Sheet</span>
+                <a href="results/Class_III_HY_result.xlsx" class="download-btn" download>Download Excel</a>
+            </div>
+            <div class="download-item">
+                <span>📊 Class IV Result Sheet</span>
+                <a href="results/Class_IV_HY_result.xlsx" class="download-btn" download>Download Excel</a>
+            </div>
+            <div class="download-item">
+                <span>📊 Class V Result Sheet</span>
+                <a href="results/Class_V_HY_result.xlsx" class="download-btn" download>Download Excel</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <strong>Sunaprova Phukan Memorial (SPM) Smart School</strong>. Merapani :: Bijaypur. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("show");
+        }
+
+        async function searchExcelResult() {
+            const fileUrl = document.getElementById('classSelect').value;
+            const rollNo = document.getElementById('rollInput').value.trim();
+            const resultCard = document.getElementById('resultCard');
+            const studentHeader = document.getElementById('studentHeader');
+            const tableContainer = document.getElementById('resultTableContainer');
+
+            if (!rollNo) {
+                alert('Please enter a valid Roll Number.');
+                return;
+            }
+
+            try {
+                // Fetch the Excel file from your local results folder
+                const response = await fetch(fileUrl);
+                if (!response.ok) throw new Error('File not found');
+               
+                const arrayBuffer = await response.arrayBuffer();
+                const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+                const firstSheetName = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[firstSheetName];
+
+                // Since your table headers start on Row 4 (index 3), range: 3 tells SheetJS to treat row 4 as headers
+                const jsonData = XLSX.utils.sheet_to_json(worksheet, { range: 3 });
+
+                // Find matching student by Roll No column
+                const match = jsonData.find(row => {
+                    const r = row['Roll No'] || row['Roll'] || row['ROLL NO'];
+                    return r !== undefined && r.toString().trim() === rollNo;
+                });
+
+                if (match) {
+                    const studentName = match['Student Name'] || match['Name'] || 'Student';
+                    studentHeader.innerText = `${studentName} (Roll No: ${rollNo})`;
+                   
+                    let tableHTML = '<table class="marks-table"><thead><tr><th>Subject / Category</th><th>Score</th></tr></thead><tbody>';
+                   
+                    for (let key in match) {
+                        if (key && !key.includes('__EMPTY') && key.trim() !== '') {
+                            const isHighlight = key.toLowerCase().includes('total') || key.toLowerCase().includes('age') || key.toLowerCase().includes('rank');
+                            tableHTML += `<tr class="${isHighlight ? 'highlight-row' : ''}"><td><strong>${key}</strong></td><td>${match[key]}</td></tr>`;
+                        }
+                    }
+                    tableHTML += '</tbody></table>';
+                   
+                    tableContainer.innerHTML = tableHTML;
+                    resultCard.style.display = 'block';
+                } else {
+                    studentHeader.innerText = 'Record Not Found';
+                    tableContainer.innerHTML = `<p style="color: #dc2626; margin-top: 10px;">No student record found for Roll Number <strong>${rollNo}</strong> in this file.</p>`;
+                    resultCard.style.display = 'block';
+                }
+            } catch (error) {
+                alert('Browser blocked direct reading of local files. To test live Excel reading, open this page using a local server (like VS Code Live Server) or Firefox.');
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>

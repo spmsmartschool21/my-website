@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Portal | SPM Smart School</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
+
+        /* Announcement Bar */
+        .top-banner { background-color: #d97706; color: #ffffff; padding: 8px 15px; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+        .top-banner a { color: #ffffff; text-decoration: underline; white-space: nowrap; }
+
+        /* Navigation Header */
+        header { background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; position: relative; }
+       
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .school-logo { height: 48px; width: auto; object-fit: contain; flex-shrink: 0; }
+        .brand-text h1 { font-size: 1.15rem; color: #0f172a; font-weight: 800; line-height: 1.2; }
+        .brand-text p { font-size: 0.65rem; color: #b45309; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .hamburger { display: none; font-size: 24px; cursor: pointer; color: #0f172a; background: none; border: none; padding: 5px; }
+        .nav-menu { display: flex; gap: 18px; list-style: none; }
+        .nav-menu a { text-decoration: none; color: #334155; font-weight: 600; font-size: 0.9rem; transition: color 0.3s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #d97706; }
+
+        /* Page Banner */
+        .page-header { background: #0f172a; color: #ffffff; padding: 40px 20px; text-align: center; }
+        .page-header h2 { font-size: 2rem; font-weight: 800; }
+        .page-header p { color: #d97706; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-top: 5px; }
+
+        /* Content Layout */
+        .content-container { max-width: 950px; margin: 30px auto; padding: 0 15px; }
+        .card-box { background: #ffffff; padding: 30px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 30px; }
+        .card-box h3 { color: #0f172a; font-size: 1.4rem; margin-bottom: 10px; }
+        .card-box p { color: #475569; font-size: 0.95rem; margin-bottom: 15px; }
+
+        .option-divider { text-align: center; font-weight: 700; color: #64748b; margin: 25px 0; position: relative; }
+        .option-divider::before, .option-divider::after { content: ""; position: absolute; top: 50%; width: 40%; height: 1px; background: #cbd5e1; }
+        .option-divider::before { left: 0; }
+        .option-divider::after { right: 0; }
+
+        .download-btn { display: inline-block; background: #d97706; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: background 0.3s; }
+        .download-btn:hover { background: #b45309; }
+
+        /* Embedded Google Form Frame */
+        .form-frame-container { width: 100%; overflow: hidden; border-radius: 12px; border: 1px solid #e2e8f0; margin-top: 20px; }
+        .form-frame-container iframe { width: 100%; height: 900px; border: none; }
+
+        /* Footer */
+        footer { background: #0f172a; color: #94a3b8; padding: 30px 15px; text-align: center; margin-top: 50px; font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .top-banner { flex-direction: column; text-align: center; gap: 4px; }
+            .hamburger { display: block; }
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #ffffff; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 15px 20px; gap: 12px; border-top: 1px solid #e2e8f0; }
+            .nav-menu.show { display: flex; }
+            .download-btn { display: block; width: 100%; text-align: center; }
+            .form-frame-container iframe { height: 1100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="top-banner">
+        <div>📢 Admissions Open for Academic Session 2026–27 (Nursery to Class X)</div>
+        <div><a href="admission.html">Apply Online &rarr;</a></div>
+    </div>
+
+    <!-- MAIN NAVIGATION HEADER -->
+    <header>
+        <div class="nav-container">
+            <div class="brand">
+                <img src="images/logo.png" alt="SPM Smart School Logo" class="school-logo">
+                <div class="brand-text">
+                    <h1>SPM Smart School</h1>
+                    <p>Merapani :: Bijaypur</p>
+                </div>
+            </div>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="notices.html">Notices</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="staff.html">Staff</a></li>
+                <li><a href="admission.html" class="active">Admission</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h2>Online Admission Portal</h2>
+        <p>Sunaprova Phukan Memorial (SPM) Smart School</p>
+    </div>
+
+    <!-- ADMISSION CONTENT CONTAINER -->
+    <div class="content-container">
+
+        <!-- OPTION 1: EMBEDDED ONLINE GOOGLE FORM -->
+        <div class="card-box">
+            <h3>Option 1: Fill Admission Form Online</h3>
+            <p>Complete the online registration form below to apply directly for the 2026–27 academic session:</p>
+           
+            <div class="form-frame-container">
+                <!-- Replace the src URL below with your actual Google Form embed link -->
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc1_Qo6Wp1RFmcHUtlLO0tFjQiEV3W3CdWVdkjTueb3bqZAgQ/viewform?embedded=true" width="640" height="2117" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </div>
+
+        <div class="option-divider">OR</div>
+
+        <!-- OPTION 2: OFFLINE PDF DOWNLOAD -->
+        <div class="card-box" style="text-align: center;">
+            <h3>Option 2: Download Offline Printable Form</h3>
+            <p>Prefer to submit a physical paper copy? Download our printable PDF application form, fill it out manually, and submit it at the school administrative office.</p>
+            <div style="margin-top: 15px;">
+                <a href="admission_application_form.pdf" class="download-btn" download>📥 Download Printable PDF Form</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 <strong>Sunaprova Phukan Memorial (SPM) Smart School</strong>. Merapani :: Bijaypur. All rights reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT FOR MOBILE MENU -->
+    <script>
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
