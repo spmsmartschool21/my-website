@@ -104,63 +104,7 @@
         <p>Half-Yearly Examination 2026–27</p>
     </div>
 
-    <div class="content-container">
-       
-        <!-- SECTION 1: DYNAMIC EXCEL ROLL NO SEARCH -->
-        <div class="card-box">
-            <h3>🔍 Live Search from Excel Sheet by Roll Number</h3>
-            <div class="form-group">
-                <label for="classSelect">Select Class Excel File:</label>
-                <select id="classSelect">
-                    <option value="results/Class_I_HY_result.xlsx">Class I</option>
-                    <option value="results/Class_II_HY_result.xlsx" selected>Class II</option>
-                    <option value="results/Class_III_HY_result.xlsx">Class III</option>
-                    <option value="results/Class_IV_HY_result.xlsx">Class IV</option>
-                    <option value="results/Class_V_HY_result.xlsx">Class V</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="rollInput">Enter Roll Number:</label>
-                <input type="number" id="rollInput" placeholder="e.g. 1, 2, 4, 15" min="1">
-            </div>
-            <button class="search-btn" onclick="searchExcelResult()">Search Marksheet</button>
-
-            <!-- RESULT DISPLAY CARD -->
-            <div id="resultCard" class="result-card">
-                <h4 id="studentHeader">Student Marksheet</h4>
-                <p id="studentSubtitle" class="subtitle">SPM SMART SCHOOL | HALF YEARLY EXAMINATION</p>
-                <div id="resultTableContainer"></div>
-            </div>
-        </div>
-
-        <!-- SECTION 2: DOWNLOAD EXCEL SHEETS -->
-        <div class="card-box">
-            <h3>📥 Download Full Class Result Sheets (Excel)</h3>
-           
-            <div class="download-item">
-                <span>📊 Class I Result Sheet</span>
-                <a href="results/Class_I_HY_result.xlsx" class="download-btn" download>Download Excel</a>
-            </div>
-            <div class="download-item">
-                <span>📊 Class II Result Sheet</span>
-                <a href="results/Class_II_HY_result.xlsx" class="download-btn" download>Download Excel</a>
-            </div>
-            <div class="download-item">
-                <span>📊 Class III Result Sheet</span>
-                <a href="results/Class_III_HY_result.xlsx" class="download-btn" download>Download Excel</a>
-            </div>
-            <div class="download-item">
-                <span>📊 Class IV Result Sheet</span>
-                <a href="results/Class_IV_HY_result.xlsx" class="download-btn" download>Download Excel</a>
-            </div>
-            <div class="download-item">
-                <span>📊 Class V Result Sheet</span>
-                <a href="results/Class_V_HY_result.xlsx" class="download-btn" download>Download Excel</a>
-            </div>
-        </div>
-
-    </div>
-
+    
     <footer>
         <p>&copy; 2026 <strong>Sunaprova Phukan Memorial (SPM) Smart School</strong>. Merapani :: Bijaypur. All rights reserved.</p>
     </footer>
