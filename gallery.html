@@ -12,7 +12,7 @@
         .top-banner a { color: #ffffff; text-decoration: underline; white-space: nowrap; }
 
         header { background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; relative; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; position: relative; }
        
         .brand { display: flex; align-items: center; gap: 12px; }
         .school-logo { height: 48px; width: auto; object-fit: contain; flex-shrink: 0; }
@@ -31,10 +31,17 @@
         .content-container { max-width: 1200px; margin: 30px auto; padding: 0 15px; }
         .section-title { font-size: 1.4rem; color: #0f172a; margin: 30px 0 15px; padding-bottom: 5px; border-bottom: 3px solid #d97706; display: inline-block; }
        
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .gallery-card { background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .gallery-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
-        .gallery-info { padding: 12px; text-align: center; font-weight: 600; font-size: 0.9rem; color: #334155; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+       
+        /* Gallery Card Styles - Full photo shown initially with contain */
+        .gallery-card { background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: transform 0.2s; }
+        .gallery-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+       
+        .gallery-card a { display: block; background: #0f172a; cursor: zoom-in; }
+        .gallery-card img { width: 100%; height: 240px; object-fit: contain; display: block; transition: opacity 0.2s; }
+        .gallery-card img:hover { opacity: 0.93; }
+       
+        .gallery-info { padding: 12px; text-align: center; font-weight: 600; font-size: 0.9rem; color: #334155; background: #ffffff; }
 
         footer { background: #0f172a; color: #94a3b8; padding: 30px 15px; text-align: center; margin-top: 50px; font-size: 0.85rem; }
 
@@ -78,7 +85,7 @@
 
     <div class="page-header">
         <h2>School Photo Gallery</h2>
-        <p>Life, Learning, and Events at SPM Smart School</p>
+        <p>Life, Learning, and Events at SPM Smart School (Click any photo to view full size)</p>
     </div>
 
     <div class="content-container">
@@ -86,37 +93,92 @@
         <!-- 1. CAMPUS GALLERY -->
         <h3 class="section-title">🏫 School Campus</h3>
         <div class="gallery-grid">
-            <div class="gallery-card"><img src="images/CAMPUS/FRONT_SIDE.jpg" alt="Campus Building"><div class="gallery-info">Main School Building</div></div>
-            <div class="gallery-card"><img src="images/CAMPUS/playground.jpg" alt="Playground"><div class="gallery-info">Open Playground</div></div>
+            <div class="gallery-card">
+                <a href="images/CAMPUS/FRONT_STDF.jpg" target="_blank">
+                    <img src="images/CAMPUS/FRONT_STDF.jpg" alt="Campus Building">
+                </a>
+                <div class="gallery-info">Main School Building</div>
+            </div>
+            <div class="gallery-card">
+                <a href="images/CAMPUS/playground.jpg" target="_blank">
+                    <img src="images/CAMPUS/playground.jpg" alt="Playground">
+                </a>
+                <div class="gallery-info">Open Playground</div>
+            </div>
         </div>
 
         <!-- 2. STUDENTS GALLERY -->
         <h3 class="section-title">🎒 Students Gallery</h3>
         <div class="gallery-grid">
-            <div class="gallery-card"><img src="images/students/Morning Assembly.jpg" alt="Morning Assembly"><div class="gallery-info">Morning Prayer & Assembly</div></div>
-            <div class="gallery-card"><img src="images/students/Social_activities.jpg" alt="Student Group"><div class="gallery-info">Cleanliness Programme</div></div>
+            <div class="gallery-card">
+                <a href="images/students/Morning Assembly.jpg" target="_blank">
+                    <img src="images/students/Morning Assembly.jpg" alt="Morning Assembly">
+                </a>
+                <div class="gallery-info">Morning Prayer & Assembly</div>
+            </div>
+            <div class="gallery-card">
+                <a href="images/students/Social_activities.jpg" target="_blank">
+                    <img src="images/students/Social_activities.jpg" alt="Student Group">
+                </a>
+                <div class="gallery-info">Student Activities</div>
+            </div>
         </div>
 
         <!-- 3. CLASSROOM GALLERY -->
         <h3 class="section-title">📖 Smart Classrooms</h3>
         <div class="gallery-grid">
-            <div class="gallery-card"><img src="images/CAMPUS/classroom1.jpg" alt="Nursery Classroom"><div class="gallery-info">Nursery Room</div></div>
-            <div class="gallery-card"><img src="images/Class 2/class2_room.jpg" alt="Class 2 Room"><div class="gallery-info">Interactive Smart Learning</div></div>
+            <div class="gallery-card">
+                <a href="images/CAMPUS/classroom1.jpg" target="_blank">
+                    <img src="images/CAMPUS/classroom1.jpg" alt="Nursery Classroom">
+                </a>
+                <div class="gallery-info">Nursery & Pre-Primary Room</div>
+            </div>
+            <div class="gallery-card">
+                <a href="images/Class 2/class2_room.jpg" target="_blank">
+                    <img src="images/Class 2/class2_room.jpg" alt="Class 2 Room">
+                </a>
+                <div class="gallery-info">Interactive Smart Learning</div>
+            </div>
         </div>
 
         <!-- 4. SPORTS GALLERY -->
         <h3 class="section-title">⚽ Sports & Fitness</h3>
         <div class="gallery-grid">
-            <div class="gallery-card"><img src="images/CAMPUS/sports_event.jpg" alt="Annual Sports"><div class="gallery-info">Annual Sports Day</div></div>
-            <div class="gallery-card"><img src="images/students/games.jpg" alt="Outdoor Games"><div class="gallery-info">Outdoor Activities</div></div>
+            <div class="gallery-card">
+                <a href="images/CAMPUS/sports_event.jpg" target="_blank">
+                    <img src="images/CAMPUS/sports_event.jpg" alt="Annual Sports">
+                </a>
+                <div class="gallery-info">Annual Sports Day</div>
+            </div>
+            <div class="gallery-card">
+                <a href="images/students/games.jpg" target="_blank">
+                    <img src="images/students/games.jpg" alt="Outdoor Games">
+                </a>
+                <div class="gallery-info">Outdoor Activities</div>
+            </div>
         </div>
 
         <!-- 5. CULTURAL PROGRAMS & COMPETITIONS -->
         <h3 class="section-title">🎭 Cultural Programs & Competitions</h3>
         <div class="gallery-grid">
-            <div class="gallery-card"><img src="images/students/Rhymes_competetion.jpg" alt="Saraswati Puja"><div class="gallery-info">Rhymes Recitation</div></div>
-            <div class="gallery-card"><img src="images/students/Art_competetion1.jpg" alt="Competitions"><div class="gallery-info">Quiz & Art Competitions</div></div>
-            <div class="gallery-card"><img src="images/students/Environment_day.jpg" alt="Competitions"><div class="gallery-info">Environment Day</div></div>
+            <div class="gallery-card">
+                <a href="images/students/Rhymes_compelotion.jpg" target="_blank">
+                    <img src="images/students/Rhymes_compelotion.jpg" alt="Rhymes Recitation">
+                </a>
+                <div class="gallery-info">Rhymes Recitation</div>
+            </div>
+            <div class="gallery-card">
+                <a href="images/students/Art_competetion1.jpg" target="_blank">
+                    <img src="images/students/Art_competetion1.jpg" alt="Art Competition">
+                </a>
+                <div class="gallery-info">Quiz & Art Competitions</div>
+            </div>
+            <div class="gallery-card">
+                <a href="images/students/Environment_day.jpg" target="_blank">
+                    <img src="images/students/Environment_day.jpg" alt="Environment Day">
+                </a>
+                <div class="gallery-info">Environment Day</div>
+            </div>
         </div>
 
     </div>
