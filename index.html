@@ -39,8 +39,14 @@
 
         .content-container { max-width: 1100px; margin: 40px auto; padding: 0 15px; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: #ffffff; padding: 25px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .card h3 { color: #0f172a; font-size: 1.2rem; margin-bottom: 10px; }
+       
+        /* CLICKABLE FEATURE CARDS */
+        .card { background: #ffffff; padding: 25px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-decoration: none; color: inherit; display: block; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); border-color: #d97706; }
+        .card h3 { color: #0f172a; font-size: 1.2rem; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .card h3::after { content: "→"; color: #d97706; font-size: 1rem; opacity: 0; transition: opacity 0.2s; }
+        .card:hover h3::after { opacity: 1; }
+        .card p { color: #475569; font-size: 0.95rem; }
 
         footer { background: #0f172a; color: #94a3b8; padding: 30px 15px; text-align: center; margin-top: 50px; font-size: 0.85rem; }
 
@@ -90,7 +96,7 @@
         <a href="admission.html" class="cta-btn">Admissions Open 2026–27</a>
     </div>
 
-    <!-- NOTICE TICKER LINKED FROM NOTICES PAGE -->
+    <!-- NOTICE TICKER BAR -->
     <div class="notice-ticker-section">
         <div class="ticker-container">
             <span class="ticker-badge">Latest Notice</span>
@@ -102,18 +108,23 @@
 
     <div class="content-container">
         <div class="grid-3">
-            <div class="card">
+            <!-- Redirects to Gallery (Campus section) -->
+            <a href="gallery.html" class="card">
                 <h3>🏫 Smart Campus</h3>
-                <p>Equipped with modern interactive learning technology, audio-visual smart classrooms, and safety infrastructure.</p>
-            </div>
-            <div class="card">
+                <p>Equipped with modern interactive learning technology, audio-visual smart classrooms, and safety infrastructure. Click to view campus gallery.</p>
+            </a>
+
+            <!-- Redirects to About Page (Holistic Education / 5H Framework) -->
+            <a href="about.html" class="card">
                 <h3>📚 Holistic Education</h3>
-                <p>Nurturing academic excellence, moral values, digital skills, creative arts, and sports across all grade levels.</p>
-            </div>
-            <div class="card">
+                <p>Nurturing academic excellence, moral values, digital skills, creative arts, and sports across all grade levels. Click to learn more.</p>
+            </a>
+
+            <!-- Redirects to Results Portal -->
+            <a href="results.html" class="card">
                 <h3>🏆 Results & Progress</h3>
-                <p>Continuous evaluation and transparent online marksheet downloads from Class Nursery to Class X.</p>
-            </div>
+                <p>Continuous evaluation and transparent online marksheets from Class Nursery to Class X. Click to check results.</p>
+            </a>
         </div>
     </div>
 
