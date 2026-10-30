@@ -24,11 +24,18 @@
         .nav-menu a { text-decoration: none; color: #334155; font-weight: 600; font-size: 0.9rem; transition: color 0.3s; }
         .nav-menu a:hover, .nav-menu a.active { color: #d97706; }
 
-        .hero { background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('images/CAMPUS/campus_main.jpg') center/cover no-repeat; color: #ffffff; padding: 80px 20px; text-align: center; }
-        .hero h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; color: #ffffff; }
-        .hero p { font-size: 1.1rem; color: #cbd5e1; max-width: 650px; margin: 0 auto 25px; }
+        .hero { background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('images/CAMPUS/campus_main.jpg') center/cover no-repeat; color: #ffffff; padding: 70px 20px; text-align: center; }
+        .hero h2 { font-size: 2.3rem; font-weight: 800; margin-bottom: 10px; color: #ffffff; }
+        .hero p { font-size: 1.05rem; color: #cbd5e1; max-width: 650px; margin: 0 auto 25px; }
         .cta-btn { background: #d97706; color: #ffffff; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; transition: background 0.3s; }
         .cta-btn:hover { background: #b45309; }
+
+        /* LIVE NOTICE TICKER SECTION */
+        .notice-ticker-section { background: #fef3c7; border-bottom: 1px solid #fde68a; padding: 12px 20px; }
+        .ticker-container { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 15px; }
+        .ticker-badge { background: #d97706; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; white-space: nowrap; }
+        .ticker-content { font-size: 0.9rem; color: #78350f; font-weight: 600; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+        .ticker-content a { color: #92400e; text-decoration: underline; }
 
         .content-container { max-width: 1100px; margin: 40px auto; padding: 0 15px; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
@@ -43,6 +50,7 @@
             .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #ffffff; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 15px 20px; gap: 12px; border-top: 1px solid #e2e8f0; }
             .nav-menu.show { display: flex; }
             .hero h2 { font-size: 1.8rem; }
+            .ticker-container { flex-direction: column; align-items: flex-start; gap: 5px; }
         }
     </style>
 </head>
@@ -80,6 +88,16 @@
         <h2>A Journey Towards Wisdom and Humanity</h2>
         <p>Sunaprova Phukan Memorial (SPM) Smart School provides holistic, technology-driven education with 5H Core Values.</p>
         <a href="admission.html" class="cta-btn">Admissions Open 2026–27</a>
+    </div>
+
+    <!-- NOTICE TICKER LINKED FROM NOTICES PAGE -->
+    <div class="notice-ticker-section">
+        <div class="ticker-container">
+            <span class="ticker-badge">Latest Notice</span>
+            <div class="ticker-content">
+                📢 Half-Yearly Examination Excel Marksheets (Nursery to Class V) Published &bull; <a href="notices.html">View All Notices &rarr;</a>
+            </div>
+        </div>
     </div>
 
     <div class="content-container">
