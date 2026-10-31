@@ -31,7 +31,7 @@
         .content-container { max-width: 1200px; margin: 30px auto; padding: 0 15px; }
         .section-title { font-size: 1.4rem; color: #0f172a; margin: 30px 0 15px; padding-bottom: 5px; border-bottom: 3px solid #d97706; display: inline-block; }
        
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; /* Adds a clean gap between all photo cards */ }
        
         /* Gallery Card Styles - Full photo shown initially with contain */
         .gallery-card { background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: transform 0.2s; }
@@ -91,29 +91,42 @@
     <div class="content-container">
 
         <!-- 1. CAMPUS GALLERY -->
-        <h3 class="section-title">🏫 School Campus</h3>
-        <div class="gallery-grid">
-            <div class="gallery-card">
-                <a href="images/CAMPUS/FRONT_SIDE.jpg" target="_blank">
-                    <img src="images/CAMPUS/FRONT_SIDE.jpg" alt="Campus Building">
-                </a>
-            </n>
-                <a href="images/CAMPUS/FRONT_CORNER.jpg" target="_blank">
-                    <img src="images/CAMPUS/FRONT_CORNER.jpg" alt="Campus Building">
-                </a>
-                <div class="gallery-info">Main School Building</div>
-            </div>
-            <div class="gallery-card">
-                <a href="images/CAMPUS/Playground 1.jpg" target="_blank">
-                    <img src="images/CAMPUS/Playground 1.jpg" alt="Playground">
-                </a>
-            </n>
-                <a href="images/CAMPUS/Playground 2.jpg" target="_blank">
-                    <img src="images/CAMPUS/Playground 2.jpg" alt="Playground">
-                </a>
-                <div class="gallery-info">Open Playground</div>
-            </div>
-        </div>
+<h3 class="section-title">🏫 School Campus</h3>
+<div class="gallery-grid">
+   
+    <!-- Card 1 -->
+    <div class="gallery-card">
+        <a href="images/CAMPUS/FRONT_SIDE.jpg" target="_blank">
+            <img src="images/CAMPUS/FRONT_SIDE.jpg" alt="Campus Building">
+        </a>
+        <div class="gallery-info">Main School Building (Front)</div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="gallery-card">
+        <a href="images/CAMPUS/FRONT_CORNER.jpg" target="_blank">
+            <img src="images/CAMPUS/FRONT_CORNER.jpg" alt="Campus Building">
+        </a>
+        <div class="gallery-info">Main School Building (Corner View)</div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="gallery-card">
+        <a href="images/CAMPUS/Playground 1.jpg" target="_blank">
+            <img src="images/CAMPUS/Playground 1.jpg" alt="Playground">
+        </a>
+        <div class="gallery-info">Open Playground</div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="gallery-card">
+        <a href="images/CAMPUS/Playground 2.jpg" target="_blank">
+            <img src="images/CAMPUS/Playground 2.jpg" alt="Playground">
+        </a>
+        <div class="gallery-info">Sports Field View</div>
+    </div>
+
+</div>
 
         <!-- 2. STUDENTS GALLERY -->
         <h3 class="section-title">🎒 Students Gallery</h3>
