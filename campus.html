@@ -3,38 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Life | SPM Smart School</title>
+    <title>Campus & Student Life | SPM Smart School</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#000000">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background-color: #000000; color: #ffffff; line-height: 1.6; }
+        
         header { background: #000000; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #27272a; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .brand img { height: 45px; width: auto; object-fit: contain; }
         .brand-text h1 { font-size: 1.15rem; color: #ffffff; font-weight: 800; }
         .brand-text p { font-size: 0.65rem; color: #a1a1aa; font-weight: 700; text-transform: uppercase; }
+        
         .hamburger { display: none; font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
         .nav-menu { display: flex; gap: 18px; list-style: none; font-size: 0.88rem; }
-        .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; }
+        .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; transition: color 0.3s; }
         .nav-menu a:hover, .nav-menu a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
 
         .page-header { background: #121212; padding: 50px 20px; text-align: center; border-bottom: 1px solid #27272a; }
         .page-header h2 { font-size: 2rem; font-weight: 900; }
-       
-        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-        .card { background: #121212; border: 1px solid #27272a; border-radius: 12px; padding: 30px; margin-bottom: 25px; }
-        .card h3 { font-size: 1.3rem; margin-bottom: 10px; border-left: 3px solid #ffffff; padding-left: 10px; }
-        .card p { color: #a1a1aa; font-size: 0.95rem; }
-        footer { background: #121212; border-top: 1px solid #27272a; padding: 30px; text-align: center; color: #71717a; font-size: 0.85rem; margin-top: 50px; }
-        @media(max-width: 768px) { .hamburger { display: block; } .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } .nav-menu.show { display: flex; } }
+        .page-header p { color: #a1a1aa; font-size: 0.85rem; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .section-title { font-size: 1.4rem; color: #ffffff; margin: 35px 0 20px; border-left: 4px solid #ffffff; padding-left: 10px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: #121212; border: 1px solid #27272a; border-radius: 12px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
+        .card:hover { transform: translateY(-3px); border-color: #52525b; }
+        
+        .card a { display: block; background: #000000; cursor: zoom-in; }
+        .card img { width: 100%; height: 230px; object-fit: contain; display: block; }
+        .card-info { padding: 14px; text-align: center; font-weight: 600; font-size: 0.9rem; color: #a1a1aa; background: #121212; border-top: 1px solid #27272a; }
+
+        footer { background: #121212; border-top: 1px solid #27272a; padding: 30px; text-align: center; color: #71717a; font-size: 0.85rem; margin-top: 60px; }
+
+        @media(max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; }
+            .nav-menu.show { display: flex; }
+        }
     </style>
 </head>
 <body>
+
     <header>
         <div class="nav-container">
-            <a href="index.html" class="brand"><img src="images/logo.png" alt="Logo"><div class="brand-text"><h1>SPM Smart School</h1><p>Merapani :: Bijaypur</p></div></a>
+            <a href="index.html" class="brand">
+                <img src="images/logo.png" alt="Logo">
+                <div class="brand-text">
+                    <h1>SPM Smart School</h1>
+                    <p>Merapani :: Bijaypur</p>
+                </div>
+            </a>
             <button class="hamburger" onclick="toggleMenu()">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
@@ -53,20 +75,69 @@
         </div>
     </header>
 
-    <div class="page-header"><h2>Campus Life & Infrastructure</h2></div>
-
-    <div class="container">
-        <div class="card">
-            <h3>Smart Classrooms & Labs</h3>
-            <p>Interactive digital displays and well-maintained environments designed to spark curiosity.</p>
-        </div>
-        <div class="card">
-            <h3>Playground & Activities</h3>
-            <p>Open sports grounds and cultural event spaces fostering teamwork and physical well-being.</p>
-        </div>
+    <div class="page-header">
+        <h2>Campus & Student Life</h2>
+        <p>Showcasing our students, daily routines, and school environment</p>
     </div>
 
-    <footer><p>&copy; 2026 SPM Smart School. All Rights Reserved.</p></footer>
-    <script>function toggleMenu() { document.getElementById("navMenu").classList.toggle("show"); }</script>
+    <div class="container">
+
+        <!-- STUDENT SPOTLIGHT SECTION -->
+        <h3 class="section-title">⭐ Student Spotlight</h3>
+        <div class="grid">
+            <div class="card">
+                <a href="images/students/student_1.jpg" target="_blank">
+                    <img src="images/students/student_1.jpg" alt="Student 1" onerror="this.src='images/logo.png'">
+                </a>
+                <div class="card-info">Student Spotlight - Uniform & Discipline</div>
+            </div>
+            <div class="card">
+                <a href="images/students/student_2.jpg" target="_blank">
+                    <img src="images/students/student_2.jpg" alt="Student 2" onerror="this.src='images/logo.png'">
+                </a>
+                <div class="card-info">Student Spotlight - Academic Focus</div>
+            </div>
+        </div>
+
+        <!-- ACTIVITIES & EVENTS -->
+        <h3 class="section-title">🏆 Student Activities & Competitions</h3>
+        <div class="grid">
+            <div class="card">
+                <a href="images/students/Morning Assembly.jpg" target="_blank">
+                    <img src="images/students/Morning Assembly.jpg" alt="Morning Assembly">
+                </a>
+                <div class="card-info">Morning Assembly & Prayer</div>
+            </div>
+            <div class="card">
+                <a href="images/students/Art_competetion.jpg" target="_blank">
+                    <img src="images/students/Art_competetion.jpg" alt="Art Competition">
+                </a>
+                <div class="card-info">Art & Craft Competition</div>
+            </div>
+            <div class="card">
+                <a href="images/students/Rhymes_competetion.jpg" target="_blank">
+                    <img src="images/students/Rhymes_competetion.jpg" alt="Rhymes Competition">
+                </a>
+                <div class="card-info">Rhymes Recitation Session</div>
+            </div>
+            <div class="card">
+                <a href="images/students/Environment_day.jpg" target="_blank">
+                    <img src="images/students/Environment_day.jpg" alt="Environment Day">
+                </a>
+                <div class="card-info">Environment Day Initiative</div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sunaprova Phukan Memorial (SPM) Smart School. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() { 
+            document.getElementById("navMenu").classList.toggle("show"); 
+        }
+    </script>
 </body>
 </html>
