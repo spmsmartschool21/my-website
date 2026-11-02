@@ -3,39 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty | SPM Smart School</title>
+    <title>Faculty & Staff | SPM Smart School</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#000000">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background-color: #000000; color: #ffffff; line-height: 1.6; }
+        
         header { background: #000000; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #27272a; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .brand img { height: 45px; width: auto; object-fit: contain; }
         .brand-text h1 { font-size: 1.15rem; color: #ffffff; font-weight: 800; }
         .brand-text p { font-size: 0.65rem; color: #a1a1aa; font-weight: 700; text-transform: uppercase; }
+        
         .hamburger { display: none; font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
         .nav-menu { display: flex; gap: 18px; list-style: none; font-size: 0.88rem; }
-        .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; }
+        .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; transition: color 0.3s; }
         .nav-menu a:hover, .nav-menu a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
 
         .page-header { background: #121212; padding: 50px 20px; text-align: center; border-bottom: 1px solid #27272a; }
         .page-header h2 { font-size: 2rem; font-weight: 900; }
-       
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: #121212; border: 1px solid #27272a; border-radius: 12px; padding: 25px; text-align: center; }
-        .avatar { width: 60px; height: 60px; background: #ffffff; color: #000000; font-weight: 900; font-size: 1.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; }
-        .card h3 { font-size: 1.1rem; margin-bottom: 5px; }
-        .card p { color: #a1a1aa; font-size: 0.85rem; }
-        footer { background: #121212; border-top: 1px solid #27272a; padding: 30px; text-align: center; color: #71717a; font-size: 0.85rem; margin-top: 50px; grid-column: 1 / -1; }
-        @media(max-width: 768px) { .hamburger { display: block; } .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } .nav-menu.show { display: flex; } }
+        .page-header p { color: #a1a1aa; font-size: 0.85rem; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        
+        .staff-card { background: #121212; border: 1px solid #27272a; border-radius: 12px; overflow: hidden; text-align: center; transition: transform 0.2s, border-color 0.2s; }
+        .staff-card:hover { transform: translateY(-3px); border-color: #52525b; }
+        
+        .staff-img-box { width: 100%; height: 240px; background: #18181b; overflow: hidden; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #27272a; }
+        .staff-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        /* Fallback avatar if image file is not found */
+        .staff-avatar-placeholder { width: 80px; height: 80px; background: #ffffff; color: #000000; font-weight: 900; font-size: 1.6rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        .staff-info { padding: 20px; }
+        .staff-info h3 { font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+        .staff-info p.role { color: #a1a1aa; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
+        .staff-info p.desc { color: #71717a; font-size: 0.8rem; }
+
+        footer { background: #121212; border-top: 1px solid #27272a; padding: 30px; text-align: center; color: #71717a; font-size: 0.85rem; margin-top: 60px; }
+
+        @media(max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; }
+            .nav-menu.show { display: flex; }
+        }
     </style>
 </head>
 <body>
+
     <header>
         <div class="nav-container">
-            <a href="index.html" class="brand"><img src="images/logo.png" alt="Logo"><div class="brand-text"><h1>SPM Smart School</h1><p>Merapani :: Bijaypur</p></div></a>
+            <a href="index.html" class="brand">
+                <img src="images/logo.png" alt="Logo">
+                <div class="brand-text">
+                    <h1>SPM Smart School</h1>
+                    <p>Merapani :: Bijaypur</p>
+                </div>
+            </a>
             <button class="hamburger" onclick="toggleMenu()">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
@@ -54,22 +81,52 @@
         </div>
     </header>
 
-    <div class="page-header"><h2>Administration & Faculty</h2></div>
-
-    <div class="container">
-        <div class="card">
-            <div class="avatar">RA</div>
-            <h3>Rosid Ahmed</h3>
-            <p>Curriculum Coordinator & Administrator</p>
-        </div>
-        <div class="card">
-            <div class="avatar">ST</div>
-            <h3>Primary Teaching Staff</h3>
-            <p>Dedicated Educators (Nursery to Class V)</p>
-        </div>
-        <footer><p>&copy; 2026 SPM Smart School. All Rights Reserved.</p></footer>
+    <div class="page-header">
+        <h2>Administration & Faculty</h2>
+        <p>Meet our dedicated educators and administrative team</p>
     </div>
 
-    <script>function toggleMenu() { document.getElementById("navMenu").classList.toggle("show"); }</script>
+    <div class="container">
+        <div class="staff-grid">
+            
+            <!-- Staff Member 1 -->
+            <div class="staff-card">
+                <div class="staff-img-box">
+                    <!-- Replace 'images/staff/rosid.jpg' with your actual image path or file name -->
+                    <img src="images/staff/rosid.jpg" alt="Rosid Ahmed" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">RA</div>
+                </div>
+                <div class="staff-info">
+                    <h3>Rosid Ahmed</h3>
+                    <p class="role">Curriculum Coordinator & Administrator</p>
+                    <p class="desc">Managing curriculum development and grading databases from Nursery to Class V.</p>
+                </div>
+            </div>
+
+            <!-- Staff Member 2 (Example for Teachers) -->
+            <div class="staff-card">
+                <div class="staff-img-box">
+                    <img src="images/staff/teacher1.jpg" alt="Faculty Member" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">TF</div>
+                </div>
+                <div class="staff-info">
+                    <h3>Primary Teaching Faculty</h3>
+                    <p class="role">Lead Educators</p>
+                    <p class="desc">Specialized primary instructors fostering foundational English and Math skills.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sunaprova Phukan Memorial (SPM) Smart School. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() { 
+            document.getElementById("navMenu").classList.toggle("show"); 
+        }
+    </script>
 </body>
 </html>
