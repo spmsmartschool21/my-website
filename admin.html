@@ -184,9 +184,20 @@
         function handleLogin(e) {
             e.preventDefault();
             const user = document.getElementById('username').value;
-            // Add your authentication logic here or connect to backend
-            alert('Authentication attempt for administrative user: ' + user);
+            const pass = document.getElementById('password').value;
+
+            // Define your secure login credentials here
+            if (user === "admin" && pass === "spm2026") {
+                alert("Login Successful! Welcome to SPM Management Portal.");
+                // Option to redirect to an admin dashboard page:
+                // window.location.href = "dashboard.html";
+            } else {
+                alert("Invalid Username or Password! Please try again.");
+            }
         }
     </script>
+</body>
+</html>
+
 </body>
 </html>
