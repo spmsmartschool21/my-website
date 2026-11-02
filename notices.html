@@ -3,71 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notice Board | SPM Smart School</title>
+    <title>Notices & Announcements | SPM Smart School</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#d97706">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        body { background-color: #0b1329; color: #f8fafc; line-height: 1.6; }
 
-        .top-banner { background-color: #d97706; color: #ffffff; padding: 8px 15px; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
-        .top-banner a { color: #ffffff; text-decoration: underline; white-space: nowrap; }
+        .top-strip { background: #070d1e; padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.8rem; }
+        .affil-badge { background: #ea580c; color: #fff; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 0.7rem; }
+        .admin-link { color: #94a3b8; text-decoration: none; font-weight: 600; }
+        .admin-link:hover { color: #d97706; }
 
-        header { background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; position: relative; }
+        header { background: #0f172a; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand img { height: 45px; width: auto; object-fit: contain; }
+        .brand-text h1 { font-size: 1.15rem; color: #ffffff; font-weight: 800; }
+        .brand-text p { font-size: 0.65rem; color: #d97706; font-weight: 700; text-transform: uppercase; }
+
+        .hamburger { display: none; font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
+        .nav-menu { display: flex; gap: 20px; list-style: none; }
+        .nav-menu a { text-decoration: none; color: #cbd5e1; font-weight: 600; font-size: 0.9rem; transition: color 0.3s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #f59e0b; }
+
+        .page-header { background: radial-gradient(circle at top, #1e293b 0%, #0b1329 100%); padding: 50px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .page-header h2 { font-size: 2.2rem; font-weight: 900; color: #ffffff; margin-bottom: 8px; }
+        .page-header p { color: #d97706; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .content-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
        
-        .brand { display: flex; align-items: center; gap: 12px; }
-        .school-logo { height: 48px; width: auto; object-fit: contain; flex-shrink: 0; }
-        .brand-text h1 { font-size: 1.15rem; color: #0f172a; font-weight: 800; line-height: 1.2; }
-        .brand-text p { font-size: 0.65rem; color: #b45309; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .notice-card { background: #131c35; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 25px; margin-bottom: 20px; transition: transform 0.2s, border-color 0.2s; }
+        .notice-card:hover { transform: translateY(-2px); border-color: rgba(234, 88, 12, 0.4); }
+        .notice-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .badge-group { display: flex; gap: 8px; }
+        .badge-notice { background: rgba(234, 88, 12, 0.15); color: #ea580c; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; }
+        .badge-urgent { background: rgba(220, 38, 38, 0.2); color: #ef4444; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; }
+       
+        .notice-card h3 { font-size: 1.2rem; color: #ffffff; font-weight: 700; margin-bottom: 10px; }
+        .notice-card p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px; }
+       
+        .notice-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px; font-size: 0.8rem; color: #64748b; }
+        .notice-link { color: #ea580c; text-decoration: none; font-weight: 700; }
+        .notice-link:hover { text-decoration: underline; }
 
-        .hamburger { display: none; font-size: 24px; cursor: pointer; color: #0f172a; background: none; border: none; padding: 5px; }
-        .nav-menu { display: flex; gap: 18px; list-style: none; }
-        .nav-menu a { text-decoration: none; color: #334155; font-weight: 600; font-size: 0.9rem; transition: color 0.3s; }
-        .nav-menu a:hover, .nav-menu a.active { color: #d97706; }
-
-        .page-header { background: #0f172a; color: #ffffff; padding: 40px 20px; text-align: center; }
-        .page-header h2 { font-size: 2rem; font-weight: 800; }
-        .page-header p { color: #d97706; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-top: 5px; }
-
-        .content-container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
-        .notice-card { background: #ffffff; padding: 20px 25px; border-radius: 12px; border-left: 5px solid #d97706; border-top: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 20px; }
-        .notice-date { font-size: 0.8rem; font-weight: 700; color: #d97706; text-transform: uppercase; }
-        .notice-card h3 { color: #0f172a; font-size: 1.15rem; margin: 4px 0 8px; }
-        .notice-card p { color: #475569; font-size: 0.9rem; }
-
-        footer { background: #0f172a; color: #94a3b8; padding: 30px 15px; text-align: center; margin-top: 50px; font-size: 0.85rem; }
+        footer { background: #070d1e; border-top: 1px solid rgba(255,255,255,0.08); padding: 40px 20px 20px; margin-top: 60px; font-size: 0.85rem; color: #94a3b8; text-align: center; }
 
         @media (max-width: 768px) {
-            .top-banner { flex-direction: column; text-align: center; gap: 4px; }
             .hamburger { display: block; }
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #ffffff; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 15px 20px; gap: 12px; border-top: 1px solid #e2e8f0; }
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #0f172a; padding: 20px; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .nav-menu.show { display: flex; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-banner">
-        <div>📢 Admissions Open for Academic Session 2026–27</div>
-        <div><a href="admission.html">Apply Now &rarr;</a></div>
+    <div class="top-strip">
+        <div><span class="affil-badge">ESTD 2021</span> &nbsp; Academic Session 2026–27</div>
+        <a href="results.html" class="admin-link">👤 Student Result Portal &rarr;</a>
     </div>
 
     <header>
         <div class="nav-container">
-            <div class="brand">
-                <img src="images/logo.png" alt="SPM Smart School Logo" class="school-logo">
+            <a href="index.html" class="brand">
+                <img src="images/logo.png" alt="SPM Smart School Logo">
                 <div class="brand-text">
                     <h1>SPM Smart School</h1>
                     <p>Merapani :: Bijaypur</p>
                 </div>
-            </div>
+            </a>
             <button class="hamburger" onclick="toggleMenu()">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html">About Us</a></li>
                 <li><a href="notices.html" class="active">Notices</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="gallery.html">Photo Gallery</a></li>
                 <li><a href="staff.html">Staff</a></li>
-                <li><a href="admission.html">Admission</a></li>
+                <li><a href="admission.html">Admissions</a></li>
                 <li><a href="results.html">Results</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -75,26 +87,62 @@
     </header>
 
     <div class="page-header">
-        <h2>Official Notice Board</h2>
-        <p>Latest Announcements & Circulars</p>
+        <h2>Latest Notices & Circulars</h2>
+        <p>Official School Announcements & Academic Updates</p>
     </div>
 
     <div class="content-container">
+
+        <!-- Notice Item 1 -->
         <div class="notice-card">
-            <div class="notice-date">October 2026</div>
-            <h3>Admission Form Available for 2026–27 Session</h3>
-            <p>Parents can download the admission form online from the Admission tab or collect printed prospectus copies from the desk.</p>
+            <div class="notice-header">
+                <div class="badge-group">
+                    <span class="badge-notice">Notice</span>
+                    <span class="badge-urgent">Urgent</span>
+                </div>
+            </div>
+            <h3>Half-Yearly Examination Results Published (Session 2026–27)</h3>
+            <p>Half-Yearly Examination results for Classes Nursery through Class V have been uploaded to the online portal. Parents can search marks by Roll Number or download complete class marksheets.</p>
+            <div class="notice-footer">
+                <span>📅 28 Oct 2026</span>
+                <a href="results.html" class="notice-link">View Results Portal &rarr;</a>
+            </div>
         </div>
 
+        <!-- Notice Item 2 -->
         <div class="notice-card">
-            <div class="notice-date">October 2026</div>
-            <h3>Half-Yearly Examination Excel Marksheets Published</h3>
-            <p>Result sheets for Nursery to Class V are now available for direct download under the Results section.</p>
+            <div class="notice-header">
+                <div class="badge-group">
+                    <span class="badge-notice">Admissions</span>
+                </div>
+            </div>
+            <h3>Admissions Open for Academic Session 2026–27</h3>
+            <p>Online and offline registration forms are now available for Nursery to Class X. Seats are filled on a first-come basis after preliminary interaction.</p>
+            <div class="notice-footer">
+                <span>📅 15 Oct 2026</span>
+                <a href="admission.html" class="notice-link">Apply Online &rarr;</a>
+            </div>
         </div>
+
+        <!-- Notice Item 3 -->
+        <div class="notice-card">
+            <div class="notice-header">
+                <div class="badge-group">
+                    <span class="badge-notice">Event</span>
+                </div>
+            </div>
+            <h3>Annual Art & Rhymes Competition Schedule</h3>
+            <p>The annual inter-house recitation and creative arts contest will take place next month. Class teachers will share the registration details with students.</p>
+            <div class="notice-footer">
+                <span>📅 02 Oct 2026</span>
+                <a href="gallery.html" class="notice-link">View Event Photos &rarr;</a>
+            </div>
+        </div>
+
     </div>
 
     <footer>
-        <p>&copy; 2026 <strong>Sunaprova Phukan Memorial (SPM) Smart School</strong>. All rights reserved.</p>
+        <p>&copy; 2026 <strong>Sunaprova Phukan Memorial (SPM) Smart School</strong>. Merapani :: Bijaypur. All Rights Reserved.</p>
     </footer>
 
     <script>
