@@ -187,10 +187,9 @@
         const pass = document.getElementById('password').value.trim();
 
         if (user === "admin" && pass === "spm2026") {
-            // Automatically redirect to dashboard page upon success
-            window.location.href = "dashboard.html";
+            window.location.href = "index.html"; // Redirects to homepage successfully
         } else {
-            alert("Invalid Username or Password! Please try again.");
+            alert("Invalid Username or Password!");
         }
         return false;
     }
