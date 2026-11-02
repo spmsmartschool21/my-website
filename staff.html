@@ -41,13 +41,25 @@
         .staff-info h3 { font-size: 1.05rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; text-transform: capitalize; }
         .staff-info p.role { color: #a1a1aa; font-size: 0.82rem; font-weight: 600; }
 
-        footer { background: #121212; border-top: 1px solid #27272a; padding: 30px; text-align: center; color: #71717a; font-size: 0.85rem; margin-top: 60px; }
+        /* Footer Styles - Fully Cleaned & Isolated */
+        footer { background: #121212; border-top: 1px solid #27272a; padding: 50px 20px 30px; color: #a1a1aa; font-size: 0.88rem; margin-top: 80px; width: 100%; clear: both; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: #ffffff; font-size: 1rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .footer-col p { font-size: 0.85rem; margin-bottom: 15px; color: #d4d4d8; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #a1a1aa; text-decoration: none; transition: color 0.2s; font-size: 0.85rem; }
+        .footer-links a:hover { color: #ffffff; }
+        .contact-info-list p { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; }
+        .social-icons { display: flex; gap: 12px; margin-top: 15px; }
+        .social-icons a { background: #18181b; border: 1px solid #27272a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
+        .social-icons a:hover { background: #27272a; }
+        .footer-bottom { text-align: center; border-top: 1px solid #27272a; padding-top: 25px; font-size: 0.8rem; color: #71717a; }
 
         @media(max-width: 768px) {
             .hamburger { display: block; }
             .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; }
             .nav-menu.show { display: flex; }
-        }
     </style>
 </head>
 <body>
@@ -195,8 +207,7 @@
         </div>
     </div>
         
-    <div class="container">
-<!-- Footer -->
+    <!-- Footer Section -->
     <footer>
         <div class="footer-container">
             <div class="footer-col">
@@ -235,13 +246,13 @@
             <div class="footer-col">
                 <h4>Contact Info</h4>
                 <div class="contact-info-list">
-                    <p>📍 Merapani, Bijaypur, Golaghat, Assam, India - 785705</p>
+                    <p>📍 Merapani, Bijaypur, Golaghat, Assam, India - 785602</p>
                     <p>📞 +91 9435538980</p>
-                    <p>✉️ spmsmartschool2021@gmail.com</p>
+                    <p>✉️ spmsmartschool@gmail.com</p>
                 </div>
             </div>
         </div>
-       
+        
         <div class="footer-bottom">
             <p>&copy; 2026 Sunaprova Phukan Memorial (SPM) Smart School. All Rights Reserved.</p>
         </div>
