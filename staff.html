@@ -26,22 +26,20 @@
         .page-header h2 { font-size: 2rem; font-weight: 900; }
         .page-header p { color: #a1a1aa; font-size: 0.85rem; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
 
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .section-title { font-size: 1.4rem; color: #ffffff; margin: 30px 0 20px; border-left: 4px solid #ffffff; padding-left: 10px; }
+        .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
         
         .staff-card { background: #121212; border: 1px solid #27272a; border-radius: 12px; overflow: hidden; text-align: center; transition: transform 0.2s, border-color 0.2s; }
         .staff-card:hover { transform: translateY(-3px); border-color: #52525b; }
         
         .staff-img-box { width: 100%; height: 240px; background: #18181b; overflow: hidden; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #27272a; }
         .staff-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        
-        /* Fallback avatar if image file is not found */
-        .staff-avatar-placeholder { width: 80px; height: 80px; background: #ffffff; color: #000000; font-weight: 900; font-size: 1.6rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .staff-avatar-placeholder { width: 70px; height: 70px; background: #ffffff; color: #000000; font-weight: 900; font-size: 1.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-        .staff-info { padding: 20px; }
-        .staff-info h3 { font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
-        .staff-info p.role { color: #a1a1aa; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
-        .staff-info p.desc { color: #71717a; font-size: 0.8rem; }
+        .staff-info { padding: 15px; }
+        .staff-info h3 { font-size: 1.05rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; text-transform: capitalize; }
+        .staff-info p.role { color: #a1a1aa; font-size: 0.82rem; font-weight: 600; }
 
         footer { background: #121212; border-top: 1px solid #27272a; padding: 30px; text-align: center; color: #71717a; font-size: 0.85rem; margin-top: 60px; }
 
@@ -83,39 +81,113 @@
 
     <div class="page-header">
         <h2>Administration & Faculty</h2>
-        <p>Meet our dedicated educators and administrative team</p>
+        <p>Our Administrative Leadership & Dedicated Teaching Staff</p>
     </div>
 
     <div class="container">
+        <!-- School Administration -->
+        <h3 class="section-title">School Administration</h3>
         <div class="staff-grid">
-            
-            <!-- Staff Member 1 -->
             <div class="staff-card">
                 <div class="staff-img-box">
-                    <!-- Replace 'images/staff/rosid.jpg' with your actual image path or file name -->
+                    <img src="images/staff/principal.jpg" alt="Principal" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">P</div>
+                </div>
+                <div class="staff-info">
+                    <h3>Principal</h3>
+                    <p class="role">Head of Institution</p>
+                </div>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-img-box">
+                    <img src="images/staff/vice_principal.jpg" alt="Vice Principal" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">VP</div>
+                </div>
+                <div class="staff-info">
+                    <h3>Vice Principal</h3>
+                    <p class="role">Academic Administration</p>
+                </div>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-img-box">
                     <img src="images/staff/rosid.jpg" alt="Rosid Ahmed" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="staff-avatar-placeholder" style="display:none;">RA</div>
                 </div>
                 <div class="staff-info">
                     <h3>Rosid Ahmed</h3>
-                    <p class="role">Curriculum Coordinator & Administrator</p>
-                    <p class="desc">Managing curriculum development and grading databases from Nursery to Class V.</p>
+                    <p class="role">Curriculum Coordinator & Admin</p>
                 </div>
             </div>
+        </div>
 
-            <!-- Staff Member 2 (Example for Teachers) -->
+        <!-- Teaching Faculty -->
+        <h3 class="section-title" style="margin-top: 40px;">Teaching Faculty</h3>
+        <div class="staff-grid">
             <div class="staff-card">
                 <div class="staff-img-box">
-                    <img src="images/staff/teacher1.jpg" alt="Faculty Member" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="staff-avatar-placeholder" style="display:none;">TF</div>
+                    <img src="images/staff/joya.jpg" alt="Joya Teacher" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">JT</div>
                 </div>
-                <div class="staff-info">
-                    <h3>Primary Teaching Faculty</h3>
-                    <p class="role">Lead Educators</p>
-                    <p class="desc">Specialized primary instructors fostering foundational English and Math skills.</p>
-                </div>
+                <div class="staff-info"><h3>Joya</h3><p class="role">Primary Faculty</p></div>
             </div>
 
+            <div class="staff-card">
+                <div class="staff-img-box">
+                    <img src="images/staff/lulu.jpg" alt="Lulu Teacher" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">LT</div>
+                </div>
+                <div class="staff-info"><h3>Lulu</h3><p class="role">Primary Faculty</p></div>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-img-box">
+                    <img src="images/staff/luxmi.jpg" alt="Luxmi Teacher" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">LT</div>
+                </div>
+                <div class="staff-info"><h3>Luxmi</h3><p class="role">Primary Faculty</p></div>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-img-box">
+                    <img src="images/staff/mamon.jpg" alt="Mamon Teacher" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">MT</div>
+                </div>
+                <div class="staff-info"><h3>Mamon</h3><p class="role">Primary Faculty</p></div>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-img-box">
+                    <img src="images/staff/mitali.jpg" alt="Mitali Teacher" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">MT</div>
+                </div>
+                <div class="staff-info"><h3>Mitali</h3><p class="role">Primary Faculty</p></div>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-img-box">
+                    <img src="images/staff/priti.jpg" alt="Priti Teacher" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">PT</div>
+                </div>
+                <div class="staff-info"><h3>Priti</h3><p class="role">Primary Faculty</p></div>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-img-box">
+                    <img src="images/staff/priyanka.jpg" alt="Priyanka Teacher" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">PT</div>
+                </div>
+                <div class="staff-info"><h3>Priyanka</h3><p class="role">Primary Faculty</p></div>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-img-box">
+                    <img src="images/staff/rimpi.jpg" alt="Rimpi Teacher" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="staff-avatar-placeholder" style="display:none;">RT</div>
+                </div>
+                <div class="staff-info"><h3>Rimpi</h3><p class="role">Primary Faculty</p></div>
+            </div>
         </div>
     </div>
 
