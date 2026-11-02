@@ -3,18 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard | SPM Smart School</title>
+    <title>Admin Dashboard | SPM Smart School Management Portal</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
     <style>
-        body { background: #022c22; color: #ffffff; font-family: 'Segoe UI', sans-serif; padding: 40px; text-align: center; }
-        .box { background: rgba(6, 78, 59, 0.8); border: 1px solid #fbbf24; padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
-        a { color: #fbbf24; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 20px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: #000000; color: #ffffff; line-height: 1.6; }
+
+        /* Top Admin Bar */
+        .admin-topbar { background: #121212; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #27272a; }
+        .admin-brand { font-size: 1rem; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 10px; }
+        .admin-badge { background: #ffffff; color: #000000; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; }
+        .logout-btn { background: #27272a; color: #ffffff; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: background 0.2s; }
+        .logout-btn:hover { background: #3f3f46; }
+
+        /* Main Container */
+        .dashboard-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .welcome-banner { background: #121212; border: 1px solid #27272a; border-radius: 14px; padding: 30px; margin-bottom: 35px; }
+        .welcome-banner h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 8px; }
+        .welcome-banner p { color: #a1a1aa; font-size: 0.95rem; }
+
+        /* Management Grid Sections */
+        .section-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 20px; border-left: 4px solid #ffffff; padding-left: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        
+        .portal-card { background: #121212; border: 1px solid #27272a; border-radius: 12px; padding: 25px; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .portal-card:hover { transform: translateY(-3px); border-color: #52525b; }
+        .portal-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: #ffffff; }
+        .portal-card p { color: #a1a1aa; font-size: 0.85rem; margin-bottom: 20px; }
+        
+        .card-action-btn { background: #ffffff; color: #000000; text-align: center; padding: 10px; border-radius: 6px; font-weight: 800; text-decoration: none; font-size: 0.85rem; transition: opacity 0.2s; display: block; }
+        .card-action-btn:hover { opacity: 0.9; }
+
+        footer { background: #121212; border-top: 1px solid #27272a; padding: 30px; text-align: center; color: #71717a; font-size: 0.85rem; margin-top: 60px; }
+
+        @media(max-width: 768px) {
+            .admin-topbar { flex-direction: column; gap: 10px; align-items: flex-start; }
+        }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>Welcome to SPM Admin Dashboard</h2>
-        <p>You have successfully logged into the management control panel.</p>
-        <a href="index.html">&larr; Return to Website Homepage</a>
+
+    <div class="admin-topbar">
+        <div class="admin-brand">
+            <span>SPM Management Portal</span>
+            <span class="admin-badge">ADMIN ACCESS</span>
+        </div>
+        <a href="admin.html" class="logout-btn">🔒 Logout</a>
     </div>
+
+    <div class="dashboard-container">
+        
+        <div class="welcome-banner">
+            <h2>Welcome, Administrator</h2>
+            <p>Manage all student evaluation records, question papers, school notices, photo archives, and institutional operations from your secure central hub.</p>
+        </div>
+
+        <!-- Section 1: Academic & Results Control -->
+        <h3 class="section-title">📊 Academic & Student Records</h3>
+        <div class="grid-cards">
+            <div class="portal-card">
+                <h3>Result Sheets Manager</h3>
+                <p>Access, update, or replace Excel sheets for Nursery through Class V marksheets.</p>
+                <a href="downloads.html" class="card-action-btn">Manage Results &rarr;</a>
+            </div>
+            <div class="portal-card">
+                <h3>Student Data & Rolls</h3>
+                <p>View structured spreadsheets tracking roll numbers, subject-wise marks, and percentages.</p>
+                <a href="tools.html" class="card-action-btn">Search Student Portal &rarr;</a>
+            </div>
+            <div class="portal-card">
+                <h3>Admissions Control</h3>
+                <p>Review incoming student registration applications and admission forms.</p>
+                <a href="admission.html" class="card-action-btn">View Applications &rarr;</a>
+            </div>
+        </div>
+
+        <!-- Section 2: School Resources & Content -->
+        <h3 class="section-title">📂 School Resources & Content</h3>
+        <div class="grid-cards">
+            <div class="portal-card">
+                <h3>Question Papers & Notes</h3>
+                <p>Upload and coordinate study materials, assignments, and exam prep resources.</p>
+                <a href="downloads.html" class="card-action-btn">Manage Resources &rarr;</a>
+            </div>
+            <div class="portal-card">
+                <h3>Notices & Circulars</h3>
+                <p>Publish urgent announcements, schedule updates, and exam notices to the website.</p>
+                <a href="notices.html" class="card-action-btn">Update Notices &rarr;</a>
+            </div>
+            <div class="portal-card">
+                <h3>Sports & Events</h3>
+                <p>Manage photo archives for sports days, environment drives, and cultural contests.</p>
+                <a href="gallery.html" class="card-action-btn">Manage Media &rarr;</a>
+            </div>
+        </div>
+
+        <!-- Section 3: Faculty & Infrastructure -->
+        <h3 class="section-title">🏫 Faculty & System Administration</h3>
+        <div class="grid-cards">
+            <div class="portal-card">
+                <h3>Staff & Faculty Directory</h3>
+                <p>Update administrative leadership, curriculum coordinator details, and teacher profiles.</p>
+                <a href="staff.html" class="card-action-btn">Manage Faculty &rarr;</a>
+            </div>
+            <div class="portal-card">
+                <h3>Campus & Infrastructure</h3>
+                <p>Update classroom photographs, computer lab details, and playground records.</p>
+                <a href="campus.html" class="card-action-btn">Manage Campus &rarr;</a>
+            </div>
+            <div class="portal-card">
+                <h3>Return to Public Site</h3>
+                <p>Exit the management control panel and view the public-facing website.</p>
+                <a href="index.html" class="card-action-btn" style="background: #27272a; color: #ffffff;">Go to Website &rarr;</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sunaprova Phukan Memorial (SPM) Smart School. Secure Management Hub.</p>
+    </footer>
+
 </body>
 </html>
+
