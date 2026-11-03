@@ -16,7 +16,7 @@
         .admin-link { color: #a1a1aa; text-decoration: none; font-weight: 600; transition: color 0.2s; }
         .admin-link:hover { color: #ffffff; }
 
-        /* Main Header & Navigation */
+        /* Main Header & Navigation with Dropdown */
         header { background: rgba(0, 0, 0, 0.9); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #27272a; backdrop-filter: blur(8px); }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -25,9 +25,17 @@
         .brand-text p { font-size: 0.65rem; color: #a1a1aa; font-weight: 700; text-transform: uppercase; }
 
         .hamburger { display: none; font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
-        .nav-menu { display: flex; gap: 18px; list-style: none; font-size: 0.88rem; }
+        .nav-menu { display: flex; gap: 18px; list-style: none; font-size: 0.88rem; align-items: center; }
         .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; transition: color 0.3s; }
-        .nav-menu a:hover, .nav-menu a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
+        .nav-menu a:hover, .nav-menu a.active { color: #ffffff; }
+
+        /* Dropdown Menu Styles */
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #121212; border: 1px solid #27272a; border-radius: 8px; min-width: 160px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 100; overflow: hidden; }
+        .dropdown-content a { display: block; padding: 10px 15px; color: #a1a1aa; font-size: 0.85rem; border-bottom: 1px solid #27272a; }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background: #18181b; color: #ffffff; }
+        .dropdown:hover .dropdown-content { display: block; }
 
         /* Page Hero */
         .page-header { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('images/CAMPUS/FRONT_SIDE.jpg'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; border-bottom: 1px solid #27272a; }
@@ -62,8 +70,26 @@
         .timeline-item h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; color: #ffffff; }
         .timeline-item p { font-size: 0.88rem; color: #a1a1aa; margin-bottom: 0; }
 
-        /* Footer Styles (Matching Reference) */
-        footer { background: #121212; border-top: 1px solid #27272a; padding: 50px 20px 30px; color: #a1a1aa; font-size: 0.88rem; margin-top: 80px; }
+        /* Faculty Section Styling inside About */
+        .faculty-section-title { font-size: 1.5rem; font-weight: 900; margin: 40px 0 20px 0; border-left: 4px solid #ffffff; padding-left: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+       
+        /* Large Featured Frames for Principal & Vice Principal */
+        .admin-feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 35px; }
+        .admin-card { background: #121212; border: 1px solid #27272a; border-radius: 14px; overflow: hidden; text-align: center; padding: 25px; }
+        .admin-img-large { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin: 0 auto 15px; border: 3px solid #fbbf24; display: block; background: #18181b; }
+        .admin-card h4 { font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
+        .admin-card p.role { font-size: 0.82rem; color: #fbbf24; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
+        .admin-card p.desc { font-size: 0.85rem; color: #a1a1aa; }
+
+        /* Small Circular Frames for Teaching & Non-Teaching Faculty */
+        .faculty-grid-small { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 35px; }
+        .faculty-card-small { background: #121212; border: 1px solid #27272a; border-radius: 12px; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .faculty-circle-img { width: 85px; height: 85px; border-radius: 50%; object-fit: cover; border: 2px solid #52525b; margin-bottom: 12px; background: #18181b; }
+        .faculty-card-small h5 { font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-bottom: 3px; }
+        .faculty-card-small p { font-size: 0.75rem; color: #a1a1aa; font-weight: 600; text-transform: uppercase; }
+
+        /* Footer Styles */
+        footer { background: #121212; border-top: 1px solid #27272a; padding: 50px 20px 30px; color: #a1a1aa; font-size: 0.88rem; margin-top: 80px; width: 100%; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 40px; }
         .footer-col h4 { color: #ffffff; font-size: 1rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
         .footer-col p { font-size: 0.85rem; margin-bottom: 15px; color: #d4d4d8; }
@@ -92,7 +118,7 @@
         <a href="admin.html" class="admin-link">⚙️ Admin Portal</a>
     </div>
 
-    <!-- Header & Navigation -->
+    <!-- Header & Navigation with Dropdown for About Us -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="brand">
@@ -105,7 +131,13 @@
             <button class="hamburger" onclick="toggleMenu()">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html" class="active">About Us</a></li>
+                <li class="dropdown">
+                    <a href="about.html" class="active">About Us ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#who-we-are">Who We Are</a>
+                        <a href="#our-faculty">Our Faculty</a>
+                    </div>
+                </li>
                 <li><a href="academics.html">Academics</a></li>
                 <li><a href="admission.html">Admissions</a></li>
                 <li><a href="staff.html">Faculty</a></li>
@@ -123,95 +155,155 @@
     <!-- Page Header -->
     <div class="page-header">
         <h2>About Us</h2>
-        <p>Learn about the heritage, values, and vision that drive academic excellence at SPM Smart School.</p>
+        <p>Learn about our heritage, values, leadership, and dedicated faculty at SPM Smart School.</p>
     </div>
 
     <div class="container">
 
-        <!-- Our Legacy & History -->
-        <div class="content-card">
-            <h3>Our Legacy & History</h3>
-            <p>Founded in Merapani, Bijaypur, <strong>Sunaprova Phukan Memorial (SPM) Smart School</strong> was born out of a vision to democratize quality English-medium primary education for students in rural and surrounding areas of Golaghat, Assam. The institution has been dedicated to bridging the educational gap by fostering a strong foundation from early childhood through Class V.</p>
-            <p>Through a learner-centric approach, we foster an environment that enables students to think independently, explore creative avenues, and excel in sports and academic competitions. Today, we are proud to offer complete primary education with modern digital tools and dedicated educators.</p>
-           
-            <div class="quote-box">
-                "Our goal is to prepare students not just for examinations, but for life. We aim to equip them with character, confidence, and cognitive abilities to make a positive impact in the world."
+        <!-- SECTION 1: WHO WE ARE -->
+        <div id="who-we-are">
+            <div class="content-card">
+                <h3>Our Legacy & History</h3>
+                <p>Founded in Merapani, Bijaypur, <strong>Sunaprova Phukan Memorial (SPM) Smart School</strong> was born out of a vision to democratize quality English-medium primary education for students in rural and surrounding areas of Golaghat, Assam. The institution has been dedicated to bridging the educational gap by fostering a strong foundation from early childhood through Class V.</p>
+                <p>Through a learner-centric approach, we foster an environment that enables students to think independently, explore creative avenues, and excel in sports and academic competitions.</p>
+               
+                <div class="quote-box">
+                    "Our goal is to prepare students not just for examinations, but for life. We aim to equip them with character, confidence, and cognitive abilities to make a positive impact in the world."
+                </div>
+            </div>
+
+            <!-- Featured Environment Day Photo -->
+            <div class="featured-img-box">
+                <img src="images/students/Environment_day.jpg" alt="Students engaging in environmental activities" onerror="this.src='images/students/student_1.jpg'">
+            </div>
+
+            <div class="content-card">
+                <h3>Our Vision</h3>
+                <p>To be a pioneering center of learning that nurtures creativity, intellectual curiosity, and moral integrity. We envision an educational community that empowers students from all backgrounds to develop into responsible global citizens capable of bringing positive social change.</p>
+            </div>
+
+            <div class="content-card">
+                <h3>Our Mission</h3>
+                <ul style="padding-left: 20px; color: #d4d4d8; font-size: 0.95rem; display: flex; flex-direction: column; gap: 10px;">
+                    <li>To provide rigorous academic programs emphasizing experiential learning and foundational literacy.</li>
+                    <li>To offer inclusive, safe, and state-of-the-art infrastructure for balanced student growth.</li>
+                    <li>To encourage civic responsibility, environmental awareness, and value-based leadership from an early age.</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3>Our Core Values</h3>
+                <p style="color: #a1a1aa; font-size: 0.88rem; margin-bottom: 20px;">These foundational values shape our school culture, daily activities, and educational methodology.</p>
+               
+                <div class="values-grid">
+                    <div class="value-box">
+                        <h4>🛡️ Integrity</h4>
+                        <p>Fostering honesty, moral principles, and truthfulness in every student.</p>
+                    </div>
+                    <div class="value-box">
+                        <h4>⭐ Excellence</h4>
+                        <p>Encouraging academic rigor and high standards in all aspects of student growth.</p>
+                    </div>
+                    <div class="value-box">
+                        <h4>🤝 Compassion</h4>
+                        <p>Teaching empathy, kindness, and respect towards others and the environment.</p>
+                    </div>
+                    <div class="value-box">
+                        <h4>💡 Innovation</h4>
+                        <p>Cultivating critical thinking, creativity, and adaptability to modern learning tools.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>Our Journey</h3>
+                <p style="color: #a1a1aa; font-size: 0.88rem; margin-bottom: 10px;">How we grew over the years to become one of the premier primary institutions in the region.</p>
+               
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">Foundation</div>
+                        <h4>School Established</h4>
+                        <p>SPM Smart School was founded with a dedicated vision for rural educational empowerment and foundational smart learning.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">Expansion</div>
+                        <h4>Curriculum & Infrastructure Growth</h4>
+                        <p>Expanded primary classrooms from Nursery up to Class V, incorporating structured grading systems and activity-based learning.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">Present Era</div>
+                        <h4>Digital Campus & Smart Integration</h4>
+                        <p>Integrated full smart class facilities, automated result spreadsheets, and mobile web accessibility for seamless student progress tracking.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Featured Activity / Environment Day Photo -->
-        <div class="featured-img-box">
-            <img src="images/students/Environment_day.jpg" alt="Students engaging in environmental activities" onerror="this.src='images/students/student_1.jpg'">
-        </div>
-
-        <!-- Our Vision -->
-        <div class="content-card">
-            <h3>Our Vision</h3>
-            <p>To be a pioneering center of learning that nurtures creativity, intellectual curiosity, and moral integrity. We envision an educational community that empowers students from all backgrounds to develop into responsible global citizens capable of bringing positive social change.</p>
-        </div>
-
-        <!-- Our Mission -->
-        <div class="content-card">
-            <h3>Our Mission</h3>
-            <ul style="padding-left: 20px; color: #d4d4d8; font-size: 0.95rem; display: flex; flex-direction: column; gap: 10px;">
-                <li>To provide rigorous academic programs emphasizing experiential learning and foundational literacy.</li>
-                <li>To offer inclusive, safe, and state-of-the-art infrastructure for balanced student growth.</li>
-                <li>To encourage civic responsibility, environmental awareness, and value-based leadership from an early age.</li>
-            </ul>
-        </div>
-
-        <!-- Our Core Values -->
-        <div class="content-card">
-            <h3>Our Core Values</h3>
-            <p style="color: #a1a1aa; font-size: 0.88rem; margin-bottom: 20px;">These foundational values shape our school culture, daily activities, and educational methodology.</p>
+        <!-- SECTION 2: OUR FACULTY -->
+        <div id="our-faculty" style="margin-top: 60px;">
+            <h3 class="faculty-section-title">School Administration</h3>
            
-            <div class="values-grid">
-                <div class="value-box">
-                    <h4>🛡️ Integrity</h4>
-                    <p>Fostering honesty, moral principles, and truthfulness in every student.</p>
+            <!-- Large Featured Frames for Principal & Vice Principal -->
+            <div class="admin-feature-grid">
+                <div class="admin-card">
+                    <img src="images/staff/principal.jpg" alt="Principal" class="admin-img-large" onerror="this.src='images/logo.png'">
+                    <h4>Principal</h4>
+                    <p class="role">Head of Institution</p>
+                    <p class="desc">Guiding academic excellence and visionary growth across all primary classes.</p>
                 </div>
-                <div class="value-box">
-                    <h4>⭐ Excellence</h4>
-                    <p>Encouraging academic rigor and high standards in all aspects of student growth.</p>
+                <div class="admin-card">
+                    <img src="images/staff/vice_principal.jpg" alt="Vice Principal" class="admin-img-large" onerror="this.src='images/logo.png'">
+                    <h4>Vice Principal</h4>
+                    <p class="role">Academic Administration</p>
+                    <p class="desc">Overseeing curriculum execution, student discipline, and daily operations.</p>
                 </div>
-                <div class="value-box">
-                    <h4>🤝 Compassion</h4>
-                    <p>Teaching empathy, kindness, and respect towards others and the environment.</p>
-                </div>
-                <div class="value-box">
-                    <h4>💡 Innovation</h4>
-                    <p>Cultivating critical thinking, creativity, and adaptability to modern learning tools.</p>
+                <div class="admin-card">
+                    <img src="images/staff/rosid.jpg" alt="Rosid Ahmed" class="admin-img-large" onerror="this.src='images/logo.png'">
+                    <h4>Rosid Ahmed</h4>
+                    <p class="role">Computer Teacher & Admin</p>
+                    <p class="desc">Managing digital infrastructure, technical resources, and student web databases.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Our Journey Timeline -->
-        <div class="content-card">
-            <h3>Our Journey</h3>
-            <p style="color: #a1a1aa; font-size: 0.88rem; margin-bottom: 10px;">How we grew over the years to become one of the premier primary institutions in the region.</p>
-           
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">Foundation</div>
-                    <h4>School Established</h4>
-                    <p>SPM Smart School was founded with a dedicated vision for rural educational empowerment and foundational smart learning.</p>
+            <h3 class="faculty-section-title">Teaching Faculty</h3>
+            <!-- Small Circular Frames for Teaching Staff -->
+            <div class="faculty-grid-small">
+                <div class="faculty-card-small">
+                    <img src="images/staff/staff_1.jpg" alt="Miss Priti Gogoi" class="faculty-circle-img" onerror="this.src='images/logo.png'">
+                    <h5>Miss Priti Gogoi</h5>
+                    <p>Primary Faculty</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">Expansion</div>
-                    <h4>Curriculum & Infrastructure Growth</h4>
-                    <p>Expanded primary classrooms from Nursery up to Class V, incorporating structured grading systems and activity-based learning.</p>
+                <div class="faculty-card-small">
+                    <img src="images/staff/staff_2.jpg" alt="Mrs. Priyanka Murmu" class="faculty-circle-img" onerror="this.src='images/logo.png'">
+                    <h5>Mrs. Priyanka Murmu</h5>
+                    <p>Primary Faculty</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">Present Era</div>
-                    <h4>Digital Campus & Smart Integration</h4>
-                    <p>Integrated full smart class facilities, automated result spreadsheets, and mobile web accessibility for seamless student progress tracking.</p>
+                <div class="faculty-card-small">
+                    <img src="images/staff/staff_3.jpg" alt="Mrs. Mamon Kakaty" class="faculty-circle-img" onerror="this.src='images/logo.png'">
+                    <h5>Mrs. Mamon Kakaty</h5>
+                    <p>Primary Faculty</p>
+                </div>
+                <div class="faculty-card-small">
+                    <img src="images/staff/staff_4.jpg" alt="Miss Mitali Basumatary" class="faculty-circle-img" onerror="this.src='images/logo.png'">
+                    <h5>Miss Mitali Basumatary</h5>
+                    <p>Primary Faculty</p>
+                </div>
+            </div>
+
+            <h3 class="faculty-section-title">Non - Teaching Faculty</h3>
+            <!-- Small Circular Frames for Non-Teaching Staff -->
+            <div class="faculty-grid-small">
+                <div class="faculty-card-small">
+                    <img src="images/staff/staff_5.jpg" alt="Mrs. Lulu Bora" class="faculty-circle-img" onerror="this.src='images/logo.png'">
+                    <h5>Mrs. Lulu Bora</h5>
+                    <p>Primary Care Taker</p>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <!-- Complete Footer with Quick Links & Contact Info -->
+    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-col">
