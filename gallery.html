@@ -8,52 +8,67 @@
     <meta name="theme-color" content="#000000">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: #000000; color: #ffffff; line-height: 1.6; }
-        
-        header { background: #000000; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #27272a; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
+        body { background-color: #000000; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
+        .top-info-bar { background: #09090b; border-bottom: 1px solid #27272a; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #a1a1aa; }
+        .top-info-content { display: flex; gap: 20px; flex-wrap: wrap; }
+        .top-admin-link { color: #fbbf24; text-decoration: none; font-weight: 700; }
+        header { background: rgba(0, 0, 0, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #27272a; backdrop-filter: blur(10px); }
+        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .brand img { height: 45px; width: auto; object-fit: contain; }
         .brand-text h1 { font-size: 1.15rem; color: #ffffff; font-weight: 800; }
-        .brand-text p { font-size: 0.65rem; color: #a1a1aa; font-weight: 700; text-transform: uppercase; }
-        
+        .brand-text p { font-size: 0.62rem; color: #a1a1aa; font-weight: 700; text-transform: uppercase; }
         .hamburger { display: none; font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
-        .nav-menu { display: flex; gap: 18px; list-style: none; font-size: 0.88rem; }
-        .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; transition: color 0.3s; }
-        .nav-menu a:hover, .nav-menu a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
+        .nav-menu { display: flex; gap: 15px; list-style: none; font-size: 0.85rem; align-items: center; }
+        .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; transition: color 0.3s; padding: 5px 0; }
+        .nav-menu a:hover, .nav-menu a.active { color: #ffffff; }
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #121212; border: 1px solid #27272a; border-radius: 8px; min-width: 190px; z-index: 100; overflow: hidden; }
+        .dropdown-content a { display: block; padding: 12px 16px; color: #a1a1aa; font-size: 0.82rem; border-bottom: 1px solid #27272a; }
+        .dropdown-content a:hover { background: #1c1c21; color: #ffffff; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .btn-apply-nav { background: #d97706; color: #ffffff !important; padding: 8px 16px !important; border-radius: 6px; font-weight: 700 !important; }
 
-        .page-header { background: #121212; padding: 50px 20px; text-align: center; border-bottom: 1px solid #27272a; }
-        .page-header h2 { font-size: 2rem; font-weight: 900; }
-        .page-header p { color: #a1a1aa; font-size: 0.85rem; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .page-header { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('images/CAMPUS/FRONT_SIDE.jpg'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; border-bottom: 1px solid #27272a; }
+        .page-header h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .page-header p { color: #a1a1aa; font-size: 0.88rem; max-width: 600px; margin: 0 auto; }
 
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        .section-title { font-size: 1.4rem; color: #ffffff; margin: 35px 0 20px; border-left: 4px solid #ffffff; padding-left: 10px; }
-        
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .gallery-card { background: #121212; border: 1px solid #27272a; border-radius: 12px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
-        .gallery-card:hover { transform: translateY(-3px); border-color: #52525b; }
-        
-        .gallery-card a { display: block; background: #000000; cursor: zoom-in; }
-        .gallery-card img { width: 100%; height: 230px; object-fit: contain; display: block; transition: opacity 0.2s; }
-        .gallery-card img:hover { opacity: 0.9; }
-        
-        .gallery-info { padding: 14px; text-align: center; font-weight: 600; font-size: 0.9rem; color: #a1a1aa; background: #121212; border-top: 1px solid #27272a; }
+        .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .gallery-card { background: #121212; border: 1px solid #27272a; border-radius: 12px; overflow: hidden; }
+        .gallery-img-box { width: 100%; height: 220px; background: #18181b; }
+        .gallery-img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-caption { padding: 15px 20px; font-size: 0.88rem; font-weight: 600; color: #d4d4d8; }
 
-        footer { background: #121212; border-top: 1px solid #27272a; padding: 30px; text-align: center; color: #71717a; font-size: 0.85rem; margin-top: 60px; }
-
-        @media(max-width: 768px) {
-            .hamburger { display: block; }
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; }
-            .nav-menu.show { display: flex; }
-        }
+        footer { background: #121212; border-top: 1px solid #27272a; padding: 50px 20px 30px; color: #a1a1aa; font-size: 0.88rem; margin-top: 80px; width: 100%; display: block; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: #ffffff; font-size: 1rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .footer-col p { font-size: 0.85rem; margin-bottom: 15px; color: #d4d4d8; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #a1a1aa; text-decoration: none; transition: color 0.2s; font-size: 0.85rem; }
+        .footer-links a:hover { color: #ffffff; }
+        .contact-info-list p { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; }
+        .social-icons { display: flex; gap: 12px; margin-top: 15px; }
+        .social-icons a { background: #18181b; border: 1px solid #27272a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.9rem; }
+        .footer-bottom { text-align: center; border-top: 1px solid #27272a; padding-top: 25px; font-size: 0.8rem; color: #71717a; }
+        @media(max-width: 900px) { .hamburger { display: block; } .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } .nav-menu.show { display: flex; } .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.02); padding-left: 15px; } }
     </style>
 </head>
 <body>
 
+    <div class="top-info-bar">
+        <div class="top-info-content">
+            <span>📞 +91 91011 68413, +91 91010 13880</span>
+            <span>✉️ spmsmartschool2021@gmail.com</span>
+        </div>
+        <a href="admin.html" class="top-admin-link">⚙️ Admin Portal</a>
+    </div>
+
     <header>
         <div class="nav-container">
             <a href="index.html" class="brand">
-                <img src="images/logo.png" alt="Logo">
+                <img src="images/logo.png" alt="Logo" onerror="this.src='logo.png'">
                 <div class="brand-text">
                     <h1>SPM Smart School</h1>
                     <p>Merapani :: Bijaypur</p>
@@ -62,104 +77,112 @@
             <button class="hamburger" onclick="toggleMenu()">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="academics.html">Academics</a></li>
+                <li class="dropdown">
+                    <a href="about.html">About Us ▾</a>
+                    <div class="dropdown-content">
+                        <a href="about.html">Who We Are</a>
+                        <a href="staff.html">Our Faculty</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="academics.html">Academics ▾</a>
+                    <div class="dropdown-content">
+                        <a href="academics.html">Curriculum & Classes</a>
+                        <a href="downloads.html">Downloads & Forms</a>
+                    </div>
+                </li>
                 <li><a href="admission.html">Admissions</a></li>
-                <li><a href="staff.html">Faculty</a></li>
-                <li><a href="campus.html">Campus Life</a></li>
-                <li><a href="gallery.html" class="active">Photo Gallery</a></li>
-                <li><a href="achievements.html">Achievements</a></li>
+                <li class="dropdown">
+                    <a href="campus.html" class="active">Campus Life ▾</a>
+                    <div class="dropdown-content">
+                        <a href="campus.html">Infrastructure & Labs</a>
+                        <a href="gallery.html">Photo Gallery</a>
+                        <a href="achievements.html">Achievements</a>
+                    </div>
+                </li>
                 <li><a href="notices.html">News & Events</a></li>
-                <li><a href="downloads.html">Downloads</a></li>
                 <li><a href="tools.html">Student Tools</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="admission.html" class="btn-apply-nav">Apply Now</a></li>
             </ul>
         </div>
     </header>
 
     <div class="page-header">
-        <h2>School Photo Gallery</h2>
-        <p>Life, Learning, and Events at SPM Smart School (Click photo for full view)</p>
+        <h2>Photo Gallery</h2>
+        <p>Glimpses of campus activities, environmental drives, celebrations, and student events.</p>
     </div>
 
     <div class="container">
-
-        <!-- 1. CAMPUS INFRASTRUCTURE -->
-        <h3 class="section-title">🏫 Campus & Infrastructure</h3>
         <div class="gallery-grid">
             <div class="gallery-card">
-                <a href="images/CAMPUS/FRONT_SIDE.jpg" target="_blank"><img src="images/CAMPUS/FRONT_SIDE.jpg" alt="Front Side View"></a>
-                <div class="gallery-info">Main Campus Building (Front Side)</div>
+                <div class="gallery-img-box">
+                    <img src="images/students/Environment_day.jpg" alt="Environment Day Plantation" onerror="this.src='images/students/student_1.jpg'">
+                </div>
+                <div class="gallery-caption">World Environment Day Plantation Drive</div>
             </div>
+
             <div class="gallery-card">
-                <a href="images/CAMPUS/FRONT_CORNER.jpg" target="_blank"><img src="images/CAMPUS/FRONT_CORNER.jpg" alt="Front Corner View"></a>
-                <div class="gallery-info">Campus Entrance (Corner View)</div>
+                <div class="gallery-img-box">
+                    <img src="images/students/student_1.jpg" alt="Student Activity" onerror="this.src='images/logo.png'">
+                </div>
+                <div class="gallery-caption">Classroom Interactive Activity</div>
             </div>
+
             <div class="gallery-card">
-                <a href="images/CAMPUS/BACK_CORNER.JPG" target="_blank"><img src="images/CAMPUS/BACK_CORNER.JPG" alt="Back Corner View"></a>
-                <div class="gallery-info">Campus Rear View</div>
-            </div>
-            <div class="gallery-card">
-                <a href="images/CAMPUS/Playground 1.jpg" target="_blank"><img src="images/CAMPUS/Playground 1.jpg" alt="Playground 1"></a>
-                <div class="gallery-info">Open School Playground</div>
-            </div>
-            <div class="gallery-card">
-                <a href="images/CAMPUS/Playground 2.jpg" target="_blank"><img src="images/CAMPUS/Playground 2.jpg" alt="Playground 2"></a>
-                <div class="gallery-info">Sports & Activity Area</div>
-            </div>
-            <div class="gallery-card">
-                <a href="images/CAMPUS/classroom1.JPG" target="_blank"><img src="images/CAMPUS/classroom1.JPG" alt="Classroom"></a>
-                <div class="gallery-info">Smart Classroom</div>
-            </div>
-            <div class="gallery-card">
-                <a href="images/CAMPUS/Computer Room.jpg" target="_blank"><img src="images/CAMPUS/Computer Room.jpg" alt="Computer Room"></a>
-                <div class="gallery-info">Computer Laboratory</div>
+                <div class="gallery-img-box">
+                    <img src="images/students/student_2.jpg" alt="Sports Day" onerror="this.src='images/logo.png'">
+                </div>
+                <div class="gallery-caption">Annual Sports & Physical Education</div>
             </div>
         </div>
-
-        <!-- 2. STUDENTS & EVENTS -->
-        <h3 class="section-title">🎒 Students, Activities & Events</h3>
-        <div class="gallery-grid">
-            <div class="gallery-card">
-                <a href="images/students/Morning Assembly.jpg" target="_blank"><img src="images/students/Morning Assembly.jpg" alt="Morning Assembly"></a>
-                <div class="gallery-info">Morning Prayer & Assembly</div>
-            </div>
-            <div class="gallery-card">
-                <a href="images/students/Art_competetion.jpg" target="_blank"><img src="images/students/Art_competetion.jpg" alt="Art Competition"></a>
-                <div class="gallery-info">Creative Art Competition</div>
-            </div>
-            <div class="gallery-card">
-                <a href="images/students/Art_competetion1.jpg" target="_blank"><img src="images/students/Art_competetion1.jpg" alt="Art Competition 1"></a>
-                <div class="gallery-info">Drawing & Craft Contest</div>
-            </div>
-            <div class="gallery-card">
-                <a href="images/students/Rhymes_competetion.jpg" target="_blank"><img src="images/students/Rhymes_competetion.jpg" alt="Rhymes Competition"></a>
-                <div class="gallery-info">Rhymes Recitation Event</div>
-            </div>
-            <div class="gallery-card">
-                <a href="images/students/Environment_day.jpg" target="_blank"><img src="images/students/Environment_day.jpg" alt="Environment Day"></a>
-                <div class="gallery-info">World Environment Day Celebration</div>
-            </div>
-            <div class="gallery-card">
-                <a href="images/students/Environment_day1.jpg" target="_blank"><img src="images/students/Environment_day1.jpg" alt="Environment Day 1"></a>
-                <div class="gallery-info">Tree Plantation Drive</div>
-            </div>
-            <div class="gallery-card">
-                <a href="images/students/Social_activities.jpg" target="_blank"><img src="images/students/Social_activities.jpg" alt="Social Activities"></a>
-                <div class="gallery-info">Community & Social Activities</div>
-            </div>
-        </div>
-
     </div>
 
     <footer>
-        <p>&copy; 2026 Sunaprova Phukan Memorial (SPM) Smart School. All Rights Reserved.</p>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>SPM Smart School</h4>
+                <p>Co-educational English Medium Primary Institution dedicated to nurturing young minds with holistic education and digital learning tools.</p>
+                <div class="social-icons">
+                    <a href="#" target="_blank">f</a>
+                    <a href="#" target="_blank">📷</a>
+                    <a href="admin.html" title="Admin Portal">⚙️</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">&rarr; Home</a></li>
+                    <li><a href="about.html">&rarr; Who We Are</a></li>
+                    <li><a href="staff.html">&rarr; Our Faculty</a></li>
+                    <li><a href="academics.html">&rarr; Curriculum</a></li>
+                    <li><a href="contact.html">&rarr; Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Admissions & Info</h4>
+                <ul class="footer-links">
+                    <li><a href="admission.html">&rarr; Admission Process</a></li>
+                    <li><a href="downloads.html">&rarr; Download Forms</a></li>
+                    <li><a href="notices.html">&rarr; News & Circulars</a></li>
+                    <li><a href="tools.html">&rarr; Student Tools</a></li>
+                    <li><a href="admin.html">&rarr; Admin Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <div class="contact-info-list">
+                    <p>📍 Merapani, Bijaypur, Golaghat, Assam, India - 785602</p>
+                    <p>📞 +91 91011 68413<br>&nbsp;&nbsp;&nbsp;&nbsp;+91 91010 13880</p>
+                    <p>✉️ spmsmartschool2021@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sunaprova Phukan Memorial (SPM) Smart School. All Rights Reserved.</p>
+        </div>
     </footer>
 
-    <script>
-        function toggleMenu() { 
-            document.getElementById("navMenu").classList.toggle("show"); 
-        }
-    </script>
+    <script>function toggleMenu() { document.getElementById("navMenu").classList.toggle("show"); }</script>
 </body>
 </html>
