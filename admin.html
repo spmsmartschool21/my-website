@@ -9,7 +9,6 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
        
-        /* Unique Emerald Green Theme for Administrative Portal */
         body {
             background: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #022c22 100%);
             color: #f8fafc;
@@ -157,7 +156,7 @@
         <h2>Management Portal</h2>
         <p class="subtitle">SPM Smart School Administration</p>
 
-        <form onsubmit="handleLogin(event)">
+        <form onsubmit="return handleLogin(event)">
             <div class="form-group">
                 <label for="username">Username</label>
                 <div class="input-container">
@@ -187,7 +186,6 @@
         const pass = document.getElementById('password').value.trim();
 
         if (user === "admin" && pass === "spm2026") {
-            // Successfully redirects straight to your management portal dashboard
             window.location.href = "./dashboard.html";
         } else {
             alert("Invalid Username or Password! Please try again.");
@@ -195,8 +193,5 @@
         return false;
     }
 </script>
-</body>
-</html>
-
 </body>
 </html>
