@@ -9,7 +9,7 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background-color: #000000; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
-        .top-info-bar { background: #09090b; border-bottom: 1px solid #27272a; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #a1a1aa; }
+        .top-info-bar { background: #09090b; border-bottom: 1px solid #27272a; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #a1a1aa; flex-wrap: wrap; gap: 10px; }
         .top-info-content { display: flex; gap: 20px; flex-wrap: wrap; }
         .top-admin-link { color: #fbbf24; text-decoration: none; font-weight: 700; }
         header { background: rgba(0, 0, 0, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #27272a; backdrop-filter: blur(10px); }
@@ -52,7 +52,14 @@
         .social-icons { display: flex; gap: 12px; margin-top: 15px; }
         .social-icons a { background: #18181b; border: 1px solid #27272a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.9rem; }
         .footer-bottom { text-align: center; border-top: 1px solid #27272a; padding-top: 25px; font-size: 0.8rem; color: #71717a; }
-        @media(max-width: 900px) { .hamburger { display: block; } .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } .nav-menu.show { display: flex; } .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.02); padding-left: 15px; } }
+        
+        @media(max-width: 900px) { 
+            .hamburger { display: block; } 
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } 
+            .nav-menu.show { display: flex; } 
+            .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.02); padding-left: 15px; display: none; } 
+            .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { display: block; }
+        }
     </style>
 </head>
 <body>
