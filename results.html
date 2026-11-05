@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#000000">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: #000000; color: #ffffff; line-height: 1.6; }
+        body { background-color: #000000; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
         header { background: #000000; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #27272a; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -16,9 +16,9 @@
         .brand-text h1 { font-size: 1.15rem; color: #ffffff; font-weight: 800; }
         .brand-text p { font-size: 0.65rem; color: #a1a1aa; font-weight: 700; text-transform: uppercase; }
         .hamburger { display: none; font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
-        .nav-menu { display: flex; gap: 18px; list-style: none; font-size: 0.88rem; }
-        .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; }
-        .nav-menu a:hover, .nav-menu a.active { color: #ffffff; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
+        .nav-menu { display: flex; gap: 18px; list-style: none; font-size: 0.88rem; align-items: center; flex-wrap: wrap; }
+        .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; transition: color 0.3s; padding: 5px 0; }
+        .nav-menu a:hover, .nav-menu a.active { color: #ffffff; border-bottom: 2px solid #ffffff; }
 
         .page-header { background: #121212; padding: 50px 20px; text-align: center; border-bottom: 1px solid #27272a; }
         .page-header h2 { font-size: 2rem; font-weight: 900; }
@@ -28,16 +28,21 @@
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px; color: #a1a1aa; text-transform: uppercase; }
         .form-group input, .form-group select { width: 100%; padding: 12px; background: #000000; border: 1px solid #27272a; border-radius: 6px; color: #ffffff; outline: none; }
-        .submit-btn { width: 100%; background: #ffffff; color: #000000; padding: 12px; border: none; border-radius: 6px; font-weight: 800; cursor: pointer; margin-top: 10px; }
+        .submit-btn { width: 100%; background: #ffffff; color: #000000; padding: 12px; border: none; border-radius: 6px; font-weight: 800; cursor: pointer; margin-top: 10px; transition: background 0.2s; }
+        .submit-btn:hover { background: #e4e4e7; }
        
         footer { background: #121212; border-top: 1px solid #27272a; padding: 30px; text-align: center; color: #71717a; font-size: 0.85rem; margin-top: 50px; }
-        @media(max-width: 768px) { .hamburger { display: block; } .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } .nav-menu.show { display: flex; } }
+        @media(max-width: 768px) { 
+            .hamburger { display: block; } 
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } 
+            .nav-menu.show { display: flex; } 
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="nav-container">
-            <a href="index.html" class="brand"><img src="images/logo.png" alt="Logo"><div class="brand-text"><h1>SPM Smart School</h1><p>Merapani :: Bijaypur</p></div></a>
+            <a href="index.html" class="brand"><img src="images/logo.png" alt="Logo" onerror="this.src='logo.png'"><div class="brand-text"><h1>SPM Smart School</h1><p>Merapani :: Bijaypur</p></div></a>
             <button class="hamburger" onclick="toggleMenu()">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
