@@ -31,16 +31,16 @@
         .btn-apply-nav { background: #d97706; color: #ffffff !important; padding: 8px 16px !important; border-radius: 6px; font-weight: 700 !important; }
 
         .page-header { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('images/CAMPUS/FRONT_SIDE.jpg'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; border-bottom: 1px solid #27272a; }
-        .page-header h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .page-header h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; text-trans: uppercase; letter-spacing: 1px; }
         .page-header p { color: #a1a1aa; font-size: 0.88rem; max-width: 600px; margin: 0 auto; }
 
         .container { max-width: 800px; margin: 50px auto; padding: 0 20px; }
-        .form-card { background: #121212; border: 1px solid #27272a; border-radius: 14px; padding: 35px; margin-bottom: 40px; }
-        .form-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 20px; color: #ffffff; }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: #cbd5e1; text-transform: uppercase; margin-bottom: 8px; }
-        .form-group input, .form-group select { width: 100%; padding: 12px 15px; background: rgba(2, 44, 34, 0.4); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; color: #ffffff; font-size: 0.95rem; outline: none; }
-        .form-group input:focus, .form-group select:focus { border-color: #fbbf24; }
+        .-card { background: #121212; border: 1px solid #27272a; border-radius: 14px; padding: 35px; margin-bottom: 40px; }
+        .-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 20px; color: #ffffff; }
+        .-group { margin-bottom: 20px; text-align: left; }
+        .-group label { display: block; font-size: 0.78rem; font-weight: 700; color: #cbd5e1; text-trans: uppercase; margin-bottom: 8px; }
+        .-group input, .-group select { width: 100%; padding: 12px 15px; background: rgba(2, 44, 34, 0.4); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; color: #ffffff; font-size: 0.95rem; outline: none; }
+        .-group input:focus, .-group select:focus { border-color: #fbbf24; }
         .submit-btn { width: 100%; background: #d97706; color: #ffffff; padding: 14px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s; }
         .submit-btn:hover { opacity: 0.9; }
 
@@ -49,7 +49,7 @@
 
         footer { background: #121212; border-top: 1px solid #27272a; padding: 50px 20px 30px; color: #a1a1aa; font-size: 0.88rem; margin-top: 80px; width: 100%; display: block; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer-col h4 { color: #ffffff; font-size: 1rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .footer-col h4 { color: #ffffff; font-size: 1rem; font-weight: 800; margin-bottom: 20px; text-trans: uppercase; letter-spacing: 0.5px; }
         .footer-col p { font-size: 0.85rem; margin-bottom: 15px; color: #d4d4d8; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
@@ -95,7 +95,7 @@
                     <a href="academics.html">Academics ▾</a>
                     <div class="dropdown-content">
                         <a href="academics.html">Curriculum & Classes</a>
-                        <a href="downloads.html">Downloads & Forms</a>
+                        <a href="downloads.html">Downloads & s</a>
                     </div>
                 </li>
                 <li><a href="admission.html" class="active">Admissions</a></li>
@@ -117,45 +117,14 @@
 
     <div class="page-header">
         <h2>Admission Portal 2026-27</h2>
-        <p>Submit your online registration form or download admission documents below.</p>
+        <p>Submit your online registration  or download admission documents below.</p>
     </div>
 
     <div class="container">
-        <div class="form-card">
+        <div class="-card">
             <h3>Online Application Form</h3>
             <!-- Formspree or Google Form Integration endpoint -->
-            <form action="https://formspree.io/f/your-form-id" method="POST">
-                <div class="form-group">
-                    <label for="student_name">Student Full Name</label>
-                    <input type="text" id="student_name" name="student_name" placeholder="Enter student name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="grade">Select Grade Applying For</label>
-                    <select id="grade" name="grade" required>
-                        <option value="Nursery">Nursery</option>
-                        <option value="LKG">LKG</option>
-                        <option value="UKG">UKG</option>
-                        <option value="Class I">Class I</option>
-                        <option value="Class II">Class II</option>
-                        <option value="Class III">Class III</option>
-                        <option value="Class IV">Class IV</option>
-                        <option value="Class V">Class V</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="guardian">Parent / Guardian Name</label>
-                    <input type="text" id="guardian" name="guardian" placeholder="Guardian name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Contact Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required>
-                </div>
-
-                <button type="submit" class="submit-btn">Submit Application</button>
-            </form>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfc4K4DLxEPBVT4lezP_EQHEaELO6W40IPDSS59GqwTmXDSZA/viewform?embedded=true" width="640" height="1301" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
 
         <div class="pdf-download-box">
