@@ -7,10 +7,9 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#000000">
     <style>
-        /* Shared Styles */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background-color: #000000; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
-        .top-info-bar { background: #09090b; border-bottom: 1px solid #27272a; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #a1a1aa; }
+        .top-info-bar { background: #09090b; border-bottom: 1px solid #27272a; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #a1a1aa; flex-wrap: wrap; gap: 10px; }
         .top-info-content { display: flex; gap: 20px; flex-wrap: wrap; }
         .top-admin-link { color: #fbbf24; text-decoration: none; font-weight: 700; }
         header { background: rgba(0, 0, 0, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #27272a; backdrop-filter: blur(10px); }
@@ -37,15 +36,13 @@
         .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; clear: both; }
         .section-title { font-size: 1.5rem; font-weight: 900; margin: 40px 0 25px 0; border-left: 4px solid #ffffff; padding-left: 12px; text-transform: uppercase; letter-spacing: 0.5px; clear: both; }
 
-        /* Large Featured Frames for Administration */
-        .admin-feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 35px; }
+        .admin-feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-bottom: 35px; }
         .admin-card { background: #121212; border: 1px solid #27272a; border-radius: 14px; overflow: hidden; text-align: center; padding: 25px; }
         .admin-img-large { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin: 0 auto 15px; border: 3px solid #fbbf24; display: block; background: #18181b; }
         .admin-card h4 { font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
         .admin-card p.role { font-size: 0.82rem; color: #fbbf24; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
         .admin-card p.desc { font-size: 0.85rem; color: #a1a1aa; }
 
-        /* Small Circular Frames for Teaching & Non-Teaching Staff */
         .faculty-grid-small { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 35px; }
         .faculty-card-small { background: #121212; border: 1px solid #27272a; border-radius: 12px; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .faculty-circle-img { width: 85px; height: 85px; border-radius: 50%; object-fit: cover; border: 2px solid #52525b; margin-bottom: 12px; background: #18181b; }
@@ -64,7 +61,15 @@
         .social-icons { display: flex; gap: 12px; margin-top: 15px; }
         .social-icons a { background: #18181b; border: 1px solid #27272a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.9rem; }
         .footer-bottom { text-align: center; border-top: 1px solid #27272a; padding-top: 25px; font-size: 0.8rem; color: #71717a; }
-        @media(max-width: 900px) { .hamburger { display: block; } .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } .nav-menu.show { display: flex; } .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.02); padding-left: 15px; } }
+        
+        @media(max-width: 900px) { 
+            .hamburger { display: block; } 
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } 
+            .nav-menu.show { display: flex; } 
+            .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.02); padding-left: 15px; display: none; } 
+            .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { display: block; }
+            .admin-card { padding: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -181,10 +186,8 @@
                 <p>Primary Faculty</p>
             </div>
         </div>
-        
 
-       
-        <h3 class="section-title">Teaching Faculty</h3>
+        <h3 class="section-title">Care Takers & Support Staff</h3>
         <div class="faculty-grid-small">
             <div class="faculty-card-small">
                 <img src="images/staff/rimpi.jpg" alt="Mrs. Rimpi Phukan Saikia" class="faculty-circle-img" onerror="this.src='images/logo.png'">
@@ -196,8 +199,8 @@
                 <h5>Mrs. Lulumoni Bora</h5>
                 <p>Primary Care Taker</p>
             </div>
-            
         </div>
+    </div>
 
     <footer>
         <div class="footer-container">
