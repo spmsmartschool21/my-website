@@ -5,128 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPM Smart School | Merapani, Bijaypur</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0284c7">
+    <meta name="theme-color" content="#6A0DAD">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: #0b0f19; color: #f8fafc; line-height: 1.6; overflow-x: hidden; }
+        body { background-color: #F3E8FF; color: #2D2D2D; line-height: 1.6; overflow-x: hidden; }
 
         /* Top Info Bar */
-        .top-info-bar { background: #020617; border-bottom: 1px solid #1e293b; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #94a3b8; }
+        .top-info-bar { background: #520984; border-bottom: 1px solid #A855F7; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #F3E8FF; }
         .top-info-content { display: flex; gap: 20px; flex-wrap: wrap; }
-        .top-admin-link { color: #38bdf8; text-decoration: none; font-weight: 700; transition: color 0.2s; }
+        .top-admin-link { color: #FFD700; text-decoration: none; font-weight: 700; transition: color 0.2s; }
         .top-admin-link:hover { color: #ffffff; }
 
         /* Header & Navigation */
-        header { background: rgba(2, 6, 23, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #1e293b; backdrop-filter: blur(10px); }
+        header { background: rgba(106, 13, 173, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #A855F7; backdrop-filter: blur(10px); }
         .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .brand img { height: 45px; width: auto; object-fit: contain; }
+        .brand img { height: 45px; width: auto; object-fit: contain; background: #ffffff; border-radius: 50%; padding: 2px; }
         .brand-text h1 { font-size: 1.15rem; color: #ffffff; font-weight: 800; letter-spacing: 0.5px; }
-        .brand-text p { font-size: 0.62rem; color: #38bdf8; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .brand-text p { font-size: 0.62rem; color: #F3E8FF; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
         .hamburger { display: none; font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
         .nav-menu { display: flex; gap: 15px; list-style: none; font-size: 0.85rem; align-items: center; }
-        .nav-menu a { text-decoration: none; color: #94a3b8; font-weight: 600; transition: color 0.3s; padding: 5px 0; }
-        .nav-menu a:hover, .nav-menu a.active { color: #38bdf8; }
+        .nav-menu a { text-decoration: none; color: #F3E8FF; font-weight: 600; transition: color 0.3s; padding: 5px 0; }
+        .nav-menu a:hover, .nav-menu a.active { color: #FFD700; }
 
         /* Dropdown Styling */
         .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; min-width: 190px; box-shadow: 0 10px 25px rgba(0,0,0,0.6); z-index: 100; overflow: hidden; }
-        .dropdown-content a { display: block; padding: 12px 16px; color: #94a3b8; font-size: 0.82rem; border-bottom: 1px solid #1e293b; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #6A0DAD; border: 1px solid #A855F7; border-radius: 8px; min-width: 190px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 100; overflow: hidden; }
+        .dropdown-content a { display: block; padding: 12px 16px; color: #F3E8FF; font-size: 0.82rem; border-bottom: 1px solid #A855F7; }
         .dropdown-content a:last-child { border-bottom: none; }
-        .dropdown-content a:hover { background: #1e293b; color: #ffffff; }
+        .dropdown-content a:hover { background: #520984; color: #ffffff; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        .btn-apply-nav { background: #0284c7; color: #ffffff !important; padding: 8px 16px !important; border-radius: 6px; font-weight: 700 !important; transition: opacity 0.2s; }
+        .btn-apply-nav { background: #A855F7; color: #ffffff !important; padding: 8px 16px !important; border-radius: 6px; font-weight: 700 !important; transition: opacity 0.2s; }
         .btn-apply-nav:hover { opacity: 0.9; }
 
         /* Flash Screen */
-        #flash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0b0f19; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s ease, visibility 0.6s ease; }
+        #flash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #6A0DAD; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s ease, visibility 0.6s ease; }
         #flash-screen.fade-out { opacity: 0; visibility: hidden; }
-        .flash-logo-box { width: 90px; height: 90px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 30px rgba(56,189,248,0.3); animation: pulseGlow 1.5s infinite alternate; }
+        .flash-logo-box { width: 90px; height: 90px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 30px rgba(255,255,255,0.2); animation: pulseGlow 1.5s infinite alternate; }
         .flash-logo-box img { width: 65px; height: 65px; object-fit: contain; }
         .flash-title { font-size: 1.6rem; font-weight: 900; letter-spacing: 2px; color: #ffffff; text-align: center; margin-bottom: 8px; text-transform: uppercase; }
-        .flash-subtitle { font-size: 0.8rem; color: #38bdf8; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
-        @keyframes pulseGlow { 0% { transform: scale(1); box-shadow: 0 0 15px rgba(56,189,248,0.2); } 100% { transform: scale(1.05); box-shadow: 0 0 35px rgba(56,189,248,0.5); } }
+        .flash-subtitle { font-size: 0.8rem; color: #F3E8FF; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+        @keyframes pulseGlow { 0% { transform: scale(1); box-shadow: 0 0 15px rgba(255,255,255,0.1); } 100% { transform: scale(1.05); box-shadow: 0 0 35px rgba(255,255,255,0.3); } }
 
-        /* Hero Section with Sky Blue Accent & Student Group Graphic */
-        .hero-section { position: relative; background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.92)), url('images/CAMPUS/FRONT_SIDE.jpg'); background-size: cover; background-position: center; padding: 90px 20px 80px; border-bottom: 1px solid #1e293b; }
-        .hero-container { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: center; }
+        /* Hero Section - Matched to Style Reference */
+        .hero-section { background: linear-gradient(135deg, #6A0DAD 0%, #A855F7 100%); color: #ffffff; padding: 60px 20px; border-bottom: 3px solid #520984; position: relative; }
+        .hero-wrapper { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: center; }
+        .hero-text-side h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; }
+        .hero-subtitle { font-size: 1.1rem; color: #F3E8FF; margin-bottom: 25px; font-weight: 600; font-style: italic; }
         .hero-badges { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .hero-badge-item { background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #38bdf8; }
-        .hero-title { font-size: 2.8rem; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; line-height: 1.15; color: #ffffff; }
-        .hero-subtitle { font-size: 1.05rem; color: #cbd5e1; max-width: 650px; margin-bottom: 30px; font-weight: 400; }
+        .hero-badge-item { background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.4); padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
         .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-        .btn-primary { background: #0284c7; color: #ffffff; padding: 12px 28px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
-        .btn-primary:hover { background: #0369a1; }
-        .btn-secondary { background: rgba(255, 255, 255, 0.08); border: 1px solid #38bdf8; color: #ffffff; padding: 12px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
-        .btn-secondary:hover { background: rgba(56, 189, 248, 0.15); }
+        .btn-primary { background: #ffffff; color: #6A0DAD; padding: 12px 28px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        .btn-primary:hover { background: #F3E8FF; }
+        .btn-secondary { background: rgba(255, 255, 255, 0.15); border: 1px solid #ffffff; color: #ffffff; padding: 12px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.25); }
 
-        /* Top Right Student Graphic Card */
-        .hero-graphic-card { background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 16px; padding: 15px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
-        .hero-graphic-card img { width: 100%; height: 240px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; border: 1px solid #1e293b; }
-        .hero-graphic-card h4 { font-size: 0.95rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px; }
-        .hero-graphic-card p { font-size: 0.78rem; color: #94a3b8; }
+        .hero-img-side { display: flex; justify-content: center; align-items: center; }
+        .hero-img-side img { width: 100%; max-width: 480px; border-radius: 12px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.3); }
 
         /* Container & Sections */
         .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
         .section-header { text-align: center; margin-bottom: 45px; }
-        .section-tag { color: #38bdf8; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 5px; }
-        .section-heading { font-size: 2rem; font-weight: 900; }
+        .section-tag { color: #6A0DAD; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 5px; }
+        .section-heading { font-size: 2rem; font-weight: 900; color: #2D2D2D; }
 
-        .about-text-block { background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; padding: 35px; margin-bottom: 50px; }
-        .about-text-block p { font-size: 0.95rem; color: #cbd5e1; margin-bottom: 15px; }
+        .about-text-block { background: #ffffff; border: 1px solid #D8B4FE; border-radius: 14px; padding: 35px; margin-bottom: 50px; box-shadow: 0 4px 20px rgba(106, 13, 173, 0.05); }
+        .about-text-block p { font-size: 0.95rem; color: #4B5563; margin-bottom: 15px; }
         .feature-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 25px; }
-        .feature-item { background: #1e293b; padding: 12px 15px; border-radius: 8px; border: 1px solid #334155; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: #e2e8f0; }
+        .feature-item { background: #F3E8FF; padding: 12px 15px; border-radius: 8px; border: 1px solid #D8B4FE; font-size: 0.85rem; font-weight: 700; color: #6A0DAD; display: flex; align-items: center; gap: 8px; }
 
-        .env-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; overflow: hidden; margin-bottom: 60px; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; }
-        .env-img-box { width: 100%; height: 100%; min-height: 260px; background: #1e293b; }
+        .env-card { background: #ffffff; border: 1px solid #D8B4FE; border-radius: 14px; overflow: hidden; margin-bottom: 60px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; box-shadow: 0 4px 20px rgba(106, 13, 173, 0.05); }
+        .env-img-box { width: 100%; height: 100%; min-height: 280px; background: #F3E8FF; }
         .env-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .env-content { padding: 35px; grid-column: span 1; }
-        .env-content h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; color: #38bdf8; }
-        .env-content p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px; }
+        .env-content { padding: 35px; }
+        .env-content h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; color: #6A0DAD; }
+        .env-content p { color: #4B5563; font-size: 0.9rem; margin-bottom: 20px; }
 
         .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 60px; }
-        .pillar-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 25px; transition: transform 0.2s, border-color 0.2s; }
-        .pillar-card:hover { transform: translateY(-3px); border-color: #0284c7; }
-        .pillar-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: #38bdf8; }
-        .pillar-card p { font-size: 0.85rem; color: #94a3b8; }
+        .pillar-card { background: #ffffff; border: 1px solid #D8B4FE; border-radius: 12px; padding: 25px; transition: transform 0.2s, border-color 0.2s; box-shadow: 0 4px 15px rgba(106, 13, 173, 0.05); }
+        .pillar-card:hover { transform: translateY(-3px); border-color: #6A0DAD; }
+        .pillar-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: #6A0DAD; }
+        .pillar-card p { font-size: 0.85rem; color: #4B5563; }
 
         /* Leadership Messages */
-        .message-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; padding: 35px; margin-bottom: 30px; position: relative; }
-        .message-card::before { content: '“'; position: absolute; top: 15px; right: 25px; font-size: 4rem; color: #1e293b; font-family: Georgia, serif; line-height: 1; }
-        .message-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 15px; color: #38bdf8; }
-        .message-card blockquote { font-style: italic; color: #cbd5e1; font-size: 0.95rem; margin-bottom: 25px; border-left: 2px solid #0284c7; padding-left: 15px; }
-        .author-box { display: flex; align-items: center; gap: 15px; border-top: 1px solid #1e293b; padding-top: 20px; }
-        .author-img { width: 55px; height: 55px; border-radius: 50%; overflow: hidden; background: #1e293b; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; color: #ffffff; border: 1px solid #0284c7; }
+        .message-card { background: #ffffff; border: 1px solid #D8B4FE; border-radius: 14px; padding: 35px; margin-bottom: 30px; position: relative; box-shadow: 0 4px 20px rgba(106, 13, 173, 0.05); }
+        .message-card::before { content: '“'; position: absolute; top: 15px; right: 25px; font-size: 4rem; color: #E9D5FF; font-family: Georgia, serif; line-height: 1; }
+        .message-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 15px; color: #6A0DAD; }
+        .message-card blockquote { font-style: italic; color: #4B5563; font-size: 0.95rem; margin-bottom: 25px; border-left: 3px solid #A855F7; padding-left: 15px; }
+        .author-box { display: flex; align-items: center; gap: 15px; border-top: 1px solid #F3E8FF; padding-top: 20px; }
+        .author-img { width: 55px; height: 55px; border-radius: 50%; overflow: hidden; background: #F3E8FF; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; color: #6A0DAD; border: 2px solid #A855F7; }
         .author-img img { width: 100%; height: 100%; object-fit: cover; }
-        .author-info h4 { font-size: 1rem; font-weight: 700; color: #ffffff; }
-        .author-info p { font-size: 0.78rem; color: #94a3b8; }
+        .author-info h4 { font-size: 1rem; font-weight: 700; color: #2D2D2D; }
+        .author-info p { font-size: 0.78rem; color: #6A0DAD; font-weight: 600; }
 
         /* Footer */
-        footer { background: #020617; border-top: 1px solid #1e293b; padding: 50px 20px 30px; color: #94a3b8; font-size: 0.88rem; margin-top: 80px; width: 100%; clear: both; display: block; }
+        footer { background: #520984; border-top: 1px solid #A855F7; padding: 50px 20px 30px; color: #F3E8FF; font-size: 0.88rem; margin-top: 80px; width: 100%; clear: both; display: block; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 40px; }
         .footer-col h4 { color: #ffffff; font-size: 1rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .footer-col p { font-size: 0.85rem; margin-bottom: 15px; color: #cbd5e1; }
+        .footer-col p { font-size: 0.85rem; margin-bottom: 15px; color: #F3E8FF; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: #94a3b8; text-decoration: none; transition: color 0.2s; font-size: 0.85rem; }
-        .footer-links a:hover { color: #38bdf8; }
+        .footer-links a { color: #F3E8FF; text-decoration: none; transition: color 0.2s; font-size: 0.85rem; }
+        .footer-links a:hover { color: #FFD700; }
         .contact-info-list p { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; }
         .social-icons { display: flex; gap: 12px; margin-top: 15px; }
-        .social-icons a { background: #0f172a; border: 1px solid #1e293b; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
-        .social-icons a:hover { background: #0284c7; }
-        .footer-bottom { text-align: center; border-top: 1px solid #1e293b; padding-top: 25px; font-size: 0.8rem; color: #64748b; }
+        .social-icons a { background: #6A0DAD; border: 1px solid #A855F7; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.9rem; transition: background 0.2s; }
+        .social-icons a:hover { background: #A855F7; }
+        .footer-bottom { text-align: center; border-top: 1px solid #A855F7; padding-top: 25px; font-size: 0.8rem; color: #D8B4FE; }
 
         @media(max-width: 900px) {
             .hamburger { display: block; }
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #0f172a; padding: 20px; gap: 15px; border-bottom: 1px solid #1e293b; }
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #6A0DAD; padding: 20px; gap: 15px; border-bottom: 1px solid #A855F7; }
             .nav-menu.show { display: flex; }
-            .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.02); padding-left: 15px; }
-            .hero-container { grid-template-columns: 1fr; }
-            .hero-graphic-card { max-width: 320px; margin: 0 auto; }
+            .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(0,0,0,0.1); padding-left: 15px; }
+            .hero-wrapper { grid-template-columns: 1fr; text-align: center; }
+            .hero-badges { justify-content: center; }
+            .hero-buttons { justify-content: center; }
             .env-card { grid-template-columns: 1fr; }
-            .hero-title { font-size: 2rem; }
+            .hero-text-side h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -194,27 +192,23 @@
         </div>
     </header>
 
-    <!-- Hero Section with Student Group Graphic on Top Right -->
+    <!-- Hero Section matching design reference -->
     <section class="hero-section">
-        <div class="hero-container">
-            <div class="hero-content-left">
+        <div class="hero-wrapper">
+            <div class="hero-text-side">
                 <div class="hero-badges">
-                    <span class="hero-badge-item">Admissions Closed for 2026-27</span>
-                    <span class="hero-badge-item">English Medium Primary Institution</span>
+                    <span class="hero-badge-item">Admissions Open</span>
+                    <span class="hero-badge-item">English Medium Primary</span>
                 </div>
-                <h2 class="hero-title">SPM SMART SCHOOL</h2>
-                <p class="hero-subtitle">Sunaprova Phukan Memorial Smart School, Merapani. Dedicated to academic excellence, creative exploration, and holistic character development.</p>
+                <h2>Learn &bull; Grow &bull; Excel</h2>
+                <p class="hero-subtitle">Building a brighter future together... Quality education with discipline and guidance.</p>
                 <div class="hero-buttons">
-                    <a href="admission.html" class="btn-primary">Apply Online</a>
+                    <a href="admission.html" class="btn-primary">Admissions Open &rarr;</a>
                     <a href="campus.html" class="btn-secondary">Explore Campus</a>
                 </div>
             </div>
-            <div class="hero-graphic-right">
-                <div class="hero-graphic-card">
-                    <img src="images/students/student_1.jpg" alt="Students with Books" onerror="this.src='images/students/Environment_day.jpg'">
-                    <h4>Excellence in Learning</h4>
-                    <p>Nurturing young minds through smart education & interactive books.</p>
-                </div>
+            <div class="hero-img-side">
+                <img src="images/students/student_2.jpg" alt="SPM Smart School Students" onerror="this.src='images/CAMPUS/FRONT_SIDE.jpg'">
             </div>
         </div>
     </section>
@@ -229,10 +223,10 @@
         <div class="about-text-block">
             <p>Sunaprova Phukan Memorial (SPM) Smart School stands as a premier learning institution in Merapani, Bijaypur. We offer a comprehensive educational experience designed to nurture young minds from their early foundational years up to Class V.</p>
             <div class="feature-list">
-                <div class="feature-item">✔ Smart & Interactive Classrooms</div>
-                <div class="feature-item">✔ English Language Immersion</div>
-                <div class="feature-item">✔ Fundamental Computer Education</div>
-                <div class="feature-item">✔ Sports & Co-Curricular Activities</div>
+                <div class="feature-item">&#10004; Smart & Interactive Classrooms</div>
+                <div class="feature-item">&#10004; English Language Immersion</div>
+                <div class="feature-item">&#10004; Fundamental Computer Education</div>
+                <div class="feature-item">&#10004; Sports & Co-Curricular Activities</div>
             </div>
         </div>
 
@@ -241,13 +235,10 @@
             <div class="env-img-box">
                 <img src="images/students/plantation.jpg" alt="World Environment Day" onerror="this.src='images/students/student_1.jpg'">
             </div>
-            <div class="env-img-box">
-                <img src="images/students/plantation(1).jpg" alt="World Environment Day" onerror="this.src='images/students/student_1.jpg'">
-            </div>
             <div class="env-content">
                 <h3>Green Campus & Social Drives</h3>
                 <p>Our students actively participate in social service drives, tree plantation activities, and environmental awareness programs to foster social responsibility from an early age.</p>
-                <a href="gallery.html" class="btn-secondary">View Activity Gallery &rarr;</a>
+                <a href="gallery.html" class="btn-primary" style="display:inline-block; padding: 10px 20px; background:#6A0DAD; color:#fff;">View Activity Gallery &rarr;</a>
             </div>
         </div>
 
@@ -289,8 +280,7 @@
                 </div>
                 <div class="author-info">
                     <h4>Mr. Rajib Phukan</h4>
-                    <p>Managing Director & Administrator</p>
-                    <p>B.Com.</p>
+                    <p>Managing Director & Administrator (B.Com.)</p>
                 </div>
             </div>
         </div>
@@ -307,9 +297,7 @@
                 </div>
                 <div class="author-info">
                     <h4>Mr. Liladhar Konwar</h4>
-                    <h4>Principal</h4>
-                    <p>Head of Institution</p>
-                    <p>M.A., D.El.Ed., TET</p>
+                    <p>Principal (M.A., D.El.Ed., TET)</p>
                 </div>
             </div>
         </div>
@@ -326,9 +314,7 @@
                 </div>
                 <div class="author-info">
                     <h4>Miss Aisha Begum</h4>
-                    <h4>Vice Principal</h4>
-                    <p>Academic Administration</p>
-                    <p>B.A. (Education)</p>
+                    <p>Vice Principal (B.A. Education)</p>
                 </div>
             </div>
         </div>
