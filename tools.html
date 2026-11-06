@@ -3,92 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Tools & Games | SPM Smart School</title>
+    <title>Student Tools | SPM Smart School</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#6A0DAD">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: #000000; color: #ffffff; line-height: 1.6; overflow-x: hidden; position: relative; }
-        
-        /* Top Info Bar */
-        .top-info-bar { background: #09090b; border-bottom: 1px solid #27272a; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #a1a1aa; flex-wrap: wrap; gap: 10px; }
+        body { background-color: #F3E8FF; color: #2D2D2D; line-height: 1.6; overflow-x: hidden; }
+        .top-info-bar { background: #520984; border-bottom: 1px solid #A855F7; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #F3E8FF; }
         .top-info-content { display: flex; gap: 20px; flex-wrap: wrap; }
-        .top-admin-link { color: #fbbf24; text-decoration: none; font-weight: 700; }
-        
-        /* Header & Navigation */
-        header { background: rgba(0, 0, 0, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #27272a; backdrop-filter: blur(10px); }
+        .top-admin-link { color: #FFD700; text-decoration: none; font-weight: 700; }
+        header { background: rgba(106, 13, 173, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #A855F7; backdrop-filter: blur(10px); }
         .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .brand img { height: 45px; width: auto; object-fit: contain; }
+        .brand img { height: 45px; width: auto; object-fit: contain; background: #ffffff; border-radius: 50%; padding: 2px; }
         .brand-text h1 { font-size: 1.15rem; color: #ffffff; font-weight: 800; }
-        .brand-text p { font-size: 0.62rem; color: #a1a1aa; font-weight: 700; text-transform: uppercase; }
+        .brand-text p { font-size: 0.62rem; color: #F3E8FF; font-weight: 700; text-transform: uppercase; }
         .hamburger { display: none; font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
         .nav-menu { display: flex; gap: 15px; list-style: none; font-size: 0.85rem; align-items: center; }
-        .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; transition: color 0.3s; padding: 5px 0; }
-        .nav-menu a:hover, .nav-menu a.active { color: #ffffff; }
+        .nav-menu a { text-decoration: none; color: #F3E8FF; font-weight: 600; transition: color 0.3s; padding: 5px 0; }
+        .nav-menu a:hover, .nav-menu a.active { color: #FFD700; }
         .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #121212; border: 1px solid #27272a; border-radius: 8px; min-width: 190px; z-index: 100; overflow: hidden; }
-        .dropdown-content a { display: block; padding: 12px 16px; color: #a1a1aa; font-size: 0.82rem; border-bottom: 1px solid #27272a; }
-        .dropdown-content a:hover { background: #1c1c21; color: #ffffff; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #6A0DAD; border: 1px solid #A855F7; border-radius: 8px; min-width: 190px; z-index: 100; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .dropdown-content a { display: block; padding: 12px 16px; color: #F3E8FF; font-size: 0.82rem; border-bottom: 1px solid #A855F7; }
+        .dropdown-content a:hover { background: #520984; color: #ffffff; }
         .dropdown:hover .dropdown-content { display: block; }
-        .btn-apply-nav { background: #d97706; color: #ffffff !important; padding: 8px 16px !important; border-radius: 6px; font-weight: 700 !important; }
+        .btn-apply-nav { background: #A855F7; color: #ffffff !important; padding: 8px 16px !important; border-radius: 6px; font-weight: 700 !important; }
 
-        /* Page Header */
-        .page-header { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('images/CAMPUS/FRONT_SIDE.jpg'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; border-bottom: 1px solid #27272a; position: relative; }
+        .page-header { background: linear-gradient(135deg, #6A0DAD 0%, #A855F7 100%); padding: 60px 20px; text-align: center; border-bottom: 3px solid #520984; color: #ffffff; }
         .page-header h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        .page-header p { color: #a1a1aa; font-size: 0.88rem; max-width: 600px; margin: 0 auto; }
+        .page-header p { color: #F3E8FF; font-size: 0.88rem; max-width: 600px; margin: 0 auto; }
 
-        /* Container & Tools Layout */
-        .container { max-width: 900px; margin: 50px auto; padding: 0 20px; }
-        .tool-card { background: #121212; border: 1px solid #27272a; border-radius: 14px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); transition: transform 0.2s, border-color 0.2s; }
-        .tool-card:hover { border-color: #52525b; }
-        .tool-card h3 { font-size: 1.3rem; font-weight: 800; color: #ffffff; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .container { max-width: 800px; margin: 50px auto; padding: 0 20px; }
+        .tool-card { background: #ffffff; border: 1px solid #D8B4FE; border-radius: 14px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(106, 13, 173, 0.05); }
+        .tool-card h3 { font-size: 1.3rem; font-weight: 800; color: #6A0DAD; margin-bottom: 15px; }
         .calc-input-group { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
-        .calc-input-group input, .calc-input-group select { flex: 1; min-width: 140px; padding: 12px; background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; color: #fff; outline: none; font-size: 0.95rem; }
-        .calc-btn { background: #d97706; color: #fff; padding: 12px 22px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: opacity 0.2s; }
+        .calc-input-group input { flex: 1; min-width: 120px; padding: 10px; background: #F3E8FF; border: 1px solid #D8B4FE; border-radius: 6px; color: #2D2D2D; outline: none; }
+        .calc-btn { background: #6A0DAD; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: opacity 0.2s; }
         .calc-btn:hover { opacity: 0.9; }
-        .result-box { margin-top: 15px; padding: 12px; background: #18181b; border-radius: 6px; font-weight: 700; color: #fbbf24; }
+        .result-box { margin-top: 15px; padding: 12px; background: #F3E8FF; border: 1px solid #A855F7; border-radius: 6px; font-weight: 800; color: #6A0DAD; }
 
-        /* Sound Board Grid */
-        .sound-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 15px; }
-        .sound-btn { background: #18181b; border: 1px solid #27272a; color: #fff; padding: 15px 10px; border-radius: 8px; font-weight: 700; cursor: pointer; text-align: center; transition: all 0.2s; font-size: 0.9rem; }
-        .sound-btn:hover { background: #27272a; border-color: #d97706; transform: translateY(-2px); }
-        .sound-btn span { display: block; font-size: 1.5rem; margin-bottom: 5px; }
-
-        /* Sparkle Animation Effects */
-        .sparkle { position: absolute; pointer-events: none; width: 6px; height: 6px; background: #fbbf24; border-radius: 50%; animation: sparkleAnim 0.8s linear forwards; z-index: 999; }
-        @keyframes sparkleAnim {
-            0% { transform: scale(1) translateY(0); opacity: 1; }
-            100% { transform: scale(0) translateY(-40px); opacity: 0; }
-        }
-
-        /* Footer */
-        footer { background: #121212; border-top: 1px solid #27272a; padding: 50px 20px 30px; color: #a1a1aa; font-size: 0.88rem; margin-top: 80px; width: 100%; display: block; }
+        footer { background: #520984; border-top: 1px solid #A855F7; padding: 50px 20px 30px; color: #F3E8FF; font-size: 0.88rem; margin-top: 80px; width: 100%; display: block; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer-col h4 { color: #ffffff; font-size: 1rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .footer-col p { font-size: 0.85rem; margin-bottom: 15px; color: #d4d4d8; }
+        .footer-col h4 { color: #ffffff; font-size: 1rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
+        .footer-col p { font-size: 0.85rem; margin-bottom: 15px; color: #F3E8FF; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: #a1a1aa; text-decoration: none; transition: color 0.2s; font-size: 0.85rem; }
-        .footer-links a:hover { color: #ffffff; }
+        .footer-links a { color: #F3E8FF; text-decoration: none; font-size: 0.85rem; }
+        .footer-links a:hover { color: #FFD700; }
         .contact-info-list p { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; }
         .social-icons { display: flex; gap: 12px; margin-top: 15px; }
-        .social-icons a { background: #18181b; border: 1px solid #27272a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.9rem; }
-        .footer-bottom { text-align: center; border-top: 1px solid #27272a; padding-top: 25px; font-size: 0.8rem; color: #71717a; }
-
-        @media(max-width: 900px) { 
-            .hamburger { display: block; } 
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } 
-            .nav-menu.show { display: flex; } 
-            .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.02); padding-left: 15px; display: none; } 
-            .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { display: block; }
-            .tool-card { padding: 20px; }
-        }
+        .social-icons a { background: #6A0DAD; border: 1px solid #A855F7; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.9rem; }
+        .footer-bottom { text-align: center; border-top: 1px solid #A855F7; padding-top: 25px; font-size: 0.8rem; color: #D8B4FE; }
+        @media(max-width: 900px) { .hamburger { display: block; } .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #6A0DAD; padding: 20px; gap: 15px; border-bottom: 1px solid #A855F7; } .nav-menu.show { display: flex; } .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(0,0,0,0.1); padding-left: 15px; } }
     </style>
 </head>
-<body onclick="createSparkle(event)">
+<body>
 
-    <!-- Top Contact & Admin Bar -->
     <div class="top-info-bar">
         <div class="top-info-content">
             <span>📞 +91 91011 68413, +91 91010 13880</span>
@@ -97,7 +67,6 @@
         <a href="admin.html" class="top-admin-link">⚙️ Admin Portal</a>
     </div>
 
-    <!-- Header & Navigation -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="brand">
@@ -142,15 +111,14 @@
     </header>
 
     <div class="page-header">
-        <h2>Interactive Student Tools & Games</h2>
-        <p>Explore digital calculators, fun emoji mini-puzzles, and nature sound boards!</p>
+        <h2>Interactive Student Tools</h2>
+        <p>Digital learning utilities, grade calculators, and interactive educational helpers.</p>
     </div>
 
     <div class="container">
-        <!-- 1. Grade Percentage Calculator -->
         <div class="tool-card">
             <h3>🧮 Student Percentage Calculator</h3>
-            <p style="color: #a1a1aa; font-size: 0.85rem; margin-bottom: 15px;">Enter obtained marks and total marks to compute the overall percentage.</p>
+            <p style="color: #4B5563; font-size: 0.85rem; margin-bottom: 15px;">Enter obtained marks and total marks to compute the overall percentage.</p>
             <div class="calc-input-group">
                 <input type="number" id="obtainedMarks" placeholder="Obtained Marks">
                 <input type="number" id="totalMarks" placeholder="Total Marks (e.g. 500)">
@@ -158,63 +126,8 @@
             </div>
             <div id="resultOutput" class="result-box" style="display: none;"></div>
         </div>
-
-        <!-- 2. Daily Math Practice Quiz -->
-        <div class="tool-card">
-            <h3>📐 Daily Math Practice Quiz</h3>
-            <p style="color: #a1a1aa; font-size: 0.85rem; margin-bottom: 15px;">Test your multiplication skills with random primary-level math questions!</p>
-            <div id="mathQuizBox" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 15px; color: #fbbf24;"></div>
-            <div class="calc-input-group">
-                <input type="number" id="mathAnswer" placeholder="Your Answer">
-                <button onclick="checkMathAnswer()" class="calc-btn">Submit</button>
-                <button onclick="generateMathQuestion()" style="background: #27272a; color: #fff; padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: 700;">New Question</button>
-            </div>
-            <div id="mathResult" class="result-box" style="display: none;"></div>
-        </div>
-
-        <!-- 3. Emoji Word Puzzle Game -->
-        <div class="tool-card">
-            <h3>🧩 Guess the Word by Emojis</h3>
-            <p style="color: #a1a1aa; font-size: 0.85rem; margin-bottom: 15px;">Can you guess what word or object the emojis represent?</p>
-            <div id="wordEmojiBox" style="font-size: 2rem; margin-bottom: 15px; text-align: center;"></div>
-            <div class="calc-input-group">
-                <input type="text" id="wordGuessInput" placeholder="Type your answer...">
-                <button onclick="checkWordGuess()" class="calc-btn">Check Guess</button>
-                <button onclick="nextWordPuzzle()" style="background: #27272a; color: #fff; padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: 700;">Next</button>
-            </div>
-            <div id="wordResult" class="result-box" style="display: none;"></div>
-        </div>
-
-        <!-- 4. Guess the Country by Emojis -->
-        <div class="tool-card">
-            <h3>🌍 Guess the Country by Emojis</h3>
-            <p style="color: #a1a1aa; font-size: 0.85rem; margin-bottom: 15px;">Guess the country from the emoji clues provided below!</p>
-            <div id="countryEmojiBox" style="font-size: 2rem; margin-bottom: 15px; text-align: center;"></div>
-            <div class="calc-input-group">
-                <input type="text" id="countryGuessInput" placeholder="Country name...">
-                <button onclick="checkCountryGuess()" class="calc-btn">Check Country</button>
-                <button onclick="nextCountryPuzzle()" style="background: #27272a; color: #fff; padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: 700;">Next</button>
-            </div>
-            <div id="countryResult" class="result-box" style="display: none;"></div>
-        </div>
-
-        <!-- 5. Nature & Animal Sound Synthesizer / Audio Board -->
-        <div class="tool-card">
-            <h3>🎵 Nature & Animal Sound Board</h3>
-            <p style="color: #a1a1aa; font-size: 0.85rem; margin-bottom: 15px;">Click any sound button to play simulated cheerful sound tones or audio effects!</p>
-            <div class="sound-grid">
-                <button class="sound-btn" onclick="playSound('bird')"><span>🐦</span>Birds Chirp</button>
-                <button class="sound-btn" onclick="playSound('dog')"><span>🐶</span>Puppy Bark</button>
-                <button class="sound-btn" onclick="playSound('cat')"><span>🐱</span>Kitty Meow</button>
-                <button class="sound-btn" onclick="playSound('cow')"><span>🐮</span>Cow Moo</button>
-                <button class="sound-btn" onclick="playSound('bell')"><span>🔔</span>School Bell</button>
-                <button class="sound-btn" onclick="playSound('success')"><span>⭐</span>Success Chime</button>
-            </div>
-            <div id="soundAlert" style="margin-top: 15px; font-size: 0.85rem; color: #fbbf24; text-align: center; font-weight: 700;"></div>
-        </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-col">
@@ -262,196 +175,18 @@
 
     <script>
         function toggleMenu() { document.getElementById("navMenu").classList.toggle("show"); }
-
-        // Sparkle Glitters Effect on Click
-        function createSparkle(e) {
-            // Prevent sparkle creation inside inputs or buttons
-            if(['INPUT', 'BUTTON', 'SELECT'].includes(e.target.tagName)) return;
-            for(let i=0; i<4; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = (e.pageX + (Math.random()*30 - 15)) + 'px';
-                sparkle.style.top = (e.pageY + (Math.random()*30 - 15)) + 'px';
-                document.body.appendChild(sparkle);
-                setTimeout(() => sparkle.remove(), 800);
-            }
-        }
-
-        // Percentage Calculator
         function calculatePercentage() {
             const obtained = parseFloat(document.getElementById('obtainedMarks').value);
             const total = parseFloat(document.getElementById('totalMarks').value);
             const output = document.getElementById('resultOutput');
-            output.style.display = 'block';
             if (obtained && total && total > 0) {
                 const percentage = ((obtained / total) * 100).toFixed(2);
+                output.style.display = 'block';
                 output.innerHTML = `Calculated Score: ${percentage}%`;
-                output.style.color = '#fbbf24';
             } else {
+                output.style.display = 'block';
                 output.innerHTML = 'Please enter valid values for both fields.';
-                output.style.color = '#f87171';
             }
-        }
-
-        // Math Quiz Logic
-        let num1, num2, correctAnswer;
-        function generateMathQuestion() {
-            num1 = Math.floor(Math.random() * 10) + 1;
-            num2 = Math.floor(Math.random() * 10) + 1;
-            correctAnswer = num1 * num2;
-            document.getElementById('mathQuizBox').innerHTML = `What is ${num1} × ${num2} ?`;
-            document.getElementById('mathAnswer').value = '';
-            document.getElementById('mathResult').style.display = 'none';
-        }
-
-        function checkMathAnswer() {
-            const userAns = parseFloat(document.getElementById('mathAnswer').value);
-            const mathRes = document.getElementById('mathResult');
-            mathRes.style.display = 'block';
-            if (userAns === correctAnswer) {
-                mathRes.innerHTML = '🎉 Correct! Great job!';
-                mathRes.style.color = '#4ade80';
-            } else {
-                mathRes.innerHTML = `❌ Incorrect. The correct answer was ${correctAnswer}. Try another one!`;
-                mathRes.style.color = '#f87171';
-            }
-        }
-
-        // Emoji Word Puzzle Game Data
-        const wordPuzzles = [
-            { emojis: '🐝 🍯', answer: 'honeybee' },
-            { emojis: '🍎 🌳', answer: 'apple' },
-            { emojis: '⚽ 🥅', answer: 'football' },
-            { emojis: '☀️ 👓', answer: 'sunglasses' },
-            { emojis: '📚 🎒', answer: 'school' }
-        ];
-        let currentWordIndex = 0;
-
-        function nextWordPuzzle() {
-            currentWordIndex = (currentWordIndex + 1) % wordPuzzles.length;
-            document.getElementById('wordEmojiBox').innerHTML = wordPuzzles[currentWordIndex].emojis;
-            document.getElementById('wordGuessInput').value = '';
-            document.getElementById('wordResult').style.display = 'none';
-        }
-
-        function checkWordGuess() {
-            const userGuess = document.getElementById('wordGuessInput').value.trim().toLowerCase();
-            const resBox = document.getElementById('wordResult');
-            resBox.style.display = 'block';
-            if(userGuess === wordPuzzles[currentWordIndex].answer) {
-                resBox.innerHTML = '🎉 Awesome! You guessed it right!';
-                resBox.style.color = '#4ade80';
-            } else {
-                resBox.innerHTML = '❌ Not quite right. Try again or click Next!';
-                resBox.style.color = '#f87171';
-            }
-        }
-
-        // Guess the Country Puzzle Data
-        const countryPuzzles = [
-            { emojis: '🐅 🍛 🇮🇳', answer: 'india' },
-            { emojis: '🗽 🦅 🇺🇸', answer: 'united states' },
-            { emojis: '🐼 🥢 🇨🇳', answer: 'china' },
-            { emojis: '🗼 🥐 🇫🇷', answer: 'france' },
-            { emojis: 'kangaroo 🐨 🇦🇺', answer: 'australia' }
-        ];
-        let currentCountryIndex = 0;
-
-        function nextCountryPuzzle() {
-            currentCountryIndex = (currentCountryIndex + 1) % countryPuzzles.length;
-            document.getElementById('countryEmojiBox').innerHTML = countryPuzzles[currentCountryIndex].emojis;
-            document.getElementById('countryGuessInput').value = '';
-            document.getElementById('countryResult').style.display = 'none';
-        }
-
-        function checkCountryGuess() {
-            const userGuess = document.getElementById('countryGuessInput').value.trim().toLowerCase();
-            const resBox = document.getElementById('countryResult');
-            resBox.style.display = 'block';
-            if(userGuess === countryPuzzles[currentCountryIndex].answer) {
-                resBox.innerHTML = '🎉 Correct! Brilliant geographic knowledge!';
-                resBox.style.color = '#4ade80';
-            } else {
-                resBox.innerHTML = '❌ Incorrect. Try again or click Next!';
-                resBox.style.color = '#f87171';
-            }
-        }
-
-        // Web Audio API Sound Synthesizer for Sound Board
-        function playSound(type) {
-            const alertBox = document.getElementById('soundAlert');
-            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-
-            let desc = "";
-            if (type === 'bird') {
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(1800, audioCtx.currentTime + 0.1);
-                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.2);
-                desc = "playing simulated 🐦 Bird Chirp effect!";
-            } else if (type === 'dog') {
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(250, audioCtx.currentTime);
-                osc.frequency.setValueAtTime(180, audioCtx.currentTime + 0.1);
-                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.25);
-                desc = "playing simulated 🐶 Puppy Bark effect!";
-            } else if (type === 'cat') {
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(400, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(650, audioCtx.currentTime + 0.3);
-                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.4);
-                desc = "playing simulated 🐱 Kitty Meow effect!";
-            } else if (type === 'cow') {
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(120, audioCtx.currentTime);
-                osc.frequency.linearRampToValueAtTime(90, audioCtx.currentTime + 0.5);
-                gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.6);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.6);
-                desc = "playing simulated 🐮 Cow Moo effect!";
-            } else if (type === 'bell') {
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(880, audioCtx.currentTime);
-                gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.8);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.8);
-                desc = "ringing 🔔 School Bell sound!";
-            } else if (type === 'success') {
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
-                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
-                osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.2); // G5
-                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.4);
-                desc = "playing ⭐ Success Chime!";
-            }
-
-            alertBox.innerHTML = `🔊 Sound Effect active: ${desc}`;
-        }
-
-        // Initialize initial questions on page load
-        window.onload = function() {
-            generateMathQuestion();
-            document.getElementById('wordEmojiBox').innerHTML = wordPuzzles[0].emojis;
-            document.getElementById('countryEmojiBox').innerHTML = countryPuzzles[0].emojis;
         }
     </script>
 </body>
