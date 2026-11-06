@@ -18,14 +18,15 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            width: 100%;
         }
 
         .portal-wrapper {
             width: 100%;
             max-width: 440px;
-            background: rgba(6, 78, 59, 0.75);
+            background: rgba(6, 78, 59, 0.85);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(251, 191, 36, 0.25);
+            border: 1px solid rgba(251, 191, 36, 0.3);
             border-radius: 20px;
             padding: 40px 30px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
@@ -92,7 +93,7 @@
             width: 100%;
             padding: 12px 15px 12px 40px;
             background: rgba(2, 44, 34, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             color: #ffffff;
             font-size: 0.95rem;
@@ -108,7 +109,7 @@
         .input-icon {
             position: absolute;
             left: 12px;
-            color: #94a3b8;
+            color: #fbbf24;
             font-size: 1rem;
         }
 
@@ -135,7 +136,7 @@
         .back-link {
             display: inline-block;
             margin-top: 25px;
-            color: #94a3b8;
+            color: #cbd5e1;
             text-decoration: none;
             font-size: 0.82rem;
             font-weight: 600;
@@ -143,7 +144,7 @@
         }
 
         .back-link:hover {
-            color: #ffffff;
+            color: #fbbf24;
         }
     </style>
 </head>
@@ -151,12 +152,12 @@
 
     <div class="portal-wrapper">
         <div class="school-logo-box">
-            <img src="images/logo.png" alt="School Logo">
+            <img src="images/logo.png" alt="School Logo" onerror="this.src='logo.png'">
         </div>
         <h2>Management Portal</h2>
         <p class="subtitle">SPM Smart School Administration</p>
 
-        <form onsubmit="return handleLogin(event)">
+        <form onsubmit="handleLogin(event)">
             <div class="form-group">
                 <label for="username">Username</label>
                 <div class="input-container">
