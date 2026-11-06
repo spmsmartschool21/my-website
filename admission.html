@@ -5,37 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admissions | SPM Smart School</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#6A0DAD">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background-color: #000000; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
-        .top-info-bar { background: #09090b; border-bottom: 1px solid #27272a; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #a1a1aa; flex-wrap: wrap; gap: 10px; }
+        .top-info-bar { background: #09090b; border-bottom: 1px solid #27272a; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #a1a1aa; }
         .top-info-content { display: flex; gap: 20px; flex-wrap: wrap; }
-        .top-admin-link { color: #fbbf24; text-decoration: none; font-weight: 700; }
+        .top-admin-link { color: #A855F7; text-decoration: none; font-weight: 700; }
         header { background: rgba(0, 0, 0, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #27272a; backdrop-filter: blur(10px); }
         .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .brand img { height: 45px; width: auto; object-fit: contain; }
         .brand-text h1 { font-size: 1.15rem; color: #ffffff; font-weight: 800; }
-        .brand-text p { font-size: 0.62rem; color: #a1a1aa; font-weight: 700; text-transform: uppercase; }
+        .brand-text p { font-size: 0.62rem; color: #A855F7; font-weight: 700; text-transform: uppercase; }
         .hamburger { display: none; font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
         .nav-menu { display: flex; gap: 15px; list-style: none; font-size: 0.85rem; align-items: center; }
         .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; transition: color 0.3s; padding: 5px 0; }
-        .nav-menu a:hover, .nav-menu a.active { color: #ffffff; }
+        .nav-menu a:hover, .nav-menu a.active { color: #A855F7; }
         .dropdown { position: relative; }
         .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #121212; border: 1px solid #27272a; border-radius: 8px; min-width: 190px; z-index: 100; overflow: hidden; }
         .dropdown-content a { display: block; padding: 12px 16px; color: #a1a1aa; font-size: 0.82rem; border-bottom: 1px solid #27272a; }
         .dropdown-content a:hover { background: #1c1c21; color: #ffffff; }
         .dropdown:hover .dropdown-content { display: block; }
-        .btn-apply-nav { background: #d97706; color: #ffffff !important; padding: 8px 16px !important; border-radius: 6px; font-weight: 700 !important; }
+        .btn-apply-nav { background: #6A0DAD; color: #ffffff !important; padding: 8px 16px !important; border-radius: 6px; font-weight: 700 !important; }
 
-        .page-header { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('images/CAMPUS/FRONT_SIDE.jpg'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; border-bottom: 1px solid #27272a; }
-        .page-header h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        .page-header p { color: #a1a1aa; font-size: 0.88rem; max-width: 600px; margin: 0 auto; }
+        .page-header { background: linear-gradient(rgba(106, 13, 173, 0.7), rgba(0,0,0,0.9)), url('images/CAMPUS/FRONT_SIDE.jpg'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; border-bottom: 1px solid #27272a; }
+        .page-header h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; }
+        .page-header p { color: #F3E8FF; font-size: 0.88rem; max-width: 600px; margin: 0 auto; }
 
         .container { max-width: 800px; margin: 50px auto; padding: 0 20px; }
-        .card { background: #121212; border: 1px solid #27272a; border-radius: 14px; padding: 35px; margin-bottom: 40px; overflow: visible; }
+        .card { background: #121212; border: 1px solid #27272a; border-radius: 14px; padding: 25px; margin-bottom: 40px; overflow: visible; width: 100%; }
         .card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 20px; color: #ffffff; }
+        
         .card iframe {
             width: 100% !important;
             max-width: 100% !important;
@@ -44,9 +45,10 @@
             background: transparent;
             display: block;
         }
-        
-        .pdf-download-box { background: #18181b; border: 1px solid #27272a; border-radius: 10px; padding: 25px; text-align: center; margin-top: 30px; }
-        .pdf-btn { display: inline-block; margin-top: 15px; background: #ffffff; color: #000000; padding: 10px 24px; border-radius: 6px; font-weight: 800; text-decoration: none; font-size: 0.88rem; }
+
+        .pdf-download-box { background: #121212; border: 1px solid #27272a; border-radius: 14px; padding: 25px; text-align: center; margin-top: 30px; }
+        .pdf-btn { display: inline-block; margin-top: 15px; background: #6A0DAD; color: #ffffff; padding: 12px 24px; border-radius: 6px; font-weight: 800; text-decoration: none; font-size: 0.88rem; box-shadow: 0 4px 15px rgba(106,13,173,0.3); }
+        .pdf-btn:hover { background: #580c91; }
 
         footer { background: #121212; border-top: 1px solid #27272a; padding: 50px 20px 30px; color: #a1a1aa; font-size: 0.88rem; margin-top: 80px; width: 100%; display: block; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 40px; }
@@ -60,15 +62,7 @@
         .social-icons { display: flex; gap: 12px; margin-top: 15px; }
         .social-icons a { background: #18181b; border: 1px solid #27272a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.9rem; }
         .footer-bottom { text-align: center; border-top: 1px solid #27272a; padding-top: 25px; font-size: 0.8rem; color: #71717a; }
-        
-        @media(max-width: 900px) { 
-            .hamburger { display: block; } 
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } 
-            .nav-menu.show { display: flex; } 
-            .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.02); padding-left: 15px; display: none; } 
-            .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { display: block; }
-            .card { padding: 15px; }
-        }
+        @media(max-width: 900px) { .hamburger { display: block; } .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } .nav-menu.show { display: flex; } .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.02); padding-left: 15px; } }
     </style>
 </head>
 <body>
@@ -126,13 +120,13 @@
 
     <div class="page-header">
         <h2>Admission Portal 2026-27</h2>
-        <p>Submit your online registration or download admission documents below.</p>
+        <p>Submit your online registration form or download admission documents below.</p>
     </div>
 
     <div class="container">
         <div class="card">
             <h3>Online Application Form</h3>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfc4K4DLxEPBVT4lezP_EQHEaELO6W40IPDSS59GqwTmXDSZA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfc4K4DLxEPBVT4lezP_EQHEaELO6W40IPDSS59GqwTmXDSZA/viewform?embedded=true" width="640" height="1301" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
 
         <div class="pdf-download-box">
