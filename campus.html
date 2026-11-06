@@ -5,63 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infrastructure & Labs | SPM Smart School</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#6A0DAD">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: #000000; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
-        .top-info-bar { background: #09090b; border-bottom: 1px solid #27272a; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #a1a1aa; flex-wrap: wrap; gap: 10px; }
+        body { background-color: #F3E8FF; color: #2D2D2D; line-height: 1.6; overflow-x: hidden; }
+        .top-info-bar { background: #520984; border-bottom: 1px solid #A855F7; padding: 8px 25px; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: #F3E8FF; }
         .top-info-content { display: flex; gap: 20px; flex-wrap: wrap; }
-        .top-admin-link { color: #fbbf24; text-decoration: none; font-weight: 700; }
-        header { background: rgba(0, 0, 0, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #27272a; backdrop-filter: blur(10px); }
+        .top-admin-link { color: #FFD700; text-decoration: none; font-weight: 700; }
+        header { background: rgba(106, 13, 173, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #A855F7; backdrop-filter: blur(10px); }
         .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .brand img { height: 45px; width: auto; object-fit: contain; }
+        .brand img { height: 45px; width: auto; object-fit: contain; background: #ffffff; border-radius: 50%; padding: 2px; }
         .brand-text h1 { font-size: 1.15rem; color: #ffffff; font-weight: 800; }
-        .brand-text p { font-size: 0.62rem; color: #a1a1aa; font-weight: 700; text-transform: uppercase; }
+        .brand-text p { font-size: 0.62rem; color: #F3E8FF; font-weight: 700; text-transform: uppercase; }
         .hamburger { display: none; font-size: 24px; cursor: pointer; color: #ffffff; background: none; border: none; }
         .nav-menu { display: flex; gap: 15px; list-style: none; font-size: 0.85rem; align-items: center; }
-        .nav-menu a { text-decoration: none; color: #a1a1aa; font-weight: 600; transition: color 0.3s; padding: 5px 0; }
-        .nav-menu a:hover, .nav-menu a.active { color: #ffffff; }
+        .nav-menu a { text-decoration: none; color: #F3E8FF; font-weight: 600; transition: color 0.3s; padding: 5px 0; }
+        .nav-menu a:hover, .nav-menu a.active { color: #FFD700; }
         .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #121212; border: 1px solid #27272a; border-radius: 8px; min-width: 190px; z-index: 100; overflow: hidden; }
-        .dropdown-content a { display: block; padding: 12px 16px; color: #a1a1aa; font-size: 0.82rem; border-bottom: 1px solid #27272a; }
-        .dropdown-content a:hover { background: #1c1c21; color: #ffffff; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #6A0DAD; border: 1px solid #A855F7; border-radius: 8px; min-width: 190px; z-index: 100; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .dropdown-content a { display: block; padding: 12px 16px; color: #F3E8FF; font-size: 0.82rem; border-bottom: 1px solid #A855F7; }
+        .dropdown-content a:hover { background: #520984; color: #ffffff; }
         .dropdown:hover .dropdown-content { display: block; }
-        .btn-apply-nav { background: #d97706; color: #ffffff !important; padding: 8px 16px !important; border-radius: 6px; font-weight: 700 !important; }
+        .btn-apply-nav { background: #A855F7; color: #ffffff !important; padding: 8px 16px !important; border-radius: 6px; font-weight: 700 !important; }
 
-        .page-header { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('images/CAMPUS/FRONT_SIDE.jpg'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; border-bottom: 1px solid #27272a; }
+        .page-header { background: linear-gradient(135deg, #6A0DAD 0%, #A855F7 100%); padding: 60px 20px; text-align: center; border-bottom: 3px solid #520984; color: #ffffff; }
         .page-header h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        .page-header p { color: #a1a1aa; font-size: 0.88rem; max-width: 600px; margin: 0 auto; }
+        .page-header p { color: #F3E8FF; font-size: 0.88rem; max-width: 600px; margin: 0 auto; }
 
         .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
-        .infra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .infra-card { background: #121212; border: 1px solid #27272a; border-radius: 14px; overflow: hidden; }
-        .infra-img-box { width: 100%; height: 200px; background: #18181b; }
+        .infra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .infra-card { background: #ffffff; border: 1px solid #D8B4FE; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 20px rgba(106, 13, 173, 0.05); }
+        .infra-img-box { width: 100%; height: 200px; background: #F3E8FF; }
         .infra-img-box img { width: 100%; height: 100%; object-fit: cover; }
         .infra-content { padding: 25px; }
-        .infra-content h4 { font-size: 1.2rem; font-weight: 800; color: #ffffff; margin-bottom: 8px; }
-        .infra-content p { font-size: 0.88rem; color: #a1a1aa; }
+        .infra-content h4 { font-size: 1.2rem; font-weight: 800; color: #6A0DAD; margin-bottom: 8px; }
+        .infra-content p { font-size: 0.88rem; color: #4B5563; }
 
-        footer { background: #121212; border-top: 1px solid #27272a; padding: 50px 20px 30px; color: #a1a1aa; font-size: 0.88rem; margin-top: 80px; width: 100%; display: block; }
+        footer { background: #520984; border-top: 1px solid #A855F7; padding: 50px 20px 30px; color: #F3E8FF; font-size: 0.88rem; margin-top: 80px; width: 100%; display: block; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer-col h4 { color: #ffffff; font-size: 1rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .footer-col p { font-size: 0.85rem; margin-bottom: 15px; color: #d4d4d8; }
+        .footer-col h4 { color: #ffffff; font-size: 1rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
+        .footer-col p { font-size: 0.85rem; margin-bottom: 15px; color: #F3E8FF; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: #a1a1aa; text-decoration: none; transition: color 0.2s; font-size: 0.85rem; }
-        .footer-links a:hover { color: #ffffff; }
+        .footer-links a { color: #F3E8FF; text-decoration: none; font-size: 0.85rem; }
+        .footer-links a:hover { color: #FFD700; }
         .contact-info-list p { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; }
         .social-icons { display: flex; gap: 12px; margin-top: 15px; }
-        .social-icons a { background: #18181b; border: 1px solid #27272a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.9rem; }
-        .footer-bottom { text-align: center; border-top: 1px solid #27272a; padding-top: 25px; font-size: 0.8rem; color: #71717a; }
-        
-        @media(max-width: 900px) { 
-            .hamburger { display: block; } 
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #121212; padding: 20px; gap: 15px; border-bottom: 1px solid #27272a; } 
-            .nav-menu.show { display: flex; } 
-            .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.02); padding-left: 15px; display: none; } 
-            .dropdown:hover .dropdown-content, .dropdown.active .dropdown-content { display: block; }
-        }
+        .social-icons a { background: #6A0DAD; border: 1px solid #A855F7; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.9rem; }
+        .footer-bottom { text-align: center; border-top: 1px solid #A855F7; padding-top: 25px; font-size: 0.8rem; color: #D8B4FE; }
+        @media(max-width: 900px) { .hamburger { display: block; } .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #6A0DAD; padding: 20px; gap: 15px; border-bottom: 1px solid #A855F7; } .nav-menu.show { display: flex; } .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(0,0,0,0.1); padding-left: 15px; } }
     </style>
 </head>
 <body>
