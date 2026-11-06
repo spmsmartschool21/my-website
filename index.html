@@ -5,103 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPM Smart School | Merapani, Bijaypur</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6A0DAD">
+    <meta name="theme-color" content="#800020">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: #F8F5FF; color: #2D2D2D; line-height: 1.6; overflow-x: hidden; }
+        :root {
+            --primary: #800020;
+            --primary-dark: #500014;
+            --accent-gold: #d4af37;
+            --accent-gold-light: #f3e5ab;
+            --bg-dark: #0b0d17;
+            --card-bg: rgba(20, 24, 38, 0.85);
+            --border-color: rgba(212, 175, 55, 0.25);
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+        }
 
-        .top-info-bar { background: #581C87; border-bottom: 1px solid #7E22CE; padding: 8px 25px; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; color: #E9D5FF; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Times New Roman', Times, 'Segoe UI', serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* Top Info Bar */
+        .top-info-bar { background: var(--primary-dark); border-bottom: 1px solid var(--border-color); padding: 8px 25px; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; color: var(--accent-gold-light); }
         .top-info-content { display: flex; gap: 20px; flex-wrap: wrap; }
-        .top-admin-link { color: #FDE047; text-decoration: none; font-weight: 700; transition: color 0.2s; }
+        .top-admin-link { color: var(--accent-gold); text-decoration: none; font-weight: 700; transition: color 0.2s; }
         .top-admin-link:hover { color: #ffffff; }
 
-        header { background: #6A0DAD; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #A855F7; box-shadow: 0 4px 15px rgba(106,13,173,0.15); }
+        /* Header Navigation */
+        header { background: rgba(11, 13, 23, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--accent-gold); backdrop-filter: blur(10px); }
         .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .brand img { height: 45px; width: auto; object-fit: contain; background: #fff; border-radius: 50%; padding: 2px; }
-        .brand-text h1 { font-size: 1.2rem; color: #ffffff; font-weight: 800; letter-spacing: 0.5px; }
-        .brand-text p { font-size: 0.65rem; color: #F3E8FF; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .brand img { height: 48px; width: auto; object-fit: contain; }
+        .brand-text h1 { font-size: 1.25rem; color: #ffffff; font-weight: 800; letter-spacing: 1px; font-family: 'Times New Roman', serif; }
+        .brand-text p { font-size: 0.65rem; color: var(--accent-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        .hamburger { display: none; font-size: 26px; cursor: pointer; color: #ffffff; background: none; border: none; }
-        .nav-menu { display: flex; gap: 15px; list-style: none; font-size: 0.9rem; align-items: center; }
-        .nav-menu a { text-decoration: none; color: #F3E8FF; font-weight: 600; transition: all 0.3s; padding: 6px 10px; border-radius: 6px; }
-        .nav-menu a:hover, .nav-menu a.active { color: #ffffff; background: rgba(255, 255, 255, 0.15); }
+        .hamburger { display: none; font-size: 26px; cursor: pointer; color: var(--accent-gold); background: none; border: none; }
+        .nav-menu { display: flex; gap: 14px; list-style: none; font-size: 0.88rem; align-items: center; font-family: 'Segoe UI', sans-serif; }
+        .nav-menu a { text-decoration: none; color: var(--text-muted); font-weight: 600; transition: color 0.3s; padding: 6px 0; }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--accent-gold); border-bottom: 2px solid var(--accent-gold); }
 
         .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #ffffff; border: 1px solid #E9D5FF; border-radius: 8px; min-width: 190px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 100; overflow: hidden; }
-        .dropdown-content a { display: block; padding: 12px 16px; color: #2D2D2D; font-size: 0.85rem; border-bottom: 1px solid #F3E8FF; }
-        .dropdown-content a:last-child { border-bottom: none; }
-        .dropdown-content a:hover { background: #F3E8FF; color: #6A0DAD; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #141826; border: 1px solid var(--border-color); border-radius: 8px; min-width: 200px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 100; overflow: hidden; }
+        .dropdown-content a { display: block; padding: 12px 16px; color: var(--text-muted); font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-content a:hover { background: var(--primary); color: #ffffff; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        .btn-apply-nav { background: #A855F7; color: #ffffff !important; padding: 8px 18px !important; border-radius: 20px; font-weight: 700 !important; box-shadow: 0 2px 8px rgba(168,85,247,0.4); }
-        .btn-apply-nav:hover { background: #9333EA !important; }
+        .btn-apply-nav { background: var(--primary); color: #ffffff !important; padding: 8px 18px !important; border-radius: 6px; font-weight: 700 !important; border: 1px solid var(--accent-gold); }
 
-        .hero-section { position: relative; background: linear-gradient(135deg, rgba(106, 13, 173, 0.9), rgba(168, 85, 247, 0.85)), url('images/CAMPUS/FRONT_SIDE.jpg'); background-size: cover; background-position: center; padding: 90px 20px; text-align: center; color: #ffffff; border-bottom: 3px solid #A855F7; }
-        .hero-badges { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
-        .hero-badge-item { background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.4); padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .hero-title { font-size: 2.8rem; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        .hero-subtitle { font-size: 1.1rem; color: #F3E8FF; max-width: 750px; margin: 0 auto 30px; font-weight: 500; }
-        .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .btn-primary { background: #ffffff; color: #6A0DAD; padding: 12px 28px; border-radius: 25px; font-weight: 800; text-decoration: none; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: transform 0.2s; }
-        .btn-primary:hover { transform: translateY(-2px); }
-        .btn-secondary { background: rgba(255, 255, 255, 0.15); border: 2px solid #ffffff; color: #ffffff; padding: 12px 28px; border-radius: 25px; font-weight: 700; text-decoration: none; font-size: 0.95rem; }
-        .btn-secondary:hover { background: #ffffff; color: #6A0DAD; }
+        /* Flash Screen */
+        #flash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s ease, visibility 0.6s ease; }
+        #flash-screen.fade-out { opacity: 0; visibility: hidden; }
+        .flash-logo-box { width: 95px; height: 95px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; border: 3px solid var(--accent-gold); box-shadow: 0 0 35px rgba(212,175,55,0.4); }
+        .flash-logo-box img { width: 70px; height: 70px; object-fit: contain; }
+        .flash-title { font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; color: var(--accent-gold); text-align: center; text-transform: uppercase; }
+        .flash-subtitle { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; font-weight: 700; margin-top: 5px; }
 
-        .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .section-tag { color: #A855F7; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 5px; }
-        .section-heading { font-size: 2.1rem; font-weight: 900; color: #6A0DAD; }
+        /* Hero Section */
+        .hero-section { position: relative; background: linear-gradient(rgba(11, 13, 23, 0.75), rgba(11, 13, 23, 0.9)), url('images/CAMPUS/FRONT_SIDE.jpg'); background-size: cover; background-position: center; padding: 110px 20px 90px; text-align: center; border-bottom: 3px solid var(--accent-gold); }
+        .hero-badges { display: flex; gap: 12px; justify-content: center; margin-bottom: 25px; flex-wrap: wrap; }
+        .hero-badge-item { background: rgba(128, 0, 32, 0.85); border: 1px solid var(--accent-gold); color: var(--accent-gold-light); padding: 6px 18px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Segoe UI', sans-serif; }
+        .hero-title { font-size: 3rem; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-gold); text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        .hero-subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 35px; font-weight: 400; }
+        .hero-buttons { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; font-family: 'Segoe UI', sans-serif; }
+        .btn-primary { background: var(--primary); color: #ffffff; padding: 14px 32px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.95rem; border: 1px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(128,0,32,0.4); }
+        .btn-secondary { background: rgba(20, 24, 38, 0.8); border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 14px 32px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; }
 
-        .about-text-block { background: #ffffff; border: 1px solid #E9D5FF; border-radius: 16px; padding: 35px; margin-bottom: 50px; box-shadow: 0 4px 20px rgba(106,13,173,0.05); }
-        .about-text-block p { font-size: 1rem; color: #4A4A4A; margin-bottom: 15px; }
-        .feature-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 25px; }
-        .feature-item { background: #F3E8FF; padding: 14px 18px; border-radius: 10px; border: 1px solid #E9D5FF; font-size: 0.9rem; font-weight: 700; color: #6A0DAD; display: flex; align-items: center; gap: 8px; }
+        /* Container & Grid Elements */
+        .container { max-width: 1150px; margin: 60px auto; padding: 0 20px; }
+        .section-header { text-align: center; margin-bottom: 45px; }
+        .section-tag { color: var(--accent-gold); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 6px; font-family: 'Segoe UI', sans-serif; }
+        .section-heading { font-size: 2.2rem; font-weight: 900; color: #ffffff; }
 
-        .env-card { background: #ffffff; border: 1px solid #E9D5FF; border-radius: 16px; overflow: hidden; margin-bottom: 60px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; box-shadow: 0 4px 20px rgba(106,13,173,0.05); }
-        .env-img-box { width: 100%; height: 100%; min-height: 280px; background: #F3E8FF; }
+        .about-text-block { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 35px; margin-bottom: 50px; }
+        .about-text-block p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 15px; }
+        .feature-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 15px; margin-top: 25px; font-family: 'Segoe UI', sans-serif; }
+        .feature-item { background: rgba(128, 0, 32, 0.3); padding: 14px 18px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 0.9rem; font-weight: 600; color: var(--accent-gold-light); display: flex; align-items: center; gap: 8px; }
+
+        .env-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; margin-bottom: 60px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+        .env-img-box { width: 100%; height: 100%; min-height: 280px; background: #000; }
         .env-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .env-content { padding: 35px; }
-        .env-content h3 { font-size: 1.5rem; font-weight: 800; color: #6A0DAD; margin-bottom: 10px; }
-        .env-content p { color: #555; font-size: 0.95rem; margin-bottom: 20px; }
+        .env-content h3 { font-size: 1.6rem; font-weight: 800; color: var(--accent-gold); margin-bottom: 12px; }
+        .env-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
 
         .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 60px; }
-        .pillar-card { background: #ffffff; border: 1px solid #E9D5FF; border-radius: 14px; padding: 25px; transition: transform 0.2s, border-color 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .pillar-card:hover { transform: translateY(-4px); border-color: #A855F7; }
-        .pillar-card h4 { font-size: 1.15rem; font-weight: 800; color: #6A0DAD; margin-bottom: 8px; }
-        .pillar-card p { font-size: 0.9rem; color: #555; }
+        .pillar-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; transition: transform 0.2s, border-color 0.2s; }
+        .pillar-card:hover { transform: translateY(-4px); border-color: var(--accent-gold); }
+        .pillar-card h4 { font-size: 1.2rem; font-weight: 700; color: var(--accent-gold); margin-bottom: 10px; }
+        .pillar-card p { font-size: 0.9rem; color: var(--text-muted); }
 
-        .message-card { background: #ffffff; border: 1px solid #E9D5FF; border-left: 6px solid #6A0DAD; border-radius: 14px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .message-card h3 { font-size: 1.4rem; font-weight: 800; color: #6A0DAD; margin-bottom: 15px; }
-        .message-card blockquote { font-style: italic; color: #4A4A4A; font-size: 0.98rem; margin-bottom: 25px; background: #F3E8FF; padding: 15px 20px; border-radius: 8px; }
-        .author-box { display: flex; align-items: center; gap: 15px; }
-        .author-img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #A855F7; overflow: hidden; }
+        .message-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 35px; margin-bottom: 30px; position: relative; }
+        .message-card::before { content: '“'; position: absolute; top: 15px; right: 25px; font-size: 5rem; color: var(--border-color); font-family: Georgia, serif; line-height: 1; }
+        .message-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; color: var(--accent-gold); }
+        .message-card blockquote { font-style: italic; color: var(--text-muted); font-size: 1rem; margin-bottom: 25px; border-left: 3px solid var(--accent-gold); padding-left: 18px; }
+        .author-box { display: flex; align-items: center; gap: 15px; border-top: 1px solid var(--border-color); padding-top: 20px; }
+        .author-img { width: 60px; height: 60px; border-radius: 50%; overflow: hidden; background: #000; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent-gold); }
         .author-img img { width: 100%; height: 100%; object-fit: cover; }
-        .author-info h4 { font-size: 1.05rem; font-weight: 800; color: #2D2D2D; }
-        .author-info p { font-size: 0.82rem; color: #6A0DAD; font-weight: 600; }
+        .author-info h4 { font-size: 1.05rem; font-weight: 700; color: #ffffff; }
+        .author-info p { font-size: 0.8rem; color: var(--accent-gold-light); font-family: 'Segoe UI', sans-serif; }
 
-        footer { background: #581C87; color: #E9D5FF; padding: 50px 20px 30px; font-size: 0.9rem; margin-top: 80px; }
+        /* Footer */
+        footer { background: #060810; border-top: 2px solid var(--accent-gold); padding: 50px 20px 30px; color: var(--text-muted); font-size: 0.9rem; font-family: 'Segoe UI', sans-serif; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer-col h4 { color: #ffffff; font-size: 1.05rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; border-bottom: 2px solid #A855F7; padding-bottom: 5px; display: inline-block; }
+        .footer-col h4 { color: var(--accent-gold); font-size: 1.05rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Times New Roman', serif; }
+        .footer-col p { font-size: 0.88rem; margin-bottom: 15px; color: var(--text-muted); }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: #E9D5FF; text-decoration: none; transition: color 0.2s; }
-        .footer-links a:hover { color: #ffffff; text-decoration: underline; }
-        .footer-bottom { text-align: center; border-top: 1px solid #7E22CE; padding-top: 25px; font-size: 0.85rem; color: #D8B4FE; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-size: 0.88rem; }
+        .footer-links a:hover { color: var(--accent-gold); }
+        .contact-info-list p { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.88rem; }
+        .social-icons { display: flex; gap: 12px; margin-top: 15px; }
+        .social-icons a { background: var(--primary-dark); border: 1px solid var(--accent-gold); width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; text-decoration: none; font-size: 0.95rem; }
+        .footer-bottom { text-align: center; border-top: 1px solid var(--border-color); padding-top: 25px; font-size: 0.82rem; color: #64748b; }
 
         @media(max-width: 900px) {
             .hamburger { display: block; }
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #6A0DAD; padding: 20px; gap: 15px; border-bottom: 2px solid #A855F7; }
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #141826; padding: 20px; gap: 15px; border-bottom: 2px solid var(--accent-gold); }
             .nav-menu.show { display: flex; }
-            .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.1); }
-            .dropdown-content a { color: #ffffff; }
+            .dropdown-content { position: static; box-shadow: none; border: none; background: rgba(255,255,255,0.05); padding-left: 15px; }
             .env-card { grid-template-columns: 1fr; }
-            .hero-title { font-size: 2rem; }
+            .hero-title { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Flash Intro Screen -->
+    <div id="flash-screen">
+        <div class="flash-logo-box">
+            <img src="images/logo.png" alt="SPM Logo" onerror="this.src='logo.png'">
+        </div>
+        <h2 class="flash-title">SPM Smart School</h2>
+        <p class="flash-subtitle">Merapani :: Bijaypur</p>
+    </div>
+
+    <!-- Top Contact & Admin Bar -->
     <div class="top-info-bar">
         <div class="top-info-content">
             <span>📞 +91 91011 68413, +91 91010 13880</span>
@@ -110,6 +145,7 @@
         <a href="admin.html" class="top-admin-link">⚙️ Admin Portal</a>
     </div>
 
+    <!-- Header & Navigation -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="brand">
@@ -153,20 +189,23 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-badges">
             <span class="hero-badge-item">Admissions Open 2026-27</span>
             <span class="hero-badge-item">English Medium Primary Institution</span>
         </div>
         <h2 class="hero-title">SPM SMART SCHOOL</h2>
-        <p class="hero-subtitle">Quality education with discipline, guidance, creative exploration, and holistic character development.</p>
+        <p class="hero-subtitle">Sunaprova Phukan Memorial Smart School, Merapani. Dedicated to academic excellence, creative exploration, and holistic character development.</p>
+       
         <div class="hero-buttons">
-            <a href="admission.html" class="btn-primary">Apply Online &rarr;</a>
+            <a href="admission.html" class="btn-primary">Apply Online</a>
             <a href="campus.html" class="btn-secondary">Explore Campus</a>
         </div>
     </section>
 
     <div class="container">
+        <!-- Welcome & About -->
         <div class="section-header">
             <span class="section-tag">Welcome to SPM</span>
             <h3 class="section-heading">A Beacon of Educational Growth</h3>
@@ -182,17 +221,22 @@
             </div>
         </div>
 
+        <!-- Social Work & Environment Day Photo Section -->
         <div class="env-card">
             <div class="env-img-box">
-                <img src="images/students/plantation.jpg" alt="World Environment Day" onerror="this.src='images/logo.png'">
+                <img src="images/students/plantation.jpg" alt="World Environment Day" onerror="this.src='images/students/student_1.jpg'">
+            </div>
+            <div class="env-img-box">
+                <img src="images/students/plantation(1).jpg" alt="World Environment Day" onerror="this.src='images/students/student_1.jpg'">
             </div>
             <div class="env-content">
                 <h3>Green Campus & Social Drives</h3>
                 <p>Our students actively participate in social service drives, tree plantation activities, and environmental awareness programs to foster social responsibility from an early age.</p>
-                <a href="gallery.html" class="btn-primary">View Activity Gallery &rarr;</a>
+                <a href="gallery.html" class="btn-secondary">View Activity Gallery &rarr;</a>
             </div>
         </div>
 
+        <!-- Why Choose SPM -->
         <div class="section-header">
             <span class="section-tag">Our Educational Pillars</span>
             <h3 class="section-heading">Why Choose SPM Smart School</h3>
@@ -212,6 +256,7 @@
             </div>
         </div>
 
+        <!-- Management Messages -->
         <div class="section-header">
             <span class="section-tag">Institutional Leadership</span>
             <h3 class="section-heading">Messages from Management</h3>
@@ -224,36 +269,95 @@
             </blockquote>
             <div class="author-box">
                 <div class="author-img">
-                    <img src="images/staff/Managing director.jpeg" alt="Managing Director" onerror="this.src='images/logo.png'">
+                    <img src="images/staff/Managing director.jpeg" alt="Managing Director" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span style="display:none;">MD</span>
                 </div>
                 <div class="author-info">
                     <h4>Mr. Rajib Phukan</h4>
-                    <p>Managing Director & Administrator (B.Com.)</p>
+                    <p>Managing Director & Administrator</p>
+                    <p>B.Com.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-card">
+            <h3>Principal's Message</h3>
+            <blockquote>
+                "Education is not just the learning of facts, but the training of the mind to think. We strive to create a vibrant atmosphere that fosters critical inquiry, emotional intelligence, and character building."
+            </blockquote>
+            <div class="author-box">
+                <div class="author-img">
+                    <img src="images/staff/principal desk.jpg" alt="Principal" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span style="display:none;">P</span>
+                </div>
+                <div class="author-info">
+                    <h4>Mr. Liladhar Konwar</h4>
+                    <h4>Principal</h4>
+                    <p>Head of Institution</p>
+                    <p>M.A., D.El.Ed., TET</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-card">
+            <h3>Vice Principal's Message</h3>
+            <blockquote>
+                "We are committed to nurturing every child's unique talents through personalized mentoring, disciplined guidance, and a supportive academic environment."
+            </blockquote>
+            <div class="author-box">
+                <div class="author-img">
+                    <img src="images/staff/vice_principal's desk.jpg" alt="Vice Principal" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span style="display:none;">VP</span>
+                </div>
+                <div class="author-info">
+                    <h4>Miss Aisha Begum</h4>
+                    <h4>Vice Principal</h4>
+                    <p>Academic Administration</p>
+                    <p>B.A. (Education)</p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-col">
                 <h4>SPM Smart School</h4>
                 <p>Co-educational English Medium Primary Institution dedicated to nurturing young minds with holistic education and digital learning tools.</p>
+                <div class="social-icons">
+                    <a href="#" target="_blank">f</a>
+                    <a href="#" target="_blank">📷</a>
+                    <a href="admin.html" title="Admin Portal">⚙️</a>
+                </div>
             </div>
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">Who We Are</a></li>
-                    <li><a href="academics.html">Curriculum</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="index.html">&rarr; Home</a></li>
+                    <li><a href="about.html">&rarr; Who We Are</a></li>
+                    <li><a href="staff.html">&rarr; Our Faculty</a></li>
+                    <li><a href="academics.html">&rarr; Curriculum</a></li>
+                    <li><a href="contact.html">&rarr; Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Admissions & Info</h4>
+                <ul class="footer-links">
+                    <li><a href="admission.html">&rarr; Admission Process</a></li>
+                    <li><a href="downloads.html">&rarr; Download Forms</a></li>
+                    <li><a href="notices.html">&rarr; News & Circulars</a></li>
+                    <li><a href="tools.html">&rarr; Student Tools</a></li>
+                    <li><a href="admin.html">&rarr; Admin Portal</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Contact Info</h4>
-                <p>📍 Merapani, Bijaypur, Golaghat, Assam - 785705</p>
-                <p>📞 +91 91011 68413 / +91 91010 13880</p>
-                <p>✉️ spmsmartschool2021@gmail.com</p>
+                <div class="contact-info-list">
+                    <p>📍 Merapani, Bijaypur, Golaghat, Assam, India - 785705</p>
+                    <p>📞 +91 91011 68413<br>&nbsp;&nbsp;&nbsp;&nbsp;+91 91010 13880</p>
+                    <p>✉️ spmsmartschool2021@gmail.com</p>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -261,6 +365,14 @@
         </div>
     </footer>
 
-    <script>function toggleMenu() { document.getElementById("navMenu").classList.toggle("show"); }</script>
+    <script>
+        function toggleMenu() { document.getElementById("navMenu").classList.toggle("show"); }
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const flash = document.getElementById('flash-screen');
+                if (flash) flash.classList.add('fade-out');
+            }, 1200);
+        });
+    </script>
 </body>
 </html>
