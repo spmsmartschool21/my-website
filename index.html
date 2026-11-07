@@ -6,6 +6,7 @@
     <title>SPM Smart School | Merapani, Bijaypur</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6A0DAD">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background-color: #F3E8FF; color: #2D2D2D; line-height: 1.6; overflow-x: hidden; }
@@ -40,16 +41,7 @@
         .btn-apply-nav { background: #A855F7; color: #ffffff !important; padding: 8px 16px !important; border-radius: 6px; font-weight: 700 !important; transition: opacity 0.2s; }
         .btn-apply-nav:hover { opacity: 0.9; }
 
-        /* Flash Screen */
-        #flash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #6A0DAD; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s ease, visibility 0.6s ease; }
-        #flash-screen.fade-out { opacity: 0; visibility: hidden; }
-        .flash-logo-box { width: 90px; height: 90px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 30px rgba(255,255,255,0.2); animation: pulseGlow 1.5s infinite alternate; }
-        .flash-logo-box img { width: 65px; height: 65px; object-fit: contain; }
-        .flash-title { font-size: 1.6rem; font-weight: 900; letter-spacing: 2px; color: #ffffff; text-align: center; margin-bottom: 8px; text-transform: uppercase; }
-        .flash-subtitle { font-size: 0.8rem; color: #F3E8FF; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
-        @keyframes pulseGlow { 0% { transform: scale(1); box-shadow: 0 0 15px rgba(255,255,255,0.1); } 100% { transform: scale(1.05); box-shadow: 0 0 35px rgba(255,255,255,0.3); } }
-
-        /* Hero Section - Matched to Style Reference */
+        /* Hero Section */
         .hero-section { background: linear-gradient(135deg, #6A0DAD 0%, #A855F7 100%); color: #ffffff; padding: 60px 20px; border-bottom: 3px solid #520984; position: relative; }
         .hero-wrapper { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: center; }
         .hero-text-side h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; }
@@ -135,15 +127,6 @@
     </style>
 </head>
 <body>
- <!-- Flash Intro Screen -->
-    <div id="flash-screen">
-        <div class="flash-logo-box">
-            <img src="images/logo.png" alt="SPM Logo" onerror="this.src='logo.png'">
-        </div>
-        <h2 class="flash-title">SPM Smart School</h2>
-        <p class="flash-subtitle">Merapani :: Bijaypur</p>
-    </div>
-
     <!-- Top Contact & Admin Bar -->
     <div class="top-info-bar">
         <div class="top-info-content">
@@ -197,7 +180,7 @@
         </div>
     </header>
 
-    <!-- Hero Section matching design reference -->
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-wrapper">
             <div class="hero-text-side">
@@ -389,12 +372,6 @@
 
     <script>
         function toggleMenu() { document.getElementById("navMenu").classList.toggle("show"); }
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const flash = document.getElementById('flash-screen');
-                if (flash) flash.classList.add('fade-out');
-            }, 1200);
-        });
 
         /* Automatic Student Birthday Wish CSV Reader */
         document.addEventListener("DOMContentLoaded", function() {
