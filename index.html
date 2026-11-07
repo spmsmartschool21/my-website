@@ -371,64 +371,69 @@
     </footer>
 
     <script>
-        function toggleMenu() { document.getElementById("navMenu").classList.toggle("show"); }
+    function toggleMenu() { document.getElementById("navMenu").classList.toggle("show"); }
 
-        /* Automatic Student Birthday Wish CSV Reader */
-        document.addEventListener("DOMContentLoaded", function() {
-            const today = new Date();
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            const todayFormatted = `${mm}-${dd}`;
+    /* Fast Non-Blocking Birthday Script */
+    document.addEventListener("DOMContentLoaded", function() {
+        const today = new Date();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        const todayFormatted = `${mm}-${dd}`;
 
-            fetch('birthdays.csv')
-                .then(response => response.text())
-                .then(csvText => {
-                    const lines = csvText.split('\n').map(line => line.trim()).filter(line => line !== '');
-                    if (lines.length <= 1) return;
+        // Added a 3-second timeout so the browser never hangs forever
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
 
-                    const students = [];
-                    for (let i = 1; i < lines.length; i++) {
-                        const values = lines[i].split(',').map(v => v.trim());
-                        if (values.length >= 3) {
-                            students.push({
-                                name: values[0],
-                                class: values[1],
-                                dob: values[2],
-                                photo: values[3] || 'images/students/student_1.jpg'
-                            });
-                        }
-                    }
+        fetch('birthdays.csv', { signal: controller.signal })
+            .then(response => response.text())
+            .then(csvText => {
+                clearTimeout(timeoutId);
+                const lines = csvText.split('\n').map(line => line.trim()).filter(line => line !== '');
+                if (lines.length <= 1) return;
 
-                    const birthdayStudents = students.filter(s => s.dob === todayFormatted);
-
-                    if (birthdayStudents.length > 0) {
-                        let containerHtml = '';
-                        birthdayStudents.forEach(student => {
-                            containerHtml += `
-                                <div style="margin-bottom: 20px;">
-                                    <img src="${student.photo}" onerror="this.src='images/students/student_1.jpg'" style="width:95px; height:95px; border-radius:50%; object-fit:cover; border:3px solid #FFD700; margin-bottom:10px; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
-                                    <h3 style="font-size:1.3rem; font-weight:800; color:#ffffff; margin-bottom:2px;">${student.name}</h3>
-                                    <p style="font-size:0.85rem; color:#FFD700; font-weight:700; text-transform:uppercase;">${student.class}</p>
-                                </div>
-                            `;
+                const students = [];
+                for (let i = 1; i < lines.length; i++) {
+                    const values = lines[i].split(',').map(v => v.trim());
+                    if (values.length >= 3) {
+                        students.push({
+                            name: values[0],
+                            class: values[1],
+                            dob: values[2],
+                            photo: values[3] || 'images/students/student_1.jpg'
                         });
-
-                        document.getElementById('birthdayStudentContent').innerHTML = containerHtml;
-
-                        if (!sessionStorage.getItem('birthdayShown')) {
-                            setTimeout(() => {
-                                document.getElementById('birthdayModal').style.display = 'flex';
-                            }, 1600);
-                        }
                     }
-                })
-                .catch(err => console.log('Birthday CSV verification bypassed:', err));
-        });
+                }
 
-        function closeBirthdayModal() {
-            document.getElementById('birthdayModal').style.display = 'none';
-            sessionStorage.setItem('birthdayShown', 'true');
-        }
-    </script>
+                const birthdayStudents = students.filter(s => s.dob === todayFormatted);
+
+                if (birthdayStudents.length > 0) {
+                    let containerHtml = '';
+                    birthdayStudents.forEach(student => {
+                        containerHtml += `
+                            <div style="margin-bottom: 20px;">
+                                <img src="${student.photo}" onerror="this.src='images/students/student_1.jpg'" style="width:95px; height:95px; border-radius:50%; object-fit:cover; border:3px solid #FFD700; margin-bottom:10px; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+                                <h3 style="font-size:1.3rem; font-weight:800; color:#ffffff; margin-bottom:2px;">${student.name}</h3>
+                                <p style="font-size:0.85rem; color:#FFD700; font-weight:700; text-transform:uppercase;">${student.class}</p>
+                            </div>
+                        `;
+                    });
+
+                    document.getElementById('birthdayStudentContent').innerHTML = containerHtml;
+
+                    if (!sessionStorage.getItem('birthdayShown')) {
+                        setTimeout(() => {
+                            document.getElementById('birthdayModal').style.display = 'flex';
+                        }, 500);
+                    }
+                }
+            })
+            .catch(err => console.log('Birthday load skipped safely:', err));
+    });
+
+    function closeBirthdayModal() {
+        document.getElementById('birthdayModal').style.display = 'none';
+        sessionStorage.setItem('birthdayShown', 'true');
+    }
+</script>
 </body>
 </html>
