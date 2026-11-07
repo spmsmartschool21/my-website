@@ -49,7 +49,7 @@
         .flash-subtitle { font-size: 0.8rem; color: #F3E8FF; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
         @keyframes pulseGlow { 0% { transform: scale(1); box-shadow: 0 0 15px rgba(255,255,255,0.1); } 100% { transform: scale(1.05); box-shadow: 0 0 35px rgba(255,255,255,0.3); } }
 
-        /* Hero Section */
+        /* Hero Section - Matched to Style Reference */
         .hero-section { background: linear-gradient(135deg, #6A0DAD 0%, #A855F7 100%); color: #ffffff; padding: 60px 20px; border-bottom: 3px solid #520984; position: relative; }
         .hero-wrapper { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: center; }
         .hero-text-side h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; }
@@ -135,7 +135,7 @@
     </style>
 </head>
 <body>
-    <!-- Flash Intro Screen -->
+ <!-- Flash Intro Screen -->
     <div id="flash-screen">
         <div class="flash-logo-box">
             <img src="images/logo.png" alt="SPM Logo" onerror="this.src='logo.png'">
@@ -197,7 +197,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section matching design reference -->
     <section class="hero-section">
         <div class="hero-wrapper">
             <div class="hero-text-side">
@@ -221,9 +221,9 @@
     <div class="container">
         <!-- Welcome & About -->
         <div class="section-header">
-    <span class="section-tag" style="font-size: 0.85rem; font-weight: 700; color: #6A0DAD; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">A Beacon of Educational Growth</span>
-    <h1 style="font-size: 2.6rem; font-weight: 900; color: #520984; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; letter-spacing: 1px; text-transform: uppercase; background: linear-gradient(135deg, #6A0DAD 0%, #A855F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Welcome to SPM</h1>
-</div>
+            <span class="section-tag" style="font-size: 0.85rem; font-weight: 700; color: #6A0DAD; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">A Beacon of Educational Growth</span>
+            <h1 style="font-size: 2.6rem; font-weight: 900; color: #520984; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; letter-spacing: 1px; text-transform: uppercase; background: linear-gradient(135deg, #6A0DAD 0%, #A855F7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Welcome to SPM</h1>
+        </div>
 
         <div class="about-text-block">
             <p>Sunaprova Phukan Memorial (SPM) Smart School stands as a premier learning institution in Merapani, Bijaypur. We offer a comprehensive educational experience designed to nurture young minds from their early foundational years up to Class V.</p>
@@ -332,7 +332,7 @@
             <div style="font-size: 3.2rem; margin-bottom: 5px;">🎉🎂🎈</div>
             <h2 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; color:#FFD700; letter-spacing: 1px;">Happy Birthday!</h2>
             <p style="font-size: 0.85rem; color:#F3E8FF; margin-bottom: 20px; font-weight:600;">SPM Smart School Family wishes you a wonderful & successful day!</p>
-           
+            
             <div id="birthdayStudentContent">
                 <!-- Dynamic student content populated from birthdays.csv -->
             </div>
@@ -396,7 +396,7 @@
             }, 1200);
         });
 
-        /* Automatic Birthday Wish CSV Reader */
+        /* Automatic Student Birthday Wish CSV Reader */
         document.addEventListener("DOMContentLoaded", function() {
             const today = new Date();
             const mm = String(today.getMonth() + 1).padStart(2, '0');
