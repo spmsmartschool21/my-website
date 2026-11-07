@@ -49,7 +49,7 @@
         .flash-subtitle { font-size: 0.8rem; color: #F3E8FF; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
         @keyframes pulseGlow { 0% { transform: scale(1); box-shadow: 0 0 15px rgba(255,255,255,0.1); } 100% { transform: scale(1.05); box-shadow: 0 0 35px rgba(255,255,255,0.3); } }
 
-        /* Hero Section - Matched to Style Reference */
+        /* Hero Section */
         .hero-section { background: linear-gradient(135deg, #6A0DAD 0%, #A855F7 100%); color: #ffffff; padding: 60px 20px; border-bottom: 3px solid #520984; position: relative; }
         .hero-wrapper { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: center; }
         .hero-text-side h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; }
@@ -100,6 +100,12 @@
         .author-info h4 { font-size: 1rem; font-weight: 700; color: #2D2D2D; }
         .author-info p { font-size: 0.78rem; color: #6A0DAD; font-weight: 600; }
 
+        /* Birthday Modal Animation */
+        @keyframes bdayPopUp {
+            0% { transform: scale(0.7); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
         /* Footer */
         footer { background: #520984; border-top: 1px solid #A855F7; padding: 50px 20px 30px; color: #F3E8FF; font-size: 0.88rem; margin-top: 80px; width: 100%; clear: both; display: block; }
         .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-bottom: 40px; }
@@ -129,7 +135,7 @@
     </style>
 </head>
 <body>
- <!-- Flash Intro Screen -->
+    <!-- Flash Intro Screen -->
     <div id="flash-screen">
         <div class="flash-logo-box">
             <img src="images/logo.png" alt="SPM Logo" onerror="this.src='logo.png'">
@@ -191,7 +197,7 @@
         </div>
     </header>
 
-    <!-- Hero Section matching design reference -->
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-wrapper">
             <div class="hero-text-side">
@@ -215,7 +221,7 @@
     <div class="container">
         <!-- Welcome & About -->
         <div class="section-header">
-            <h1> </h1><span class="section-tag">Welcome to SPM</span> </h1>
+            <span class="section-tag">Welcome to SPM</span>
             <h3 class="section-heading">A Beacon of Educational Growth</h3>
         </div>
 
@@ -319,6 +325,22 @@
         </div>
     </div>
 
+    <!-- Automatic Birthday Popup Modal -->
+    <div id="birthdayModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.65); z-index:99999; justify-content:center; align-items:center; backdrop-filter: blur(5px);">
+        <div style="background:linear-gradient(135deg, #6A0DAD 0%, #A855F7 100%); color:#ffffff; padding:35px 25px; border-radius:20px; text-align:center; max-width:420px; width:90%; box-shadow:0 15px 35px rgba(0,0,0,0.4); border: 3px solid #FFD700; position:relative; animation: bdayPopUp 0.5s ease-out;">
+            <span onclick="closeBirthdayModal()" style="position:absolute; top:12px; right:18px; font-size:24px; cursor:pointer; color:#FFD700; font-weight:bold;">&times;</span>
+            <div style="font-size: 3.2rem; margin-bottom: 5px;">🎉🎂🎈</div>
+            <h2 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; color:#FFD700; letter-spacing: 1px;">Happy Birthday!</h2>
+            <p style="font-size: 0.85rem; color:#F3E8FF; margin-bottom: 20px; font-weight:600;">SPM Smart School Family wishes you a wonderful & successful day!</p>
+           
+            <div id="birthdayStudentContent">
+                <!-- Dynamic student content populated from birthdays.csv -->
+            </div>
+
+            <button onclick="closeBirthdayModal()" style="background:#FFD700; color:#6A0DAD; border:none; padding:10px 25px; border-radius:8px; font-weight:800; cursor:pointer; font-size:0.9rem; text-transform:uppercase; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">Thank You! 🌟</button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-container">
@@ -373,6 +395,63 @@
                 if (flash) flash.classList.add('fade-out');
             }, 1200);
         });
+
+        /* Automatic Birthday Wish CSV Reader */
+        document.addEventListener("DOMContentLoaded", function() {
+            const today = new Date();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const todayFormatted = `${mm}-${dd}`;
+
+            fetch('birthdays.csv')
+                .then(response => response.text())
+                .then(csvText => {
+                    const lines = csvText.split('\n').map(line => line.trim()).filter(line => line !== '');
+                    if (lines.length <= 1) return;
+
+                    const students = [];
+                    for (let i = 1; i < lines.length; i++) {
+                        const values = lines[i].split(',').map(v => v.trim());
+                        if (values.length >= 3) {
+                            students.push({
+                                name: values[0],
+                                class: values[1],
+                                dob: values[2],
+                                photo: values[3] || 'images/students/student_1.jpg'
+                            });
+                        }
+                    }
+
+                    const birthdayStudents = students.filter(s => s.dob === todayFormatted);
+
+                    if (birthdayStudents.length > 0) {
+                        let containerHtml = '';
+                        birthdayStudents.forEach(student => {
+                            containerHtml += `
+                                <div style="margin-bottom: 20px;">
+                                    <img src="${student.photo}" onerror="this.src='images/students/student_1.jpg'" style="width:95px; height:95px; border-radius:50%; object-fit:cover; border:3px solid #FFD700; margin-bottom:10px; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+                                    <h3 style="font-size:1.3rem; font-weight:800; color:#ffffff; margin-bottom:2px;">${student.name}</h3>
+                                    <p style="font-size:0.85rem; color:#FFD700; font-weight:700; text-transform:uppercase;">${student.class}</p>
+                                </div>
+                            `;
+                        });
+
+                        document.getElementById('birthdayStudentContent').innerHTML = containerHtml;
+
+                        if (!sessionStorage.getItem('birthdayShown')) {
+                            setTimeout(() => {
+                                document.getElementById('birthdayModal').style.display = 'flex';
+                            }, 1600);
+                        }
+                    }
+                })
+                .catch(err => console.log('Birthday CSV verification bypassed:', err));
+        });
+
+        function closeBirthdayModal() {
+            document.getElementById('birthdayModal').style.display = 'none';
+            sessionStorage.setItem('birthdayShown', 'true');
+        }
     </script>
 </body>
 </html>
