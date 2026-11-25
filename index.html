@@ -184,19 +184,75 @@
         </div>
     </header>
 
-    <!-- Today's Birthday Banner Section -->
-    <div id="birthdayBannerSection" style="display:none; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #520984; padding: 25px 20px; text-align: center; border-bottom: 4px solid #6A0DAD; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
-        <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 12px;">
-            <div style="font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px;">
-                <span>🎉</span> Today's Birthday Celebrations! <span>🎂</span>
-            </div>
-            <p style="font-size: 0.95rem; font-weight: 700; color: #4A0404;">SPM Smart School Family wishes our dear students a wonderful and blessed birthday!</p>
-            
-            <div id="birthdayBannerStudents" style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; margin-top: 10px;">
-                <!-- Populated dynamically -->
-            </div>
-        </div>
+  <!-- Student Birthday Banner Section -->
+<div id="birthday-section" style="display: none; max-width: 900px; margin: 25px auto; padding: 20px; background: linear-gradient(135deg, #F0F8FF 0%, #E0F2FE 100%); border: 2px solid #800000; border-radius: 16px; box-shadow: 0 6px 18px rgba(128, 0, 0, 0.12); text-align: center; font-family: sans-serif;">
+    <div style="display: inline-block; background: #800000; color: #FFFFFF; padding: 5px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">
+        🎂 Happy Birthday from SPM Smart School! 🎉
     </div>
+    <h2 style="color: #800000; margin: 5px 0 18px 0; font-size: 1.5rem; font-weight: 800;">
+        Today's Birthday Stars
+    </h2>
+    <div id="birthday-cards" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 18px;"></div>
+</div>
+
+<script>
+(function() {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = months[now.getMonth()];
+    const todayStr = `${day}-${month}`; // Matches DD-Mon format (e.g., 25-Nov)
+
+    // Add cache-buster (?v=...) so browsers always read the latest birthdays.csv
+    fetch('birthdays.csv?v=' + now.getTime())
+        .then(response => {
+            if (!response.ok) throw new Error('Could not load birthdays.csv');
+            return response.text();
+        })
+        .then(csvText => {
+            const lines = csvText.trim().split(/\r?\n/);
+            const birthdayStudents = [];
+
+            // Start at i = 1 to skip header row (name,class,dob,photo)
+            for (let i = 1; i < lines.length; i++) {
+                const row = lines[i].split(',');
+                if (row.length < 4) continue;
+
+                const name = row[0].trim();
+                const studentClass = row[1].trim();
+                const dob = row[2].trim();
+                const photo = row[3].trim();
+
+                if (dob.toLowerCase() === todayStr.toLowerCase()) {
+                    birthdayStudents.push({ name, studentClass, photo });
+                }
+            }
+
+            if (birthdayStudents.length > 0) {
+                const section = document.getElementById('birthday-section');
+                const container = document.getElementById('birthday-cards');
+
+                birthdayStudents.forEach(student => {
+                    const card = document.createElement('div');
+                    card.style.cssText = "background: #FFFFFF; border: 1.5px solid #800000; border-radius: 14px; padding: 15px 20px; width: 220px; box-shadow: 0 4px 10px rgba(0,0,0,0.06);";
+
+                    card.innerHTML = `
+                        <img src="${student.photo}" alt="${student.name}"
+                             onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(student.name)}&background=800000&color=fff&size=120'"
+                             style="width: 105px; height: 105px; object-fit: cover; border-radius: 50%; border: 3px solid #800000; margin-bottom: 10px;">
+                        <h3 style="margin: 4px 0; font-size: 1.1rem; color: #800000; font-weight: 800;">${student.name}</h3>
+                        <p style="margin: 0; font-size: 0.9rem; color: #1E3A8A; font-weight: 700;">${student.studentClass}</p>
+                    `;
+                    container.appendChild(card);
+                });
+
+                section.style.display = 'block';
+            }
+        })
+        .catch(err => console.error('Birthday banner error:', err));
+})();
+</script>
+
 
     <!-- Hero Section with School Building Background & Student Group Advertisement Photo -->
     <section class="hero-section" style="background: linear-gradient(135deg, rgba(106, 13, 173, 0.92) 0%, rgba(168, 85, 247, 0.92) 100%), url('images/CAMPUS/FRONT_SIDE.jpg') center/cover no-repeat;">
